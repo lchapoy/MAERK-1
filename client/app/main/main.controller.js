@@ -4,9 +4,11 @@
 
   class MainController {
 
-    constructor($http) {
+    constructor($http, $state, Auth) {
       this.$http = $http;
       this.awesomeThings = [];
+      if(!Auth.isLoggedIn())
+        $state.go("login");
     }
 
     $onInit() {
