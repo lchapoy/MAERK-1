@@ -6,16 +6,70 @@
 
     <md-toolbar class="md-theme-indigo">
         <h1 class="md-toolbar-tools">Tools</h1>
-
     </md-toolbar>
-    <md-content layout-padding >
-        <md-button ng-click="close()" class="md-primary" hide-gt-md>
-            Close Sidenav Left
-        </md-button>
-        <p hide show-gt-md>
-            This sidenav is locked open on your device. To go back to the default behavior,
-            narrow your display.
-        </p>
-    </md-content>
+    <md-content layout-padding flex>
+        <md-list flex>
+            <md-list-item class="md-1-line" ng-click="null">
+                <div class="md-list-item-text" >
+                    Reports
+                </div>
+                <md-button class="md-secondary md-icon-button" ng-click="null" >
+                    <md-icon class="" md-font-set="material-icons">assessments</md-icon>
+                </md-button>
+            </md-list-item>
 
+
+            <md-divider></md-divider>
+            <md-list-item class="md-2-line" ng-click="null">
+                <md-icon md-font-set="material-icons" class="md-avatar">timeline</md-icon>
+                <div class="md-list-item-text ">
+                    <h3>Employee</h3>
+                    <p>View employee reports</p>
+                </div>
+            </md-list-item>
+            <md-list-item class="md-2-line" ng-click="null">
+                <md-icon md-font-set="material-icons" class="md-avatar">timeline</md-icon>
+                <div class="md-list-item-text ">
+                    <h3>Client</h3>
+                    <p>View client reports</p>
+                </div>
+            </md-list-item>
+            <md-list-item class="md-2-line" ng-click="null">
+                <md-icon md-font-set="material-icons" class="md-avatar">timeline</md-icon>
+                <div class="md-list-item-text ">
+                    <h3>Recruiter</h3>
+                    <p>View recruiter reports</p>
+                </div>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item class="md-1-line" ng-click="null">
+                <div class="md-list-item-text" layout="column">
+                    Employees
+                </div>
+                <md-button class="md-secondary md-icon-button" ng-click="null" >
+                    <md-icon class="" md-font-set="material-icons">account_box</md-icon>
+                </md-button>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item class="md-1-line" ng-click="null">
+                <div class="md-list-item-text" layout="column">
+                    Recruiters
+                </div>
+                <md-button class="md-secondary md-icon-button" ng-click="null" >
+                    <md-icon class="" md-font-set="material-icons">account_box</md-icon>
+                </md-button>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item class="md-1-line" ng-click="null">
+                <div class="md-list-item-text" layout="column">
+                    Register Quarter
+                </div>
+                <md-button class="md-secondary md-icon-button" ng-click="null" >
+                    <md-icon class="" md-font-set="material-icons">grade</md-icon>
+                </md-button>
+            </md-list-item>
+            <md-divider></md-divider>
+        </md-list>
+
+    </md-content>
 </md-sidenav>
