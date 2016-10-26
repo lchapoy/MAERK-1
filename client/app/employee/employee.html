@@ -1,1 +1,22 @@
-employee view
+<div layout-margin>
+    <h1>Employees</h1>
+
+    <mdt-table mdt-row="{
+                      data: vm.employees,
+                      'column-keys': [
+                          'name',
+                          'clients',
+                          'skills',
+                          'recruiter',
+                          'revenue'
+                      ]
+                      }">
+        <mdt-header-row>
+            <mdt-column align-rule="left">Employee Name</mdt-column>
+            <mdt-column align-rule="right">Clients</mdt-column>
+            <mdt-column align-rule="right">Skills</mdt-column>
+            <mdt-column align-rule="right">Recruiter</mdt-column>
+            <mdt-column align-rule="right">Revenue</mdt-column>
+        </mdt-header-row>
+    </mdt-table>
+</div>
