@@ -2,7 +2,7 @@
  * Created by cleverjam on 10/25/16.
  */
 angular.module("maerkApp")
-    .controller("EmployeeController", function () {
+    .controller("EmployeeController", function ($filter) {
         this.employees = [{
             "name": "Terry Campbell",
             "clients": "Minyx",
@@ -124,4 +124,10 @@ angular.module("maerkApp")
             "recruiter": "Christine Ross",
             "revenue": 73244
         }];
+        var self = this;
+        (function(){
+            self.employees.forEach(function (e) {
+                e.revenue = $filter("currency")(e.revenue)
+            })
+        })();
     });
