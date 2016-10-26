@@ -1,7 +1,8 @@
 <div layout-margin>
     <h1>Employees</h1>
 
-    <mdt-table mdt-row="{
+    <mdt-table paginated-rows="{isEnabled: true, rowsPerPageValues: [5,10,20]}"
+            mdt-row="{
                       data: vm.employees,
                       'column-keys': [
                           'name',
