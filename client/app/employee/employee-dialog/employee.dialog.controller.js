@@ -4,7 +4,7 @@
 (function () {
     class DialogController {
         constructor(EmployeeResource, employee){
-            this.context = employee ? "Edit" : "Add";
+            this.context = angular.isArray(employee) ? "Edit" : "Add";
 
         }
     }

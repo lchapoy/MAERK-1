@@ -6,7 +6,7 @@ angular.module("maerkApp")
 
         this.selected = [];
         this.employees = employeeList;
-        this.showAddDialog = function ($event) {
+        this.showAddDialog = function ($event, selected) {
             $mdDialog.show({
                 controller: "DialogController",
                 controllerAs: "vm",
@@ -15,7 +15,7 @@ angular.module("maerkApp")
                 targetEvent: $event,
                 clickOutsideToClose: true,
                 locals: {
-                    employee: this.selected[0]
+                    employee: selected ? selected : null
                 }
             })
         };
@@ -23,7 +23,6 @@ angular.module("maerkApp")
         this.selectedRowCallback = (rows)=> {
             $timeout(()=>{
                 this.selected = rows;
-                console.log(this.selected)
             },0);
 
         };
