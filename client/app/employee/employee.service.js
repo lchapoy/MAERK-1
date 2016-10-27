@@ -12,13 +12,7 @@
                     save: {method: "PUT"}
                 });
 
-            var employeeList = [];
-            Employee.query().$promise.then(function (d) {
-                for (var i = 0; i < d.length; i++) {
-                    employeeList.push(d[i]);
-                }
-                console.log(employeeList)
-            });
+            var employeeList = Employee.query();
 
             function findOne(id) {
                 if (id && employeeList) {
@@ -34,16 +28,16 @@
             return {
                 employees: employeeList,
                 delete: function () {
-                    // DELETE endpoint not supported
+
                 },
                 create: function (emp) {
                     new Employee(emp).$create.then(function (newEmp) {
-                        employeeList.push(newEmp);
+                        employeeList.push()
                     })
                 },
                 update: function (emp) {
                     if (emp._id) {
-                        new Employee(emp).$save().then(function (newEemp) {
+                        emp.$save().then(function (newEemp) {
                             for (var i = 0; i < employeeList.length; i++) {
                                 if (employeeList[i]._id == newEmp._id) {
                                     employeeList[i] = newEmp;
