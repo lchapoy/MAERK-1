@@ -1,16 +1,54 @@
-<div layout-margin>
-    <h1>Employees</h1>
+<div>
+    <md-toolbar class=" md-hue-1">
+        <div class="md-toolbar-tools">
+            <h2>
+                <span>Employees</span>
+            </h2>
+            <span flex></span>
+            <md-button ng-show="vm.selected.length==1" ng-click="vm.edit(vm.selected)" class="md-icon-button"
+                       aria-label="edit">
+                <md-icon md-font-set="material-icons">mode_edit</md-icon>
+            </md-button>
+            <md-button ng-show="vm.selected.length" ng-click="vm.delete(vm.selected)" class="md-icon-button"
+                       aria-label="delete">
+                <md-icon md-font-set="material-icons">delete</md-icon>
+            </md-button>
 
+            <!--activate deactive-->
+            <md-menu ng-show="vm.selected.length" md-position-mode="target-right target" md-offset="0 42">
+
+                <md-button ng-click="vm.openMenu($mdOpenMenu, $event)"
+                           class="md-icon-button" aria-label="delete">
+                    <md-icon md-font-set="material-icons">power_settings_new</md-icon>
+                </md-button>
+                <md-menu-content width="2">
+                    <md-menu-item>
+                        <md-button>
+                            Activate
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button>
+                            Deactivate
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+    </md-toolbar>
     <mdt-table paginated-rows="{isEnabled: true, rowsPerPageValues: [5,10,20]}"
-            mdt-row="{
+               selectable-rows="true"
+               selected-row-callback="vm.selectedRowCallback(rows)"
+               mdt-row="{
                       data: vm.employees,
+                      'table-row-id-key': '_id',
                       'column-keys': [
-                          'name',
-                          'clients',
-                          'skills',
-                          'recruiter',
-                          'revenue'
-                      ]
+                              'name',
+                              'clients',
+                              'skills',
+                              'recruiter',
+                              'revenue'
+                        ]
                       }">
         <mdt-header-row>
             <mdt-column column-sort="true" align-rule="left">Employee Name</mdt-column>

@@ -9,23 +9,23 @@
     <md-button ng-hide="nav.isLoggedIn()" ui-sref="login">Login</md-button>
     <div ng-show="nav.isLoggedIn()">
       <md-menu md-position-mode="target-right target" md-offset="0 42">
-      <md-button  ng-click="nav.openMenu($mdOpenMenu, $event)">
-        {{ nav.getCurrentUser().name }}
-      </md-button>
-      <md-menu-content width="2">
-        <md-menu-item>
-          <md-button ui-sref="logout">
-            Logout
-            <md-icon md-font-set="material-icons">lock_outline</md-icon>
-          </md-button>
-        </md-menu-item>
-        <md-menu-item>
-          <md-button>
-            Settings
-            <md-icon md-font-set="material-icons">settings</md-icon>
-          </md-button>
-        </md-menu-item>
-      </md-menu-content>
+        <md-button ng-click="nav.openMenu($mdOpenMenu, $event)">
+          {{ nav.getCurrentUser().name }}
+        </md-button>
+        <md-menu-content width="2">
+          <md-menu-item>
+            <md-button ui-sref="logout">
+              Logout
+              <md-icon md-font-set="material-icons">lock_outline</md-icon>
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button>
+              Settings
+              <md-icon md-font-set="material-icons">settings</md-icon>
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
       </md-menu>
       <md-button ng-click="nav.toggle()" class="md-icon-button" hide-gt-md>
         <md-icon md-font-set="material-icons">dehaze</md-icon>
