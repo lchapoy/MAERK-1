@@ -11,6 +11,11 @@ angular.module('maerkApp')
                 templateUrl: 'app/employee/employee.html',
                 controller: 'EmployeeController',
                 controllerAs: 'vm',
+                resolve: {
+                    employeeList: function (EmployeeResource) {
+                        return EmployeeResource.get();
+                    }
+                },
                 authenticate: true
             });
     });
