@@ -1,9 +1,13 @@
 <div>
     <md-toolbar class=" md-hue-1">
+
         <div class="md-toolbar-tools">
             <h2>
                 <span>Employees</span>
             </h2>
+            <md-button class="md-fab md-mini md-primary" aria-label="Eat cake">
+                <md-icon md-font-set="material-icons">add</md-icon>
+            </md-button>
             <span flex></span>
             <md-button ng-show="vm.selected.length==1" ng-click="vm.edit(vm.selected)" class="md-icon-button"
                        aria-label="edit">
@@ -57,4 +61,5 @@
         </mdt-row>
 
     </mdt-table>
+
 </div>
