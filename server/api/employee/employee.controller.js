@@ -14,6 +14,7 @@
 'use strict';
 
 import Employee from "./employee.model";
+import _ from 'lodash';
 
 function respondWithResult(res, statusCode) {
     statusCode = statusCode || 200;
@@ -41,7 +42,15 @@ function handleEntityNotFound(res) {
         return entity;
     }
 }
-
+function saveUpdates(updates) {
+    return function(entity) {
+        var updated = _.merge(entity, updates);
+        return updated.save()
+            .then(updated => {
+                return updated;
+            });
+    };
+}
 // GET all employees
 export function index(req,res){
     return Employee.find().exec()
@@ -62,5 +71,16 @@ export function create(req, res) {
     console.log("create employee")
     return Employee.create(req.body)
         .then(respondWithResult(res,201))
+        .catch(handleError(res));
+}
+//Update an employee
+export function update(req, res) {
+    if (req.body._id) {
+        delete req.body._id;  //remove ID (cannot overwrite that!)
+    }
+    return Employee.findById(req.params.id).exec()
+        .then(handleEntityNotFound(res))
+        .then(saveUpdates(req.body))
+        .then(respondWithResult(res))
         .catch(handleError(res));
 }
