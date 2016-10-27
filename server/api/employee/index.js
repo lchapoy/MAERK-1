@@ -8,5 +8,7 @@ var router = express.Router();
 require("./seed");
 
 router.get("/", controller.index);
+router.get('/:id', controller.show);
+router.post('/', controller.create);
 
 module.exports = router;
