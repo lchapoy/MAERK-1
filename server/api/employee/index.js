@@ -7,7 +7,6 @@ import * as auth from '../../auth/auth.service';
 
 var router = new Router();
 
-require("./seed");
 
 router.get("/", auth.hasRole('admin'), controller.index);
 router.get('/:id', auth.hasRole('admin'), controller.show);
