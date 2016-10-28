@@ -31,8 +31,10 @@
 
                 },
                 create: function (emp) {
-                    new Employee(emp).$create.then(function (newEmp) {
-                        employeeList.push()
+                    new Employee(emp).$create().then( (newEmp)=> {
+                        employeeList.push(newEmp);
+                    }).catch(()=>{
+                        console.log("Not saved.")
                     })
                 },
                 update: function (emp) {
