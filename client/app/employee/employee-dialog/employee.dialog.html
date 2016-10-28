@@ -1,1 +1,126 @@
-{{vm.context}}
+<md-dialog aria-label="Add employee dialog" flex="50">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>{{vm.context}} Employee</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="vm.close()">
+                <md-icon md-font-set="material-icons">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <form name="employeeDialog" novalidate g-cloak>
+        <md-dialog-content layout-padding>
+            <div class="md-dialog-content">
+                <h3>Personal Information</h3>
+            </div>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label for="first_name">First Name</label>
+                    <input type="text" required name="first_name">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label for="last_name">Last Name</label>
+                    <input type="text" required name="last_name">
+                </md-input-container>
+            </div>
+
+            <div class="md-dialog-content">
+                <h3>Placement Information</h3>
+            </div>
+            <md-content class="md-padding autocomplete" layout="column" flex>
+                <md-contact-chips
+                        ng-model="vm.client"
+                        md-contacts="vm.querySearch($query)"
+                        md-contact-name="name"
+                        md-require-match="true"
+                        filter-selected="true"
+                        placeholder="Clients"
+                        secondary-placeholder="Clients">
+                </md-contact-chips>
+            </md-content>
+            <md-content class="md-padding autocomplete" layout="column" flex>
+                <md-chips
+                        ng-model="vm.skill"
+                        md-separator-keys="vm.keys"
+                        placeholder="Skills"
+                        secondary-placeholder="Comma separated skill">
+                </md-chips>
+            </md-content>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label for="recruiter">Recruiter</label>
+                    <input type="text" ng-disabled="vm.context==='Edit'" name="recruiter" ng-model="vm.recruiter"
+                           required>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label for="placement">Placement type</label>
+                    <md-select name="placement" ng-model="vm.placement_type" required>
+                        <md-option value="fulltime">Full Time</md-option>
+                        <md-option value="project">Project</md-option>
+                        <md-option value="parttime">Part Time</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div class="md-dialog-content">
+                <h3>Financial Information</h3>
+            </div>
+            <div layout-gt-xs="row">
+                <div layout-align-gt-sm="column" flex>
+                    <md-input-container class="md-block" flex>
+                        <label for="salary">Salary</label>
+                        <input required type="text" name="salary" ng-model="vm.salary" ng-pattern="/^\d*\d$/"/>
+                        <div ng-messages="employeeDialog.salary.$error"  md-auto-hide="true">
+                            <div ng-message="required" role="alert">
+                                This field is required
+                            </div>
+                            <div ng-message="pattern">
+                                Only numbers can represent salary.
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex>
+                        <label for="insurance">Insurance cost</label>
+                        <input required type="text" name="insurance" ng-model="vm.insurance" ng-pattern="/^\d*\d$/"/>
+                        <div ng-messages="employeeDialog.insurance.$error" md-auto-hide="true">
+                            <div ng-message="required">
+                                This field is required
+                            </div>
+                            <div ng-message="pattern">
+                                Only numbers can represent insurance cost.
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div layout-align-gt-md="column" flex>
+                    <md-input-container class="md-block" flex>
+                        <label for="relocation">Relocation cost</label>
+                        <input type="text" name="relocation" ng-model="vm.relocation" ng-pattern="/^\d*\d$/"/>
+                        <div ng-messages="employeeDialog.relocation.$error" multiple md-auto-hide="false">
+                            <div ng-message="pattern">
+                                Only numbers can represent relocation costs.
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex>
+                        <label for="immigration">Immigration cost</label>
+                        <input type="text" name="immigration" ng-model="vm.immigration" ng-pattern="/^\d*\d$/"/>
+                        <div ng-messages="employeeDialog.immigration.$error" multiple md-auto-hide="false">
+
+                            <div ng-message="pattern">
+                                Only numbers can represent insurance cost.
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+
+
+        </md-dialog-content>
+    </form>
+</md-dialog>
+
+
+<!--pay_vacation_cost (Amount that the company expend for employee's vacation)-->
+<!--ksquare_hourly_cost (Amount ksquare pay hourly to him)-->
+<!--target_bill_rate ()-->
+<!--client_bill_pay (Amount client pay to ksquare for that employee)-->
