@@ -15,11 +15,11 @@ var EmployeeSchema = new mongoose.Schema({
         required: true
     },
     client: {
-        type: Array,
+        type: [],
         required: true
     },
     skill: {
-        type: Array,
+        type: [],
         required: true
     },
     recruiter: {
@@ -46,6 +46,10 @@ var EmployeeSchema = new mongoose.Schema({
     pay_vacation_cost: {
         type: Number
     },
+    ksquare_hourly_cost: {
+        type: Number,
+        required: true
+    },
     target_bill_rate: {
         type: Number
     },
@@ -54,7 +58,7 @@ var EmployeeSchema = new mongoose.Schema({
     },
     activate: {
         type: Boolean,
-        required: true
+        default: true
     }
 });
 

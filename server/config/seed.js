@@ -26,9 +26,11 @@ Employee.find({}).remove()
             "relocation": 1715,
             "immigration": 8451,
             "pay_vacation_cost": 7072,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 104574,
             "client_bill_pay": 83784,
             "activate": false
+
         }, {
             "first_name": "Patricia",
             "last_name": "Bradley",
@@ -47,6 +49,7 @@ Employee.find({}).remove()
             "relocation": 3653,
             "immigration": 9005,
             "pay_vacation_cost": 6629,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 65990,
             "client_bill_pay": 111757,
             "activate": false
@@ -66,6 +69,7 @@ Employee.find({}).remove()
             "relocation": 2516,
             "immigration": 7159,
             "pay_vacation_cost": 6361,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 60021,
             "client_bill_pay": 108495,
             "activate": false
@@ -88,6 +92,7 @@ Employee.find({}).remove()
             "relocation": 4861,
             "immigration": 7782,
             "pay_vacation_cost": 8737,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 89969,
             "client_bill_pay": 106938,
             "activate": false
@@ -110,6 +115,7 @@ Employee.find({}).remove()
             "relocation": 3961,
             "immigration": 7070,
             "pay_vacation_cost": 6762,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 106396,
             "client_bill_pay": 84250,
             "activate": true
@@ -131,6 +137,7 @@ Employee.find({}).remove()
             "relocation": 1557,
             "immigration": 8014,
             "pay_vacation_cost": 6971,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 103492,
             "client_bill_pay": 101606,
             "activate": false
@@ -151,6 +158,7 @@ Employee.find({}).remove()
             "relocation": 1280,
             "immigration": 5571,
             "pay_vacation_cost": 5269,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 64198,
             "client_bill_pay": 97347,
             "activate": false
@@ -170,6 +178,7 @@ Employee.find({}).remove()
             "relocation": 2500,
             "immigration": 8485,
             "pay_vacation_cost": 5729,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 109610,
             "client_bill_pay": 117599,
             "activate": false
@@ -192,6 +201,7 @@ Employee.find({}).remove()
             "relocation": 4818,
             "immigration": 9962,
             "pay_vacation_cost": 7896,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 115543,
             "client_bill_pay": 87657,
             "activate": true
@@ -213,6 +223,7 @@ Employee.find({}).remove()
             "relocation": 3122,
             "immigration": 5421,
             "pay_vacation_cost": 7314,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 118865,
             "client_bill_pay": 97842,
             "activate": true
@@ -234,6 +245,7 @@ Employee.find({}).remove()
             "relocation": 3054,
             "immigration": 7653,
             "pay_vacation_cost": 6292,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 71390,
             "client_bill_pay": 102582,
             "activate": false
@@ -256,6 +268,7 @@ Employee.find({}).remove()
             "relocation": 4280,
             "immigration": 6432,
             "pay_vacation_cost": 9992,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 112173,
             "client_bill_pay": 111484,
             "activate": true
@@ -278,6 +291,7 @@ Employee.find({}).remove()
             "relocation": 2262,
             "immigration": 8097,
             "pay_vacation_cost": 8519,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 87305,
             "client_bill_pay": 103588,
             "activate": true
@@ -299,6 +313,7 @@ Employee.find({}).remove()
             "relocation": 3594,
             "immigration": 7367,
             "pay_vacation_cost": 7294,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 103543,
             "client_bill_pay": 117013,
             "activate": true
@@ -320,6 +335,7 @@ Employee.find({}).remove()
             "relocation": 1429,
             "immigration": 9515,
             "pay_vacation_cost": 7467,
+            "ksquare_hourly_cost":50,
             "target_bill_rate": 109375,
             "client_bill_pay": 112658,
             "activate": true
@@ -340,6 +356,7 @@ Employee.find({}).remove()
             "relocation": 2416,
             "immigration": 6640,
             "pay_vacation_cost": 7488,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 91212,
             "client_bill_pay": 97064,
             "activate": true
@@ -360,6 +377,7 @@ Employee.find({}).remove()
             "relocation": 2466,
             "immigration": 8087,
             "pay_vacation_cost": 8603,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 81912,
             "client_bill_pay": 107068,
             "activate": true
@@ -382,49 +400,9 @@ Employee.find({}).remove()
             "relocation": 1907,
             "immigration": 9840,
             "pay_vacation_cost": 7441,
+            "ksquare_hourly_cost": 50,
             "target_bill_rate": 94913,
             "client_bill_pay": 117448,
-            "activate": true
-        }, {
-            "first_name": "Joshua",
-            "last_name": "Garcia",
-            "client": [
-                "Twimbo"
-            ],
-            "skill": [
-                "TSCM",
-                "WCDMA"
-            ],
-            "recruiter": "Arnold",
-            "placement_type": "full-time",
-            "salary": 91008,
-            "insurance": 100,
-            "relocation": 3023,
-            "immigration": 7956,
-            "pay_vacation_cost": 7069,
-            "target_bill_rate": 116538,
-            "client_bill_pay": 118646,
-            "activate": true
-        }, {
-            "first_name": "Rachel",
-            "last_name": "Robertson",
-            "client": [
-                "Jayo",
-                "Brainverse"
-            ],
-            "skill": [
-                "Substance Abuse Prevention",
-                "Working Abroad"
-            ],
-            "recruiter": "Ricky",
-            "placement_type": "part-time",
-            "salary": 88339,
-            "insurance": 872,
-            "relocation": 3646,
-            "immigration": 8663,
-            "pay_vacation_cost": 7846,
-            "target_bill_rate": 108254,
-            "client_bill_pay": 104163,
             "activate": true
         }])
             .then(function () {
