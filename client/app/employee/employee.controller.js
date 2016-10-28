@@ -2,7 +2,7 @@
  * Created by cleverjam on 10/25/16.
  */
 angular.module("maerkApp")
-    .controller("EmployeeController", function ($timeout, employeeList, $mdDialog) {
+    .controller("EmployeeController", function ($timeout, employeeList, $mdDialog, EmployeeResource) {
 
         this.selected = [];
         this.employees = employeeList;
@@ -18,6 +18,10 @@ angular.module("maerkApp")
                 locals: {
                     employee: selected ? selected : null
                 }
+            }).then((emp)=> {
+                console.log(emp);
+                EmployeeResource.create(emp);
+
             })
         };
 
