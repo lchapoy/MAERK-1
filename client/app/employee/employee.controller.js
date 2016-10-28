@@ -14,6 +14,7 @@ angular.module("maerkApp")
                 parent: angular.element(document.body),
                 targetEvent: $event,
                 clickOutsideToClose: true,
+                fullscreen: true,
                 locals: {
                     employee: selected ? selected : null
                 }
@@ -21,9 +22,8 @@ angular.module("maerkApp")
         };
 
         this.selectedRowCallback = (rows)=> {
-            $timeout(()=>{
+
                 this.selected = rows;
-            },0);
 
         };
 
