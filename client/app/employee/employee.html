@@ -41,19 +41,19 @@
 </md-toolbar>
 
 <md-table-container class="md-whiteframe-4dp">
-    <table md-table md-row-select multiple ng-model="vm.selected">
-        <thead md-head md-order="last_name" >
+    <table md-table md-row-select multiple md-order="vm.orderVal" ng-model="vm.selected">
+        <thead md-head md-order="vm.orderVal" >
         <tr md-row>
-            <th md-column><span>Employee Name</span></th>
-            <th md-column><span>Clients</span></th>
-            <th md-column>Skills</th>
-            <th md-column>Recruiter</th>
-            <th md-column>Revenue</th>
+            <th md-column md-order-by="first_name"><span>Employee Name</span></th>
+            <th md-column md-order-by="client"><span>Clients</span></th>
+            <th md-column md-order-by="skill">Skills</th>
+            <th md-column md-order-by="recruiter">Recruiter</th>
+            <th md-column md-order-by="">Revenue</th>
         </tr>
         </thead>
         <tbody md-body>
         <tr md-row md-select="employee" md-select-id="_id" md-auto-select
-            ng-repeat="employee in vm.employees | orderBy: first_name | limitTo: vm.limit: (vm.page - 1) * vm.limit ">
+            ng-repeat="employee in vm.employees | orderBy: vm.orderVal | limitTo: vm.limit: (vm.page - 1) * vm.limit ">
             <td md-cell>{{employee.first_name + " " + employee.last_name}}</td>
             <td md-cell>{{employee.client.join(", ")}}</td>
             <td md-cell>{{employee.skill.join(", ")}}</td>
@@ -65,37 +65,3 @@
     <md-table-pagination md-limit="vm.limit" md-limit-options="[5, 10, 15]" md-page="vm.page"
                          md-total="{{vm.employees.length}}" md-page-select></md-table-pagination>
 </md-table-container>
-
-
-<!--<div>-->
-<!--<md-toolbar class=" md-hue-1">-->
-
-<!--<div class="md-toolbar-tools">-->
-<!--<h2>-->
-<!--<span>Employees</span>-->
-<!--</h2>-->
-
-<!--</md-toolbar>-->
-<!--<mdt-table-->
-<!--paginated-rows="{isEnabled: true, rowsPerPageValues: [5,10,20]}"-->
-<!--selectable-rows="true"-->
-<!--selected-row-callback="vm.selectedRowCallback(rows)">-->
-<!--<mdt-header-row>-->
-<!--<mdt-column column-sort="true" align-rule="left">Employee Name</mdt-column>-->
-<!--<mdt-column column-sort="true" align-rule="right">Clients</mdt-column>-->
-<!--<mdt-column column-sort="true" align-rule="right">Skills</mdt-column>-->
-<!--<mdt-column column-sort="true" align-rule="right">Recruiter</mdt-column>-->
-<!--<mdt-column column-filter="currency" column-sort="true" align-rule="right">Revenue</mdt-column>-->
-<!--</mdt-header-row>-->
-<!--<mdt-row ng-repeat="employee in vm.employees" table-row-id="employee._id">-->
-<!--<mdt-cell>{{employee.first_name + " " + employee.last_name}}</mdt-cell>-->
-<!--<mdt-cell>{{employee.client.join(", ")}}</mdt-cell>-->
-<!--<mdt-cell>{{employee.skill.join(", ")}}</mdt-cell>-->
-
-<!--<mdt-cell>{{employee.recruiter}}</mdt-cell>-->
-<!--<mdt-cell>{{1 | currency}}</mdt-cell>-->
-<!--</mdt-row>-->
-
-<!--</mdt-table>-->
-
-<!--</div>-->
