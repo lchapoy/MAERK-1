@@ -39,7 +39,7 @@
                 },
                 update: function (emp) {
                     if (emp._id) {
-                        emp.$save().then(function (newEemp) {
+                        new Employee(emp).$save().then((newEmp) => {
                             for (var i = 0; i < employeeList.length; i++) {
                                 if (employeeList[i]._id == newEmp._id) {
                                     employeeList[i] = newEmp;

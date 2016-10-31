@@ -20,12 +20,15 @@ angular.module("maerkApp")
                 clickOutsideToClose: true,
                 fullscreen: true,
                 locals: {
-                    employee: selected ? selected : null
+                    employee: selected ? selected[0] : null
                 }
             }).then((emp)=> {
-                console.log(emp);
-                EmployeeResource.create(emp);
-
+                if (!emp._id){
+                    EmployeeResource.create(emp);
+                }
+                else {
+                    EmployeeResource.update(emp);
+                }
             })
         };
 

@@ -5,13 +5,25 @@
     class DialogController {
 
         constructor(employee, $mdDialog, $mdConstant) {
-            this.context = angular.isArray(employee) ? "Edit" : "Add";
+            this.context = employee ? "Edit" : "Add";
             //chip separators.
             this.keys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA, 186];
-            this.allClients = this.loadClients();
+
+
             this.emp = {};
-            this.emp.client = [];
-            this.emp.skill = [];
+            this.allClients = this.loadClients();
+            if (employee) {
+
+                angular.copy(employee, this.emp);
+                this.emp.client = this.emp.client.map((c)=> {
+                    return {name: c}
+                });
+            }
+            else {
+
+                this.emp.client = [];
+                this.emp.skill = [];
+            }
 
             this.submit = function () {
                 this.emp.client = this.fixClient(this.emp.client);
@@ -31,6 +43,7 @@
             });
             return result;
         }
+
         querySearch(criteria) {
             return this.allClients.filter(this.createFilterFor(criteria));
         }
@@ -40,12 +53,11 @@
             return function filterFn(client) {
                 return (client.name.indexOf(lowercaseQuery) != -1);
             };
-
         }
 
         loadClients() {
             //ClientResource here!
-            return ["verizon", "deloitte", "intuit", "boy scouts"].map(function (c, i) {
+            return ["verizon", "deloitte", "intuit", "boy scouts"].map(function (c) {
                 return {name: c}
             });
         }
