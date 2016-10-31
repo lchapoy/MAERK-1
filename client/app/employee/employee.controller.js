@@ -8,6 +8,7 @@ angular.module("maerkApp")
         this.limit = 5;
         this.selected = [];
         this.employees = employeeList;
+
         this.showAddDialog = function ($event, selected) {
             $mdDialog.show({
                 controller: "DialogController",
@@ -25,12 +26,6 @@ angular.module("maerkApp")
                 EmployeeResource.create(emp);
 
             })
-        };
-
-        this.selectedRowCallback = (rows)=> {
-
-                this.selected = rows;
-
         };
 
         var originatorEv;
