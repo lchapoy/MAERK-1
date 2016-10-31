@@ -6,6 +6,7 @@ angular.module("maerkApp")
         this.page = 1;
         this.orderVal = "first_name";
         this.limit = 5;
+        this.filterBy='first_name';
         this.selected = [];
         this.employees = employeeList;
 
