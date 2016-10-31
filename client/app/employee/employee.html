@@ -1,9 +1,24 @@
-<md-toolbar class="md-table-toolbar md-hue-1">
+<md-toolbar class="md-table-toolbar md-default">
     <div class="md-toolbar-tools">
-        <h2>
-        <span>Employees</span>
-        </h2>
-        <md-button class="md-fab md-mini md-primary" ng-click="vm.showAddDialog($event)" aria-label="Add Employee">
+        <md-input-container>
+            <md-select aria-label="search by" ng-model="vm.filterBy">
+                <md-option value="first_name" selected>First Name</md-option>
+                <md-option value="last_name">Last Name</md-option>
+                <md-option value="client">Clients</md-option>
+                <md-option value="skill">Skills</md-option>
+                <md-option value="recruiter">Recruiter</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container class="md-primary" layout="row" flex>
+            <input name="searchbox" placeholder="search" ng-model="vm.searchbox">
+        </md-input-container>
+    </div>
+</md-toolbar>
+<md-toolbar class="md-whiteframe-1dp md-hue-1">
+    <div class="md-toolbar-tools">
+        <h2><span>Employees</span></h2>
+        <div ng-if="vm.selected != 0">({{vm.selected.length}})</div>
+        <md-button class="md-fab md-mini  " ng-click="vm.showAddDialog($event)" aria-label="Add Employee">
             <md-icon md-font-set="material-icons">add</md-icon>
         </md-button>
         <span flex></span>
@@ -14,12 +29,10 @@
         </md-button>
         <md-button ng-show="vm.selected.length" ng-click="vm.delete(vm.selected)" class="md-icon-button"
                    aria-label="Delete Employee">
-            <md-icon md-font-set="material-icons">delete</md-icon>
+            <md-icon md-font-set="material-icons ">delete</md-icon>
         </md-button>
-
         <!--activate deactive-->
         <md-menu ng-show="vm.selected.length" md-position-mode="target-right target" md-offset="0 42">
-
             <md-button ng-click="vm.openMenu($mdOpenMenu, $event)"
                        class="md-icon-button" aria-label="Activate or Desactivate">
                 <md-icon md-font-set="material-icons">power_settings_new</md-icon>
@@ -28,7 +41,7 @@
                 <md-menu-item>
                     <md-button>
                         Activate
-                </md-button>
+                    </md-button>
                 </md-menu-item>
                 <md-menu-item>
                     <md-button>
@@ -39,8 +52,7 @@
         </md-menu>
     </div>
 </md-toolbar>
-
-<md-table-container class="md-whiteframe-4dp">
+<md-table-container class="md-whiteframe-1dp">
     <table md-table md-row-select multiple md-order="vm.orderVal" ng-model="vm.selected">
         <thead md-head md-order="vm.orderVal" >
         <tr md-row>
@@ -53,7 +65,7 @@
         </thead>
         <tbody md-body>
         <tr md-row md-select="employee" md-select-id="_id" md-auto-select
-            ng-repeat="employee in vm.employees | orderBy: vm.orderVal | limitTo: vm.limit: (vm.page - 1) * vm.limit ">
+            ng-repeat="employee in vm.employees | filter: {[vm.filterBy]: vm.searchbox} | orderBy: vm.orderVal | limitTo: vm.limit: (vm.page - 1) * vm.limit ">
             <td md-cell>{{employee.first_name + " " + employee.last_name}}</td>
             <td md-cell>{{employee.client.join(", ")}}</td>
             <td md-cell>{{employee.skill.join(", ")}}</td>
