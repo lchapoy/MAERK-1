@@ -3,7 +3,9 @@
  */
 angular.module("maerkApp")
     .controller("EmployeeController", function ($timeout, employeeList, $mdDialog, EmployeeResource) {
-
+        this.page = 1;
+        this.orderVal = "first_name";
+        this.limit = 5;
         this.selected = [];
         this.employees = employeeList;
         this.showAddDialog = function ($event, selected) {
