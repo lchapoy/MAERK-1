@@ -8,6 +8,13 @@ class LoginController {
 
     this.Auth = Auth;
     this.$state = $state;
+
+    Auth.isLoggedIn((is)=> {
+      console.log(is);
+      if (is)
+        $state.go("main.employee")
+    })
+
   }
 
   login(form) {
