@@ -50,4 +50,4 @@ export var ReportSchema = new mongoose.Schema({
     }
 });
 
-export var ReportModel = mongoose.mode('Report', ReportSchema);
+export var ReportModel = mongoose.model('Report', ReportSchema);
