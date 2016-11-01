@@ -14,12 +14,10 @@
 'use strict';
 
 import {ReportModel as Report} from './report.model';
-import _ from 'lodash';
 
 function respondWithResult(res, statusCode) {
     statusCode = statusCode || 200;
     return function(entity) {
-        // if entity null entityNotFound was invoked
         if (entity) {
             res.status(statusCode).json(entity);
         }
@@ -42,19 +40,34 @@ function handleEntityNotFound(res) {
         return entity;
     }
 }
-function saveUpdates(updates) {
-    return function(entity) {
-        var updated = _.merge(entity, updates);
-        return updated.save()
-            .then(updated => {
-                return updated;
-            });
-    };
-}
 
+// GET all reports
 export function index(req,res){
     return Report.find().exec()
         .then(respondWithResult(res))
         .catch(handleError(res));
 }
 
+//Retrieve single report
+export function show(req, res) {
+    return Report.findById(req.params.id).exec()
+        .then(handleEntityNotFound(res))
+        .then(respondWithResult(res))
+        .catch(handleError(res));
+}
+
+//Create report
+export function create(req, res) {
+    return Report.findOneAndUpdate({year: req.body.year},req.body, {new: true, upsert: true}).exec()
+        .then(respondWithResult(res, 201))
+        .catch(handleError(res));
+}
+//Update a report
+export function update(req, res) {
+    if (req.body._id) {
+        delete req.body._id;  //remove ID (cannot overwrite that!)
+    }
+    return Report.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}).exec()
+        .then(respondWithResult(res,200))
+        .catch(handleError(res));
+}
