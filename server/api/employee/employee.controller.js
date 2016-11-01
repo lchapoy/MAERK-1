@@ -45,6 +45,8 @@ function handleEntityNotFound(res) {
 function saveUpdates(updates) {
     return function(entity) {
         var updated = _.merge(entity, updates);
+        updated.client= updates.client;
+        updated.skill = updates.skill;
         return updated.save()
             .then(updated => {
                 return updated;
