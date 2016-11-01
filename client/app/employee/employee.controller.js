@@ -10,6 +10,27 @@ angular.module("maerkApp")
         this.selected = [];
         this.employees = employeeList;
 
+        this.toggleActive = ($event,val) => {
+            //noinspection JSUnresolvedFunction
+            var prompt = $mdDialog.confirm()
+                .title("Please confirm active status change")
+                .textContent(`You are changing the status for (${this.selected.length}) employees to ${val?"active":"inactive"}`)
+                .ariaLabel("Active status change confirmation")
+                .targetEvent($event)
+                .ok("Change Status")
+                .cancel("Cancel");
+            $mdDialog.show(prompt).then(()=>{
+                this.selected.forEach((employee)=> {
+                    if (employee.activate !== val) {
+                        console.info("Toggling active status for:", employee["first_name"]);
+                        employee.activate = val;
+                        employee.$save();
+                    }
+                })
+            },()=>{
+                console.log("no status changed.")
+            })
+        };
         this.showAddDialog = function ($event, selected) {
             $mdDialog.show({
                 controller: "DialogController",
