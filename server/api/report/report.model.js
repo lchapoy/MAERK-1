@@ -10,6 +10,11 @@ import {EmployeeSchema} from '../employee/employee.model';
 export var ReportSchema = new mongoose.Schema({
     year: {
         type: Number,
+        required: true,
+        unique: true
+    },
+    closed: { //is this report closed??
+        type: Number,
         required: true
     },
     january: {
