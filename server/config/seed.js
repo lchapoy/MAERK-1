@@ -6,7 +6,7 @@
 'use strict';
 import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
-import  Employee from '../api/employee/employee.model';
+import  {EmployeeModel as Employee} from '../api/employee/employee.model';
 
 Employee.find({}).remove()
     .then(function () {

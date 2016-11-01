@@ -13,7 +13,7 @@
 
 'use strict';
 
-import Employee from "./employee.model";
+import {EmployeeModel as Employee} from "./employee.model";
 import _ from 'lodash';
 
 function respondWithResult(res, statusCode) {
