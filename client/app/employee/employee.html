@@ -39,12 +39,12 @@
             </md-button>
             <md-menu-content width="2">
                 <md-menu-item>
-                    <md-button>
+                    <md-button ng-click="vm.toggleActive($event,true)">
                         Activate
                     </md-button>
                 </md-menu-item>
                 <md-menu-item>
-                    <md-button>
+                    <md-button ng-click="vm.toggleActive($event,false)">
                         Deactivate
                     </md-button>
                 </md-menu-item>
@@ -61,6 +61,7 @@
             <th md-column md-order-by="skill">Skills</th>
             <th md-column md-order-by="recruiter">Recruiter</th>
             <th md-column md-order-by="">Revenue</th>
+            <th md-column md-order-by="">Active</th>
         </tr>
         </thead>
         <tbody md-body>
@@ -71,6 +72,7 @@
             <td md-cell>{{employee.skill.join(", ")}}</td>
             <td md-cell>{{employee.recruiter}}</td>
             <td md-cell>{{1 | currency}}</td>
+            <td md-cell>{{employee.activate ? "Active" : "Inactive"}}</td>
         </tr>
         </tbody>
     </table>
