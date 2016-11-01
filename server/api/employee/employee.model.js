@@ -5,7 +5,7 @@
 
 import mongoose from 'mongoose';
 
-var EmployeeSchema = new mongoose.Schema({
+export var EmployeeSchema = new mongoose.Schema({
     first_name: {
         type: String,
         required: true
@@ -62,27 +62,4 @@ var EmployeeSchema = new mongoose.Schema({
     }
 });
 
-export default mongoose.model('Employee', EmployeeSchema);
-
-
-// [{
-//     "first_name": "Mildred",
-//     "last_name": "Morales",
-//     "client": [
-//         "Yodoo",
-//         "Jayo"
-//     ],
-//     "skill": [
-//         "Educational Outreach"
-//     ],
-//     "recruiter": "Ricky",
-//     "placement_type": "project",
-//     "salary": 98757,
-//     "insurance": 228,
-//     "relocation": 3609,
-//     "immigration": 5968,
-//     "pay_vacation_cost": 6261,
-//     "target_bill_rate": 117613,
-//     "client_bill_pay": 82129,
-//     "activate": false
-// }]
+export var EmployeeModel = mongoose.model('Employee', EmployeeSchema);

@@ -1,5 +1,5 @@
 /**
- * Created by cleverjam on 10/26/16.
+ * Created by cleverjam on 11/1/16.
  */
 
 /**
@@ -13,13 +13,11 @@
 
 'use strict';
 
-import {EmployeeModel as Employee} from "./employee.model";
-import _ from 'lodash';
+import {ReportModel as Report} from './report.model';
 
 function respondWithResult(res, statusCode) {
     statusCode = statusCode || 200;
     return function(entity) {
-        // if entity null entityNotFound was invoked
         if (entity) {
             res.status(statusCode).json(entity);
         }
@@ -42,47 +40,34 @@ function handleEntityNotFound(res) {
         return entity;
     }
 }
-function saveUpdates(updates) {
-    return function(entity) {
-        var updated = _.merge(entity, updates);
-        updated.client= updates.client;
-        updated.skill = updates.skill;
-        return updated.save()
-            .then(updated => {
-                return updated;
-            });
-    };
-}
-// GET all employees
+
+// GET all reports
 export function index(req,res){
-    return Employee.find().exec()
+    return Report.find().exec()
         .then(respondWithResult(res))
         .catch(handleError(res));
 }
 
-//Retrieve single employee
+//Retrieve single report
 export function show(req, res) {
-    return Employee.findById(req.params.id).exec()
+    return Report.findById(req.params.id).exec()
         .then(handleEntityNotFound(res))
         .then(respondWithResult(res))
         .catch(handleError(res));
 }
 
-//Create employee
+//Create report
 export function create(req, res) {
-    console.log("create employee")
-    return Employee.create(req.body)
-        .then(respondWithResult(res,201))
+    return Report.findOneAndUpdate({year: req.body.year},req.body, {new: true, upsert: true}).exec()
+        .then(respondWithResult(res, 201))
         .catch(handleError(res));
 }
-//Update an employee
+//Update a report
 export function update(req, res) {
     if (req.body._id) {
         delete req.body._id;  //remove ID (cannot overwrite that!)
     }
-    return Employee.findById(req.params.id).exec()
-        .then(handleEntityNotFound(res))
-        .then(saveUpdates(req.body))
-        .then(respondWithResult(res))
+    return Report.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}).exec()
+        .then(respondWithResult(res,200))
         .catch(handleError(res));
 }

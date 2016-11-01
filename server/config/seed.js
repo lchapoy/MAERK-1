@@ -6,7 +6,62 @@
 'use strict';
 import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
-import  Employee from '../api/employee/employee.model';
+import  {EmployeeModel as Employee} from '../api/employee/employee.model';
+import  {ReportModel as Report} from '../api/report/report.model';
+
+Report.find({}).remove()
+    .then(function () {
+        Report.create(
+            [
+                {
+                    "year": 2016,
+                    "closed": 0,
+                    "january": [{
+                        "first_name": "Patricia",
+                        "last_name": "Bradley",
+                        "recruiter": "Ricky",
+                        "placement_type": "part-time",
+                        "salary": 80613,
+                        "insurance": 611,
+                        "relocation": 3653,
+                        "immigration": 9005,
+                        "pay_vacation_cost": 6629,
+                        "ksquare_hourly_cost": 50,
+                        "target_bill_rate": 65990,
+                        "client_bill_pay": 111757,
+                        "activate": false,
+                        "skill": ["Clinical Development"],
+                        "client": ["Dabtype", "Topicshots"]
+                    }],
+                    "february": [{
+                        "first_name": "Clarence",
+                        "last_name": "Coleman",
+                        "client": [
+                            "Latz",
+                            "Wordify",
+                            "Mycat"
+                        ],
+                        "skill": [
+                            "SAP Business ByDesign",
+                            "DVD Authoring"
+                        ],
+                        "recruiter": "Ricky",
+                        "placement_type": "full-time",
+                        "salary": 63776,
+                        "insurance": 386,
+                        "relocation": 3961,
+                        "immigration": 7070,
+                        "pay_vacation_cost": 6762,
+                        "ksquare_hourly_cost": 50,
+                        "target_bill_rate": 106396,
+                        "client_bill_pay": 84250,
+                        "activate": true
+                    }]
+
+                }
+            ]
+        )
+    });
 
 Employee.find({}).remove()
     .then(function () {
