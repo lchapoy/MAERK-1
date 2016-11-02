@@ -2,12 +2,9 @@
     <div class="md-toolbar-tools">
         <md-input-container flex class="md-block" flex-gt-md="20">
             <label>Year</label>
+            <!--TODO: auto generate md-select options from available years-->
             <md-select aria-label="search by" ng-model="test">
                 <md-option value="first_name" selected>2016</md-option>
-                <md-option value="last_name">Last Name</md-option>
-                <md-option value="client">Clients</md-option>
-                <md-option value="skill">Skills</md-option>
-                <md-option value="recruiter">Recruiter</md-option>
             </md-select>
         </md-input-container>
         <!--<md-input-container layout="row" flex>-->
@@ -16,6 +13,7 @@
     </div>
 </md-toolbar>
 <md-content class="" flex>
+    <!--TODO: Disable months that have not been closed yet-->
     <md-tabs class="md-accent" md-selected="vm.index" md-align-tabs="bottom">
         <md-tab id="jan">January</md-tab>
         <md-tab id="feb">February</md-tab>
@@ -36,8 +34,8 @@
     <md-card flex="100" flex-gt-md="50">
         <md-card-title>
             <md-card-title-text>
-                <span class="md-headline">Skills table</span>
-                <span class="md-subhead">Skills table container</span>
+                <span class="md-headline">Client table</span>
+                <span class="md-subhead">Client table container</span>
             </md-card-title-text>
         </md-card-title>
         <md-card-content layout="row" layout-align="space-between">
@@ -63,8 +61,8 @@
     <md-card flex="100" flex-gt-md="50">
         <md-card-title>
             <md-card-title-text>
-                <span class="md-headline">Skills Chart</span>
-                <span class="md-subhead">Skills chart container</span>
+                <span class="md-headline">Client Chart</span>
+                <span class="md-subhead">Client chart container</span>
             </md-card-title-text>
         </md-card-title>
         <md-card-content layout="row" layout-align="space-between">
