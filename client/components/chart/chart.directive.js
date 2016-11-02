@@ -5,5 +5,14 @@ angular.module('maerkApp')
     .directive('chart', ()=> ({
         templateUrl:'components/chart/chart.html',
         restrict:'E',
-        controller:''
+        controller:'ChartController',
+        controllerAs: 'vm',
+        scope: {
+            bar: "=",
+            pie:"=",
+            labels: "@",
+            series: "@",
+            data: "@"
+        },
+        bindToController: true
     }));
