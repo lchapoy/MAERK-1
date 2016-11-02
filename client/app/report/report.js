@@ -11,7 +11,7 @@ angular.module('maerkApp')
             template: "<ui-view></ui-view>",
             resolve: {
                 reportData: function(ReportResource){
-                    return ReportResource.get();
+                    return ReportResource.getReportData();
                 }
             }
         });
