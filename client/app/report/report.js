@@ -11,9 +11,6 @@ angular.module('maerkApp')
             template: "<ui-view></ui-view>",
             resolve: {
                 //resolve mongo stuff.
-                employeeData: function(EmployeeResource){
-                    return EmployeeResource.get();
-                },
                 reportData: function(ReportResource){
                     return ReportResource.get();
                 }
