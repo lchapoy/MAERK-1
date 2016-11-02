@@ -22,6 +22,8 @@ angular.module('maerkApp')
         });
         $stateProvider.state('main.report.client', {
             url: '/clients',
-            templateUrl: 'app/report/report-client/report.client.html'
+            templateUrl: 'app/report/report-client/report.client.html',
+            controller: 'ReportClientController',
+            controllerAs:'vm'
         })
     });

@@ -3,8 +3,8 @@
         <md-input-container flex class="md-block" flex-gt-md="20">
             <label>Year</label>
             <!--TODO: auto generate md-select options from available years-->
-            <md-select aria-label="search by" ng-model="test">
-                <md-option value="first_name" selected>2016</md-option>
+            <md-select aria-label="search by" ng-model="vm.year">
+                <md-option value="2016" selected>2016</md-option>
             </md-select>
         </md-input-container>
         <!--<md-input-container layout="row" flex>-->
@@ -66,7 +66,7 @@
             </md-card-title-text>
         </md-card-title>
         <md-card-content layout="row" layout-align="space-between">
-                <chart></chart>
+                <chart pie="true"></chart>
 
 
             <!--<md-card-actions layout="column">-->
@@ -85,3 +85,5 @@
 
 
 </md-content>
+
+{{vm.reports}}
