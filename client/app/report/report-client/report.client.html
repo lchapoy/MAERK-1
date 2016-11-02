@@ -2,9 +2,9 @@
     <div class="md-toolbar-tools">
         <md-input-container flex class="md-block" flex-gt-md="20">
             <label>Year</label>
-            <!--TODO: auto generate md-select options from available years-->
-            <md-select aria-label="search by" ng-model="vm.year">
-                <md-option value="2016" selected>2016</md-option>
+            <md-select aria-label="Select year" ng-model="vm.selection.year">
+                <md-option ng-click="vm.update(year,null)" ng-value="year" ng-repeat="year in vm.years">{{year}}
+                </md-option>
             </md-select>
         </md-input-container>
         <!--<md-input-container layout="row" flex>-->
@@ -13,20 +13,8 @@
     </div>
 </md-toolbar>
 <md-content class="" flex>
-    <!--TODO: Disable months that have not been closed yet-->
-    <md-tabs class="md-accent" md-selected="vm.index" md-align-tabs="bottom">
-        <md-tab id="jan">January</md-tab>
-        <md-tab id="feb">February</md-tab>
-        <md-tab id="mar">March</md-tab>
-        <md-tab id="apr">April</md-tab>
-        <md-tab id="may">May</md-tab>
-        <md-tab id="jun">June</md-tab>
-        <md-tab id="jul">July</md-tab>
-        <md-tab id="aug">August</md-tab>
-        <md-tab id="sep">September</md-tab>
-        <md-tab id="oct">October</md-tab>
-        <md-tab id="nov">November</md-tab>
-        <md-tab id="dec">December</md-tab>
+    <md-tabs class="md-accent" md-align-tabs="bottom">
+        <md-tab ng-repeat="month in vm.months" ng-click="vm.update(null,month)" id="month">{{month}}</md-tab>
     </md-tabs>
 </md-content>
 
