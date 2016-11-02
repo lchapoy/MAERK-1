@@ -4,6 +4,14 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 /**
  * App-wide Styles
  */
+.nav-active {
+  background-color: lightblue;
+  color: deeppink;
+}
+
+.nav-active md-icon {
+  color: deeppink;
+}
 
 .browserupgrade {
   margin: 0.2em 0;

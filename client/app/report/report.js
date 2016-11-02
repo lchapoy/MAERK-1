@@ -10,7 +10,6 @@ angular.module('maerkApp')
             url:'/reports',
             template: "<ui-view></ui-view>",
             resolve: {
-                //resolve mongo stuff.
                 reportData: function(ReportResource){
                     return ReportResource.get();
                 }
@@ -20,5 +19,9 @@ angular.module('maerkApp')
         $stateProvider.state('main.report.skill',{
             url: '/skills',
             templateUrl: 'app/report/report-skill/report.skill.html'
+        });
+        $stateProvider.state('main.report.client', {
+            url: '/clients',
+            templateUrl: 'app/report/report-client/report.client.html'
         })
     });

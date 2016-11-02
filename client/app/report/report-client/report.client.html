@@ -1,0 +1,90 @@
+<md-toolbar flex="100" layout-padding class="md-default md-table-toolbar">
+    <div class="md-toolbar-tools">
+        <md-input-container flex class="md-block" flex-gt-md="20">
+            <label>Year</label>
+            <!--TODO: auto generate md-select options from available years-->
+            <md-select aria-label="search by" ng-model="test">
+                <md-option value="first_name" selected>2016</md-option>
+            </md-select>
+        </md-input-container>
+        <!--<md-input-container layout="row" flex>-->
+        <!--<input name="searchbox" placeholder="search">-->
+        <!--</md-input-container>-->
+    </div>
+</md-toolbar>
+<md-content class="" flex>
+    <!--TODO: Disable months that have not been closed yet-->
+    <md-tabs class="md-accent" md-selected="vm.index" md-align-tabs="bottom">
+        <md-tab id="jan">January</md-tab>
+        <md-tab id="feb">February</md-tab>
+        <md-tab id="mar">March</md-tab>
+        <md-tab id="apr">April</md-tab>
+        <md-tab id="may">May</md-tab>
+        <md-tab id="jun">June</md-tab>
+        <md-tab id="jul">July</md-tab>
+        <md-tab id="aug">August</md-tab>
+        <md-tab id="sep">September</md-tab>
+        <md-tab id="oct">October</md-tab>
+        <md-tab id="nov">November</md-tab>
+        <md-tab id="dec">December</md-tab>
+    </md-tabs>
+</md-content>
+
+<md-content layout-gt-md="row" layout="column" flex>
+    <md-card flex="100" flex-gt-md="50">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Client table</span>
+                <span class="md-subhead">Client table container</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="space-between">
+            <div class="md-media-xl card-media">
+                table goes here
+                <ui-view></ui-view>
+            </div>
+
+            <!--<md-card-actions layout="column">-->
+            <!--<md-button class="md-icon-button" aria-label="Favorite">-->
+            <!--<md-icon></md-icon>-->
+            <!--</md-button>-->
+            <!--<md-button class="md-icon-button" aria-label="Settings">-->
+            <!--<md-icon></md-icon>-->
+            <!--</md-button>-->
+            <!--<md-button class="md-icon-button" aria-label="Share">-->
+            <!--<md-icon></md-icon>-->
+            <!--</md-button>-->
+            <!--</md-card-actions>-->
+        </md-card-content>
+    </md-card>
+
+    <md-card flex="100" flex-gt-md="50">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Client Chart</span>
+                <span class="md-subhead">Client chart container</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="space-between">
+            <div class="md-media-xl card-media">
+                chart goes here
+                <ui-view></ui-view>
+
+            </div>
+
+            <!--<md-card-actions layout="column">-->
+            <!--<md-button class="md-icon-button" aria-label="Favorite">-->
+            <!--<md-icon></md-icon>-->
+            <!--</md-button>-->
+            <!--<md-button class="md-icon-button" aria-label="Settings">-->
+            <!--<md-icon></md-icon>-->
+            <!--</md-button>-->
+            <!--<md-button class="md-icon-button" aria-label="Share">-->
+            <!--<md-icon></md-icon>-->
+            <!--</md-button>-->
+            <!--</md-card-actions>-->
+        </md-card-content>
+    </md-card>
+
+
+</md-content>
