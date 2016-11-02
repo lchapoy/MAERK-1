@@ -28,22 +28,37 @@ Report.find({}).remove()
                         "pay_vacation_cost": 6629,
                         "ksquare_hourly_cost": 50,
                         "target_bill_rate": 65990,
-                        "client_bill_pay": 111757,
-                        "activate": false,
+                        "client_bill_pay": 70,
+                        "activate": true,
                         "skill": ["Clinical Development"],
-                        "client": ["Dabtype", "Topicshots"]
+                        "client": ["Dabtype"],
+                        "actual_hours": 400
+                    },{
+                        "first_name": "Patricia",
+                        "last_name": "Bradley",
+                        "recruiter": "Ricky",
+                        "placement_type": "part-time",
+                        "salary": 80613,
+                        "insurance": 611,
+                        "relocation": 3653,
+                        "immigration": 9005,
+                        "pay_vacation_cost": 6629,
+                        "ksquare_hourly_cost": 50,
+                        "target_bill_rate": 90,
+                        "client_bill_pay": 75,
+                        "activate": true,
+                        "skill": ["Clinical Development"],
+                        "client": ["Dabtype"],
+                        "actual_hours": 400
                     }],
                     "february": [{
                         "first_name": "Clarence",
                         "last_name": "Coleman",
                         "client": [
-                            "Latz",
-                            "Wordify",
-                            "Mycat"
+                            "Latz"
                         ],
                         "skill": [
-                            "SAP Business ByDesign",
-                            "DVD Authoring"
+                            "HTML"
                         ],
                         "recruiter": "Ricky",
                         "placement_type": "full-time",
@@ -53,9 +68,10 @@ Report.find({}).remove()
                         "immigration": 7070,
                         "pay_vacation_cost": 6762,
                         "ksquare_hourly_cost": 50,
-                        "target_bill_rate": 106396,
-                        "client_bill_pay": 84250,
-                        "activate": true
+                        "target_bill_rate": 90,
+                        "client_bill_pay": 80,
+                        "activate": true,
+                        "actual_hours": 460
                     }]
 
                 }
