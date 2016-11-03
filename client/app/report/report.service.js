@@ -42,32 +42,48 @@
                 }
             }
 
-            function clientReportData() {
+            function generateReportData() {
                 var deferred = $q.defer();
                 //make sure reportList is finished populating.
                 var clientReport = {};
+                var skillReport = {};
                 reportList.$promise
                     .then(()=> {
                         reportList.forEach(e=> {
                             clientReport[e.year] = {};
+                            skillReport[e.year] = {};
                             months.forEach((month, n)=> {
+                                //client report closed?
                                 clientReport[e.year][month] = {};
                                 clientReport[e.year][month].closed = n < e.closed;
+                                //skill report closed?
+                                skillReport[e.year][month] = {};
+                                skillReport[e.year][month].closed = n < e.closed;
+
                                 //traverse through the array of employees.
                                 e[month].forEach((emp)=> {
                                 //initialize client object to populate with employee count and revenue
                                     clientReport[e.year][month][emp.client[0]] = clientReport[e.year][month][emp.client[0]] || {};
-                                // Employee count for each client
-                                // Revenue sum for each client
+                                    skillReport[e.year][month][emp.skill[0]] = skillReport[e.year][month][emp.skill[0]] || {};
+                                    // Employee count for each client
+                                    // Revenue sum for each client
                                     clientReport[e.year][month][emp.client[0]] = {
                                         count: clientReport[e.year][month][emp.client[0]].count + 1 || 1,
                                         actual_revenue: clientReport[e.year][month][emp.client[0]]["actual_revenue"] +
+                                        emp["client_bill_pay"] * emp["actual_hours"] || emp["client_bill_pay"] * emp["actual_hours"]
+                                    };
+                                    // Employee count for each client
+                                    // Revenue sum for each client
+                                    skillReport[e.year][month][emp.skill[0]] = {
+                                        count: skillReport[e.year][month][emp.skill[0]].count + 1 || 1,
+                                        actual_revenue: skillReport[e.year][month][emp.skill[0]]["actual_revenue"] +
                                         emp["client_bill_pay"] * emp["actual_hours"] || emp["client_bill_pay"] * emp["actual_hours"]
                                     };
                                 });
                             });
                         });
                         reports.client = clientReport;
+                        reports.skill = skillReport;
                         deferred.resolve(reports);
                     })
                     .catch(e=> {
@@ -109,10 +125,12 @@
                 },
                 //build the report object that will be given to the chart/table.
                 getReportData: function (type) {
+                    if (type === "skill")
+                        return reports.skill ? reports : generateReportData();
                     if (type === "client")
-                        return reports.client ? reports : clientReportData();
+                        return reports.client ? reports : generateReportData();
                     else { //load all
-                        reports.client = reports.client || clientReportData();
+                        reports.client = reports.client || generateReportData();
                         return reports;
                     }
                 }
