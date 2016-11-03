@@ -3,7 +3,7 @@
  */
 (function () {
     angular.module("maerkApp")
-        .constant("reportsURL", "http://localhost:9000/api/reports/")
+        .constant("reportsURL", "/api/reports/")
         .constant("months", [
             "january",
             "february",
