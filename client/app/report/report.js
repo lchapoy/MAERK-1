@@ -13,7 +13,14 @@ angular.module('maerkApp')
         //reports skills.
         $stateProvider.state('main.report.skill',{
             url: '/skills',
-            templateUrl: 'app/report/report-skill/report.skill.html'
+            templateUrl: 'app/report/report-skill/report.skill.html',
+            controller: 'SkillClientController',
+            controllerAs: 'vm',
+            resolve: {
+                reportData: function (ReportResource) {
+                    return ReportResource.getReportData('skill')
+                }
+            }
         });
         $stateProvider.state('main.report.client', {
             url: '/clients',
