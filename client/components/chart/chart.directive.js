@@ -10,9 +10,9 @@ angular.module('maerkApp')
         scope: {
             bar: "=",
             pie:"=",
-            labels: "@",
-            series: "@",
-            data: "@"
+            labels: "<",
+            series: "<",
+            data: "<"
         },
         bindToController: true
     }));

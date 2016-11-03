@@ -9,6 +9,8 @@ class ChartController {
         else {
             this.mode = 'bar';
         }
+        console.log(this.labels)
+        console.log(this.data)
     }
 }
 
