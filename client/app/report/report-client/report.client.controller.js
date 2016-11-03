@@ -16,7 +16,6 @@ class ReportClientController {
 
     update(year, month) {
         if ((year !== this.selection.year) && (month !== this.selection.month)){
-            console.log('updating chart');
             this.chart = this.getMonthReport(year || this.selection.year, month || this.selection.month);
             this.selection.year = year || this.selection.year;
             this.selection.month = month || this.selection.month;
