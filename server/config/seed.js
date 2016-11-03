@@ -45,11 +45,54 @@ Report.find({}).remove()
                         "pay_vacation_cost": 6629,
                         "ksquare_hourly_cost": 50,
                         "target_bill_rate": 90,
-                        "client_bill_pay": 75,
+                        "client_bill_pay": 150,
                         "activate": true,
                         "skill": ["Clinical Development"],
-                        "client": ["Dabtype"],
+                        "client": ["Google"],
                         "actual_hours": 400
+                    },
+                        {
+                            "first_name": "Timothy",
+                            "last_name": "Ross",
+                            "client": [
+                                "Brightdog",
+                            ],
+                            "skill": [
+                                "Lawson HRIS"
+                            ],
+                            "recruiter": "Bobby",
+                            "placement_type": "part-time",
+                            "salary": 86177,
+                            "insurance": 346,
+                            "relocation": 1280,
+                            "immigration": 5571,
+                            "pay_vacation_cost": 5269,
+                            "ksquare_hourly_cost": 50,
+                            "target_bill_rate": 64198,
+                            "client_bill_pay": 80,
+                            "activate": false,
+                            "actual_hours": 360
+                        }, {
+                            "first_name": "Paul",
+                            "last_name": "Fuller",
+                            "client": [
+                                "Voolith"
+                            ],
+                            "skill": [
+                                "UCC filings"
+                            ],
+                            "recruiter": "Rocky",
+                            "placement_type": "project",
+                            "salary": 73004,
+                            "insurance": 613,
+                            "relocation": 2500,
+                            "immigration": 8485,
+                            "pay_vacation_cost": 5729,
+                            "ksquare_hourly_cost": 50,
+                            "target_bill_rate": 50,
+                            "client_bill_pay": 50,
+                            "activate": false,
+                            "actual_hours": 360
                     }],
                     "february": [{
                         "first_name": "Clarence",
