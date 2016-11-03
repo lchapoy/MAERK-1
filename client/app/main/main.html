@@ -1,9 +1,9 @@
     <div layout="column">
         <sidebar flex layout="column"></sidebar>
     </div>
-    <div layout="column" flex>
-        <md-content flex layout-padding>
+    <div layout="row" flex>
+        <md-content layout="row"  flex layout-padding>
             <!--UI SUB VIEWS-->
-            <div ui-view></div>
+            <div ui-view layout="column" flex></div>
         </md-content>
     </div>

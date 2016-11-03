@@ -1,4 +1,4 @@
-<md-toolbar flex="100" layout-padding class="md-default md-table-toolbar">
+<md-toolbar layout-padding class="md-default md-table-toolbar">
     <div class="md-toolbar-tools">
         <md-input-container flex class="md-block" flex-gt-md="20">
             <label>Year</label>
@@ -9,14 +9,15 @@
         </md-input-container>
     </div>
 </md-toolbar>
-<md-content class="" flex>
+
+<md-content>
     <md-tabs class="md-accent" md-align-tabs="bottom">
         <md-tab ng-repeat="month in vm.months" ng-click="vm.update(null,month)" id="month">{{month}}</md-tab>
     </md-tabs>
 </md-content>
 
-<md-content layout-gt-md="row" layout="column" flex>
-    <md-card flex="100" flex-gt-md="50">
+<md-content layout-gt-md="row" flex>
+    <md-card flex flex-gt-md="50">
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline">Client table</span>
@@ -30,10 +31,10 @@
             </div>
         </md-card-content>
     </md-card>
-    <md-card flex="100" flex-gt-md="50">
-        <md-card-content>
+    <md-card flex flex-gt-md="50">
+        <md-card-content layout="column" layout-align="center" flex>
             <h2 layout="row" layout-align="center">Client Chart</h2>
-            <chart layout="column" flex pie="true" data="vm.chart.data" labels="vm.chart.labels"></chart>
+            <chart  layout="column" pie="true" data="vm.chart.data" labels="vm.chart.labels"></chart>
         </md-card-content>
     </md-card>
 </md-content>
