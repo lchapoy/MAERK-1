@@ -3,25 +3,46 @@
  */
 class SkillClientController {
     constructor(reportData, months) {
+        this.orderVal = 'skill';
+        this.page = 1;
+        this.limit = 5;
         this.reports = reportData;
         this.years = Object.keys(reportData.skill);
         this.months = months;
-        this.chart = this.getMonthReport("2016", "january");
+ 
         this.selection = {
             year: "2016",
             month: "january"
-        }
+        };
+        // this.generateTableData();
+        this.chart = this.generateChartData("2016", "january");
+        this.table = this.generateTableData("2016", "january");
     }
 
     update(year, month) {
         if ((year !== this.selection.year) && (month !== this.selection.month)){
-            this.chart = this.getMonthReport(year || this.selection.year, month || this.selection.month);
+            this.chart = this.generateChartData(year || this.selection.year, month || this.selection.month);
+            this.table = this.generateTableData(year || this.selection.year, month || this.selection.month);
             this.selection.year = year || this.selection.year;
             this.selection.month = month || this.selection.month;
         }
     }
 
-    getMonthReport(year, month) {
+    generateTableData(year, month) {
+        var skills, table = [];
+        skills = Object.keys(this.reports.skill[year][month]);
+        skills.forEach(e=> {
+            if (e !== 'closed')
+                table.push({
+                    skill: e,
+                    count: this.reports.skill[year][month][e].count,
+                    revenue: this.reports.skill[year][month][e]['actual_revenue']
+                })
+        });
+        return table;
+    }
+
+    generateChartData(year, month) {
         var chart = {
             labels: [],
             data: [],
