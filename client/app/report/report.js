@@ -8,7 +8,7 @@ angular.module('maerkApp')
            abstract: true,
             authenticate: true,
             url:'/reports',
-            template: "<ui-view></ui-view>"
+            template: "<ui-view layout='column' flex></ui-view>"
         });
         //reports skills.
         $stateProvider.state('main.report.skill',{
