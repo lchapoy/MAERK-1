@@ -1,3 +1,4 @@
+<!--suppress HtmlFormInputWithoutLabel -->
 <md-dialog aria-label="Add employee dialog" flex="50">
     <md-toolbar>
         <div class="md-toolbar-tools">
@@ -165,7 +166,7 @@
                     </md-input-container>
                 </div>
             </div>
-                <md-button type="submit" class="md-raised md-primary">
+                <md-button type="submit" ng-disabled="employeeDialog.$invalid" class="md-raised md-primary">
                     Submit
                 </md-button>
         </md-dialog-content>
