@@ -47,14 +47,15 @@
     </md-card>
 
     <md-card flex="100" flex-gt-md="50">
-        <md-card-title>
-            <md-card-title-text>
-                <span class="md-headline">Client Chart</span>
-                <span class="md-subhead">Revenue by client</span>
-            </md-card-title-text>
-        </md-card-title>
-        <md-card-content layout="row" layout-align="space-between">
-                <chart pie="true"></chart>
+        <!--<md-card-title>-->
+        <!--<md-card-title-text>-->
+        <!--<span class="md-headline">Client Chart</span>-->
+        <!--<span class="md-subhead">Revenue by client</span>-->
+        <!--</md-card-title-text>-->
+        <!--</md-card-title>-->
+        <md-card-content>
+            <h2 layout="row" layout-align="center">Chart</h2>
+            <chart layout="column" flex pie="true" data="vm.chart.data" labels="vm.chart.labels"></chart>
 
 
             <!--<md-card-actions layout="column">-->
@@ -73,5 +74,3 @@
 
 
 </md-content>
-
-{{vm.reports}}
