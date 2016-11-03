@@ -18,7 +18,8 @@
             "november",
             "december"
         ])
-        .factory("ReportResource", function ($resource, reportsURL, months) {
+        .factory("ReportResource", function ($resource, reportsURL, months, $q) {
+
             var Report = $resource(reportsURL + ":id", {id: "@_id"},
                 {
                     create: {method: "POST"},
@@ -28,7 +29,7 @@
             var reportList = Report.query();
 
             //generate reports by client
-            var clientReport = clientReportData();
+            var reports = {};
 
             function findOne(val) {
                 if (val && reportList) {
@@ -42,30 +43,37 @@
             }
 
             function clientReportData() {
+                var deferred = $q.defer();
                 //make sure reportList is finished populating.
                 var clientReport = {};
-                reportList.$promise.then(()=> {
-                    reportList.forEach(e=> {
-                        clientReport[e.year] = {};
-                        months.forEach((month, n)=> {
-                            clientReport[e.year][month] = {};
-                            clientReport[e.year][month].closed = n < e.closed;
-                            //traverse through the array of employees.
-                            e[month].forEach((emp)=> {
+                reportList.$promise
+                    .then(()=> {
+                        reportList.forEach(e=> {
+                            clientReport[e.year] = {};
+                            months.forEach((month, n)=> {
+                                clientReport[e.year][month] = {};
+                                clientReport[e.year][month].closed = n < e.closed;
+                                //traverse through the array of employees.
+                                e[month].forEach((emp)=> {
                                 //initialize client object to populate with employee count and revenue
-                                clientReport[e.year][month][emp.client[0]] = clientReport[e.year][month][emp.client[0]] || {};
+                                    clientReport[e.year][month][emp.client[0]] = clientReport[e.year][month][emp.client[0]] || {};
                                 // Employee count for each client
                                 // Revenue sum for each client
-                                clientReport[e.year][month][emp.client[0]] = {
-                                    count: clientReport[e.year][month][emp.client[0]].count + 1 || 1,
-                                    actual_revenue: clientReport[e.year][month][emp.client[0]]["actual_revenue"] +
-                                    emp["client_bill_pay"] * emp["actual_hours"] || emp["client_bill_pay"] * emp["actual_hours"]
-                                };
+                                    clientReport[e.year][month][emp.client[0]] = {
+                                        count: clientReport[e.year][month][emp.client[0]].count + 1 || 1,
+                                        actual_revenue: clientReport[e.year][month][emp.client[0]]["actual_revenue"] +
+                                        emp["client_bill_pay"] * emp["actual_hours"] || emp["client_bill_pay"] * emp["actual_hours"]
+                                    };
+                                });
                             });
                         });
+                        reports.client = clientReport;
+                        deferred.resolve(reports);
+                    })
+                    .catch(e=> {
+                        deferred.reject(e);
                     });
-                });
-                return clientReport;
+                return deferred.promise;
             }
 
 
@@ -100,9 +108,12 @@
                         return findOne(year);
                 },
                 //build the report object that will be given to the chart/table.
-                getReportData: function () {
-                    return {
-                        client: clientReport
+                getReportData: function (type) {
+                    if (type === "client")
+                        return reports.client ? reports : clientReportData();
+                    else { //load all
+                        reports.client = reports.client || clientReportData();
+                        return reports;
                     }
                 }
             }
