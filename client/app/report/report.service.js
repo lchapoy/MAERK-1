@@ -34,7 +34,7 @@
             function findOne(val) {
                 if (val && reportList) {
                     for (var i = 0; i < reportList.length; i++) {
-                        if ((reportList[i]._id === val) && (reportList[i].year === val)) {
+                        if ((reportList[i]._id === val) || (reportList[i].year === val)) {
                             return reportList[i];
                         }
                     }
@@ -99,7 +99,7 @@
                     //nothing to see here.
                 },
                 createYear: function (year) {
-                    new Report({year: year}).$create().then(
+                    return new Report({year: year, closed: 0}).$create().then(
                         (newReport)=> {
                             reportList.push(newReport)
                         }
@@ -108,14 +108,19 @@
                     })
                 },
                 updateMonth: function(obj) {
-                    new Report(obj).$save().then((updated)=>{
-                        for (var i = 0; i < reportList.length; i++) {
-                            if (reportList[i]._id == updated._id) {
-                                reportList[i] = updated;
-                                break;
+                    var toUpdate = findOne(obj.year);
+                    if (!obj._id && toUpdate._id) {
+                        obj._id = toUpdate._id;
+                        new Report(obj).$save().then((newObj) => {
+                            for (var i = 0; i < reportList.length; i++) {
+                                if (reportList[i]._id == newObj._id) {
+                                    reportList[i] = newObj;
+                                    break;
+                                }
                             }
-                        }
-                    })
+
+                        })
+                    }
                 },
                 get: function(year){  //can return one or all years.
                     if(!year)

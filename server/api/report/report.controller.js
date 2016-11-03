@@ -58,8 +58,8 @@ export function show(req, res) {
 
 //Create report
 export function create(req, res) {
-    return Report.findOneAndUpdate({year: req.body.year},req.body, {new: true, upsert: true}).exec()
-        .then(respondWithResult(res, 201))
+    return Report.create(req.body)
+        .then(respondWithResult(res,201))
         .catch(handleError(res));
 }
 //Update a report
