@@ -19,8 +19,9 @@
 </md-content>
 <md-content layout-gt-md="row" flex>
     <md-card flex flex-gt-md="50">
+        <div ng-show="vm.table.length !== 0">
         <br>
-        <md-table-container>
+            <md-table-container>
             <table md-table md-order="vm.orderVal">
                 <thead md-head md-order="vm.orderVal">
                 <tr md-row>
@@ -40,7 +41,12 @@
             </table>
             <md-table-pagination md-limit="vm.limit" md-limit-options="[5, 10, 15]" md-page="vm.page"
                                  md-total="{{vm.table.length}}" md-page-select></md-table-pagination>
-        </md-table-container>
+            </md-table-container>
+        </div>
+        <div ng-if="vm.table.length==0" layout="column" layout-align="center" flex>
+            <h2 layout="row" layout-align="center">Client Table</h2>
+            <div layout="row" class="md-body-2" layout-align="center center">NO REPORT DATA</div>
+        </div>
     </md-card>
     <md-card flex flex-gt-md="50">
         <md-card-content layout="column" layout-align="center" flex>
