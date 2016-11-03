@@ -59,6 +59,9 @@ export var EmployeeSchema = new mongoose.Schema({
     activate: {
         type: Boolean,
         default: true
+    },
+    actual_hours: {
+        type: Number
     }
 });
 

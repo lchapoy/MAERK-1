@@ -1,0 +1,4 @@
+<canvas ng-if="vm.data.length!==0" flex id="pie" class="chart chart-pie"
+        chart-data="vm.data" chart-labels="vm.labels" >
+</canvas>
+<div layout="row" class="md-body-2" ng-if="vm.data.length==0" layout-align="center center">NO REPORT DATA</div>

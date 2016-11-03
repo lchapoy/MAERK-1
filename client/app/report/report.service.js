@@ -3,8 +3,23 @@
  */
 (function () {
     angular.module("maerkApp")
-        .constant("reportsURL", "http://localhost:9000/api/reports/")
-        .factory("ReportResource", function ($resource, reportsURL) {
+        .constant("reportsURL", "/api/reports/")
+        .constant("months", [
+            "january",
+            "february",
+            "march",
+            "april",
+            "may",
+            "june",
+            "july",
+            "august",
+            "september",
+            "october",
+            "november",
+            "december"
+        ])
+        .factory("ReportResource", function ($resource, reportsURL, months, $q) {
+
             var Report = $resource(reportsURL + ":id", {id: "@_id"},
                 {
                     create: {method: "POST"},
@@ -12,6 +27,9 @@
                 });
 
             var reportList = Report.query();
+
+            //generate reports by client
+            var reports = {};
 
             function findOne(val) {
                 if (val && reportList) {
@@ -23,6 +41,41 @@
                     return {};
                 }
             }
+
+            function clientReportData() {
+                var deferred = $q.defer();
+                //make sure reportList is finished populating.
+                var clientReport = {};
+                reportList.$promise
+                    .then(()=> {
+                        reportList.forEach(e=> {
+                            clientReport[e.year] = {};
+                            months.forEach((month, n)=> {
+                                clientReport[e.year][month] = {};
+                                clientReport[e.year][month].closed = n < e.closed;
+                                //traverse through the array of employees.
+                                e[month].forEach((emp)=> {
+                                //initialize client object to populate with employee count and revenue
+                                    clientReport[e.year][month][emp.client[0]] = clientReport[e.year][month][emp.client[0]] || {};
+                                // Employee count for each client
+                                // Revenue sum for each client
+                                    clientReport[e.year][month][emp.client[0]] = {
+                                        count: clientReport[e.year][month][emp.client[0]].count + 1 || 1,
+                                        actual_revenue: clientReport[e.year][month][emp.client[0]]["actual_revenue"] +
+                                        emp["client_bill_pay"] * emp["actual_hours"] || emp["client_bill_pay"] * emp["actual_hours"]
+                                    };
+                                });
+                            });
+                        });
+                        reports.client = clientReport;
+                        deferred.resolve(reports);
+                    })
+                    .catch(e=> {
+                        deferred.reject(e);
+                    });
+                return deferred.promise;
+            }
+
 
             return {
                 reports: reportList,
@@ -58,6 +111,15 @@
                         return reportList;
                     else
                         return findOne(year);
+                },
+                //build the report object that will be given to the chart/table.
+                getReportData: function (type) {
+                    if (type === "client")
+                        return reports.client ? reports : clientReportData();
+                    else { //load all
+                        reports.client = reports.client || clientReportData();
+                        return reports;
+                    }
                 }
             }
         });

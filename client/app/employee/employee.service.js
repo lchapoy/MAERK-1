@@ -3,7 +3,7 @@
  */
 (function () {
     angular.module("maerkApp")
-        .constant("employeeURL", "http://localhost:9000/api/employees/")
+        .constant("employeeURL", "/api/employees/")
         .factory("EmployeeResource", function ($resource, employeeURL) {
             var Employee = $resource(employeeURL + ":id",
                 {id: "@_id"},
