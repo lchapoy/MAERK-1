@@ -7,9 +7,6 @@
                 </md-option>
             </md-select>
         </md-input-container>
-        <!--<md-input-container layout="row" flex>-->
-        <!--<input name="searchbox" placeholder="search">-->
-        <!--</md-input-container>-->
     </div>
 </md-toolbar>
 <md-content class="" flex>
@@ -31,46 +28,12 @@
                 table goes here
                 <ui-view></ui-view>
             </div>
-
-            <!--<md-card-actions layout="column">-->
-            <!--<md-button class="md-icon-button" aria-label="Favorite">-->
-            <!--<md-icon></md-icon>-->
-            <!--</md-button>-->
-            <!--<md-button class="md-icon-button" aria-label="Settings">-->
-            <!--<md-icon></md-icon>-->
-            <!--</md-button>-->
-            <!--<md-button class="md-icon-button" aria-label="Share">-->
-            <!--<md-icon></md-icon>-->
-            <!--</md-button>-->
-            <!--</md-card-actions>-->
         </md-card-content>
     </md-card>
-
     <md-card flex="100" flex-gt-md="50">
-        <!--<md-card-title>-->
-        <!--<md-card-title-text>-->
-        <!--<span class="md-headline">Client Chart</span>-->
-        <!--<span class="md-subhead">Revenue by client</span>-->
-        <!--</md-card-title-text>-->
-        <!--</md-card-title>-->
         <md-card-content>
-            <h2 layout="row" layout-align="center">Chart</h2>
+            <h2 layout="row" layout-align="center">Client Chart</h2>
             <chart layout="column" flex pie="true" data="vm.chart.data" labels="vm.chart.labels"></chart>
-
-
-            <!--<md-card-actions layout="column">-->
-            <!--<md-button class="md-icon-button" aria-label="Favorite">-->
-            <!--<md-icon></md-icon>-->
-            <!--</md-button>-->
-            <!--<md-button class="md-icon-button" aria-label="Settings">-->
-            <!--<md-icon></md-icon>-->
-            <!--</md-button>-->
-            <!--<md-button class="md-icon-button" aria-label="Share">-->
-            <!--<md-icon></md-icon>-->
-            <!--</md-button>-->
-            <!--</md-card-actions>-->
         </md-card-content>
     </md-card>
-
-
 </md-content>
