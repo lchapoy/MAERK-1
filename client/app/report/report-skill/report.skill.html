@@ -1,5 +1,7 @@
 <md-toolbar layout-padding class="md-default md-table-toolbar">
     <div class="md-toolbar-tools">
+        <h2>Skill Reports</h2>
+        <span flex></span>
         <md-input-container flex class="md-block" flex-gt-md="20">
             <label>Year</label>
             <md-select aria-label="Select year" ng-model="vm.selection.year">
@@ -15,26 +17,43 @@
         <md-tab ng-repeat="month in vm.months" ng-click="vm.update(null,month)" id="month">{{month}}</md-tab>
     </md-tabs>
 </md-content>
-
-<md-content layout-gt-md="row" layout="column" flex>
+<md-content layout-gt-md="row" flex>
     <md-card flex flex-gt-md="50">
-        <md-card-title>
-            <md-card-title-text>
-                <span class="md-headline">Client table</span>
-                <span class="md-subhead">Client table container</span>
-            </md-card-title-text>
-        </md-card-title>
-        <md-card-content layout="row" layout-align="space-between">
-            <div class="md-media-xl card-media">
-                table goes here
-                <ui-view></ui-view>
-            </div>
-        </md-card-content>
+        <div ng-show="vm.table.length !== 0">
+        <br>
+            <md-table-container>
+            <table md-table md-order="vm.orderVal">
+                <thead md-head md-order="vm.orderVal">
+                <tr md-row>
+                    <th md-column md-order-by="skill"><span>Skill</span></th>
+                    <th md-column md-order-by="count"><span>Employee count</span></th>
+                    <th md-column md-order-by="revenue">Revenue</th>
+                </tr>
+                </thead>
+                <tbody md-body>
+                <tr md-row
+                    ng-repeat="row in vm.table | orderBy: vm.orderVal | limitTo: vm.limit: (vm.page - 1) * vm.limit">
+                    <td md-cell>{{row.skill}}</td>
+                    <td md-cell>{{row.count}}</td>
+                    <td md-cell>{{row.revenue | currency}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <md-table-pagination md-limit="vm.limit" md-limit-options="[5, 10, 15]" md-page="vm.page"
+                                 md-total="{{vm.table.length}}" md-page-select></md-table-pagination>
+            </md-table-container>
+        </div>
+        <div ng-if="vm.table.length==0" layout="column" layout-align="center" flex>
+            <h2 layout="row" layout-align="center">Client Table</h2>
+            <div layout="row" class="md-body-2" layout-align="center center">NO REPORT DATA</div>
+        </div>
     </md-card>
     <md-card flex flex-gt-md="50">
         <md-card-content layout="column" layout-align="center" flex>
             <h2 layout="row" layout-align="center">Skill Chart</h2>
-            <chart  layout="column" pie="true" data="vm.chart.data" labels="vm.chart.labels"></chart>
+            <div layout="row" layout-align="center">
+                <chart layout="column" flex pie="true" data="vm.chart.data" labels="vm.chart.labels"></chart>
+            </div>
         </md-card-content>
     </md-card>
 </md-content>
