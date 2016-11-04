@@ -6,6 +6,13 @@ angular.module('maerkApp')
         $stateProvider.state('main.hours', {
             authenticate: true,
             url: '/hours',
-            templateUrl: "app/hours/hours.html"
+            templateUrl: "app/hours/hours.html",
+            controller: "HoursController",
+            controllerAs: "vm",
+            resolve: {
+                employeeList: function (EmployeeResource) {
+                    return EmployeeResource.get();
+                }
+            }
         });
     });
