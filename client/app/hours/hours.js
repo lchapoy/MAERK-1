@@ -12,6 +12,9 @@ angular.module('maerkApp')
             resolve: {
                 employeeList: function (EmployeeResource) {
                     return EmployeeResource.get();
+                },
+                reportData: function(ReportResource){
+                    return ReportResource.get();
                 }
             }
         });
