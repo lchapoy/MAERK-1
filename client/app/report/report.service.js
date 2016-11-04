@@ -99,13 +99,16 @@
                     //nothing to see here.
                 },
                 createYear: function (year) {
-                    return new Report({year: year, closed: 0}).$create().then(
-                        (newReport)=> {
-                            reportList.push(newReport)
-                        }
-                    ).catch((e)=>{
-                        console.log(e);
-                    })
+                    if (!this.get(year)._id) {
+                        return new Report({year: year, closed: 0}).$create().then(
+                            (newReport)=> {
+                                reportList.push(newReport)
+                            }
+                        ).catch((e)=> {
+                            console.log(e);
+                        })
+                    }
+
                 },
                 updateMonth: function(obj) {
                     var toUpdate = findOne(obj.year);
