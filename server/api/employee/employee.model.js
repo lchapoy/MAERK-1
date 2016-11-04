@@ -62,6 +62,9 @@ export var EmployeeSchema = new mongoose.Schema({
     },
     actual_hours: {
         type: Number
+    },
+    offset: {
+        type: Number
     }
 });
 
