@@ -31,13 +31,13 @@ class HoursController {
                     employee['actual_hours'] = input.$modelValue;
                 },
                 validators: {
+                    'md-maxlength': 3,
                     'aria-label':'Add employee hours'
-                    //TODO
                 }
             }).then((ctrl)=>{
                 var input = ctrl.getInput();
                 input.$viewChangeListeners.push(function(){
-                    input.$setValidity('test',input.$modelValue !== 'tets');
+                    input.$setValidity('numeric', Number.isInteger(Number(input.$modelValue)));
                 })
             })
         };
@@ -52,12 +52,14 @@ class HoursController {
                     employee.offset = input.$modelValue;
                 },
                 validators: {
-                    'md-maxlength': 30,
+                    'md-maxlength': 3,
+                    'aria-label': 'Add employee hours'
+
                 }
             }).then((ctrl)=> {
                 var input = ctrl.getInput();
                 input.$viewChangeListeners.push(function () {
-                    input.$setValidity('test', input.$modelValue !== 'tets');
+                    input.$setValidity('numeric', Number.isInteger(Number(input.$modelValue)));
                 })
             })
         }
