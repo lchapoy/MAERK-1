@@ -3,15 +3,23 @@
  */
 class HoursController {
 
-    constructor(months, employeeList, $mdEditDialog) {
+    constructor(months, employeeList, $mdEditDialog,$timeout, reportData) {
         this.orderVal = 'client';
         this.page = 1;
         this.limit = 5;
         this.months = months;
-        this.currentMonth = new Date();
-        this.currentMonth = this.currentMonth.getMonth();
-        console.log(this.currentMonth);
-        this.employees = employeeList;
+        this.currentMonth = new Date().getMonth();
+        var currentYear = new Date().getYear() + 1900;
+        this.years = [currentYear-1, currentYear, currentYear+1];  //TODO
+
+        this.promise = $timeout(()=> {
+            //load report
+            this.employees = employeeList;
+        }, 2000);
+        this.selection = {
+            year: currentYear,
+            month: this.currentMonth
+        };
 
         this.addHours = function(e, employee) {
             $mdEditDialog.small({
@@ -23,12 +31,33 @@ class HoursController {
                     employee['actual_hours'] = input.$modelValue;
                 },
                 validators: {
-                    'md-maxlength':30,
+                    'aria-label':'Add employee hours'
+                    //TODO
                 }
             }).then((ctrl)=>{
                 var input = ctrl.getInput();
                 input.$viewChangeListeners.push(function(){
                     input.$setValidity('test',input.$modelValue !== 'tets');
+                })
+            })
+        };
+
+        this.addOffset = function (e, employee) {
+            $mdEditDialog.small({
+                modelValue: employee['actual_hours'],
+                placeholder: 'Add offset',
+                targetEvent: e,
+                save: (input) => {
+                    console.log(input);
+                    employee.offset = input.$modelValue;
+                },
+                validators: {
+                    'md-maxlength': 30,
+                }
+            }).then((ctrl)=> {
+                var input = ctrl.getInput();
+                input.$viewChangeListeners.push(function () {
+                    input.$setValidity('test', input.$modelValue !== 'tets');
                 })
             })
         }
