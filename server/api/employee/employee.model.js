@@ -65,6 +65,9 @@ export var EmployeeSchema = new mongoose.Schema({
     },
     offset: {
         type: Number
+    },
+    start_date: {
+        type: Date
     }
 });
 
