@@ -10,10 +10,10 @@
 
     </div>
 </md-toolbar>
-<md-tabs class="md-accent" md-center-tabs="true" md-border-bottom="true" md-align-tabs="bottom">
+<md-tabs class="md-accent" md-center-tabs="true" md-border-bottom="true" md-align-tabs="bottom" >
     <md-tab ng-repeat="month in vm.months"
             ng-disabled=" $index > vm.closed"
-            md-active="$index == vm.currentReport.closed"
+            md-active="$index==vm.closed"
             ng-click="vm.update(undefined,$index)"
             id="month">{{month}}
     </md-tab>
@@ -58,7 +58,7 @@
             <md-icon md-font-set="material-icons">save</md-icon>
             Save Month
         </md-button>
-        <md-button class="md-raised md-warn">
+        <md-button class="md-raised md-warn" ng-click="vm.close($event)">
             <md-icon md-font-set="material-icons">lock</md-icon>
             Close Month
         </md-button>

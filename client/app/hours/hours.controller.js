@@ -3,14 +3,15 @@
  */
 class HoursController {
 
-    constructor(months, $mdEditDialog, employeeList, $q, reportData) {
+    constructor(months, $mdEditDialog, employeeList, $q, reportData, $mdDialog, $interval) {
         this.orderVal = 'client';
         this.page = 1;
         this.limit = 10;
         this.reportData = reportData;
         this.year = reportData.year;
         this.months = months;
-        this.closed = reportData.closed+11;
+        console.log('setting this.closed');
+        this.closed = reportData.closed;
         this.selection = {
             year: 2016,
             month: 0
@@ -18,7 +19,6 @@ class HoursController {
         //table loading.
         var deferred = $q.defer();
         this.promise = deferred.promise;
-
         //************************************************
         // ******* UPDATING EMPLOYEE LIST ****************
         //************************************************
@@ -27,12 +27,27 @@ class HoursController {
             console.log(year, month);
             if (this.reportData[months[this.closed]].length == 0) {
                 this.initMonth(employeeList, 2016, month);
-                setTimeout(() => {
                     deferred.resolve();
-                }, 1000)
             }
         };
 
+        this.close = (e) => {
+            console.log(this.employees);
+            var confirm = $mdDialog.confirm()
+                .title("Are you sure you want to close this month")
+                .textContent(`There are a total of ${this.employees.length} employees in this month's registration.`)
+                .ariaLabel("Close monthly registration")
+                .targetEvent(e)
+                .ok("Close")
+                .cancel("Cancel");
+            this.promise = $mdDialog.show(confirm);
+            this.promise.then(()=>{
+                this.closed = this.closed + 1;
+            });
+            this.promise.catch(()=>{
+                console.log("NOOOO");
+            })
+        };
         //************************************************
         // ******* EDIT HOURS AND OFFSET *****************
         //************************************************
