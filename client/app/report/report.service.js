@@ -27,19 +27,20 @@
                 });
 
             var reportList = Report.query();
-
             //generate reports by client
             var reports = {};
 
             function findOne(val) {
-                if (val && reportList) {
+                var deferred = $q.defer();
+                if (val && reportList.$resolved) {
                     for (var i = 0; i < reportList.length; i++) {
                         if ((reportList[i]._id === val) || (reportList[i].year === val)) {
-                            return reportList[i];
+                            deferred.resolve(reportList[i]);
                         }
                     }
-                    return {};
+                    deferred.resolve({});
                 }
+                return deferred.promise;
             }
 
             function generateReportData() {
@@ -99,16 +100,20 @@
                     //nothing to see here.
                 },
                 createYear: function (year) {
-                    if (!this.get(year)._id) {
+                    var deferred = $q.defer();
+                    console.log(reportList);
+                    if (!(reportList[year])) {
                         return new Report({year: year, closed: 0}).$create().then(
                             (newReport)=> {
-                                reportList.push(newReport)
+                                reportList.push(newReport);
+                                deferred.resolve(reportList);
                             }
                         ).catch((e)=> {
                             console.log(e);
                         })
                     }
 
+                    return deferred.promise;
                 },
                 updateMonth: function(obj) {
                     var toUpdate = findOne(obj.year);
@@ -126,10 +131,28 @@
                     }
                 },
                 get: function(year){  //can return one or all years.
-                    if(!year)
-                        return reportList;
-                    else
-                        return findOne(year);
+                    var deferred = $q.defer();
+                    year = year || new Date().getYear() + 1900;
+                    reportList.$promise.then(()=> {
+                        findOne(year).then((obj)=> {
+                            if (!(obj.year === year)) {
+                                this.createYear(2016)
+                                    .then((d)=> {
+                                        console.log('creating year', deferred);
+                                        console.log(obj, d);
+                                        deferred.resolve(reportList);
+                                    })
+                                    .catch(()=> {
+                                        console.log('create year error');
+                                        deferred.reject('something bad happened');
+                                    })
+                            }
+                            else {
+                                deferred.resolve(obj);
+                            }
+                        })
+                    });
+                    return deferred.promise;
                 },
                 //build the report object that will be given to the chart/table.
                 getReportData: function (type) {

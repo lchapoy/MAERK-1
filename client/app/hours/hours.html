@@ -10,7 +10,7 @@
         <md-input-container flex class="md-block" flex-gt-md="10">
             <label>Year</label>
             <md-select aria-label="Select year" ng-model="vm.selection.year">
-                <md-option ng-click="vm.update(year,null)" ng-value="year" ng-repeat="year in vm.years">{{year}}
+                <md-option ng-click="vm.update(year, null)" ng-value="year" ng-repeat="year in vm.years">{{year}}
                 </md-option>
             </md-select>
         </md-input-container>
@@ -19,7 +19,7 @@
 <md-tabs class="md-accent" md-center-tabs="true" md-border-bottom="true" md-align-tabs="bottom">
     <md-tab ng-repeat="month in vm.months"
             ng-disabled="$index>=vm.currentMonth"
-            md-active="$index == vm.currentMonth-1"
+            md-active="$index == vm.currentReport.closed"
             ng-click="vm.update(null,month)"
             id="month">{{month}}
     </md-tab>
