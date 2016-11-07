@@ -27,6 +27,17 @@
                 });
 
             var reportList = Report.query();
+            var currentYear;  //current working year, it is the highest year in the report database (most recent)
+            reportList.$promise.then(()=> {
+                reportList.forEach(rep => {
+                    if (rep.year)
+                        if (currentYear && (currentYear < rep.year))
+                            currentYear = rep.year;
+                        else {
+                            currentYear = rep.year;
+                        }
+                })
+            });
             //generate reports by client
             var reports = {};
 
@@ -78,11 +89,11 @@
 
             function get(year) {  //returns current year
                 var deferred = $q.defer();
-                year = year || new Date().getYear() + 1900;
                 reportList.$promise.then(()=> {
+                    year = year || currentYear || new Date().getYear();
                     findOne(year).then((obj)=> {
                         if (!(obj.year === year)) {
-                            createYear(2016)
+                            createYear(year)
                                 .then((d)=> {
                                     deferred.resolve(d);
                                 })
