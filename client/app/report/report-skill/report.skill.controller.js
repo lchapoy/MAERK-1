@@ -9,7 +9,6 @@ class SkillClientController {
         this.reports = reportData;
         this.years = Object.keys(reportData.skill);
         this.months = months;
- 
         this.selection = {
             year: "2016",
             month: "january"

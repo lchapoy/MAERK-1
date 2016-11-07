@@ -90,7 +90,7 @@
             function get(year) {  //returns current year
                 var deferred = $q.defer();
                 reportList.$promise.then(()=> {
-                    year = year || currentYear || new Date().getYear();
+                    year = year || currentYear || (new Date().getYear() + 1900);
                     findOne(year).then((obj)=> {
                         if (!(obj.year === year)) {
                             createYear(year)
@@ -119,7 +119,7 @@
                     reports.client = reports.client || generateReportData();
                     return reports;
                 }
-            };
+            }
 
             function generateReportData() {
                 var deferred = $q.defer();
