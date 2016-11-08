@@ -30,11 +30,12 @@ class HoursController {
     //load a month after the selected date has been updated!
     loadMonth() {
         var deferred = this.q.defer();
-        var year = this.selected.getYear() + 1900;
+        var year = this.reportData.year || this.selected.getYear() + 1900;
         var month = this.selected.getMonth();
         this.employees = [];
         var loadEmployees = () => {
             this.employeeList.forEach(employee=> {
+                employee['actual_hours'] = '';
                 var empDate = new Date(employee['start_date']);
                 if (year == empDate.getYear() + 1900) {
                     if (month >= empDate.getMonth())
@@ -52,6 +53,8 @@ class HoursController {
             updateObj[this.months[month]] = this.employees;
             this.ReportResource.updateMonth(updateObj).then((reportData)=> {
                 this.reportData = reportData;
+                this.closed = reportData.closed;
+                this.year = reportData.year;
                 deferred.resolve();
             })
 
@@ -62,7 +65,6 @@ class HoursController {
         }
         //create new year
         else if (this.reportData.year !== year) {
-            console.log('creating year and loading employees');
             return this.ReportResource.createYear(year).then((r)=> {
                 this.reportData = r; //get new year's report data
                 loadEmployees();
@@ -100,8 +102,8 @@ class HoursController {
                     return this.ReportResource.closeMonth(this.closed);
                 })
                 .then((d)=> {
-                    console.log(d);
                     this.reportData = d;
+                    this.loadMonth();
                 });
 
             this.promise.catch(()=> {
@@ -142,12 +144,12 @@ class HoursController {
         var updateObj = {
             _id: this.reportData._id,
         };
-        updateObj[this.months[month]] = this.reportData[this.months[month]];
-        this.promise = this.ReportResource.updateMonth(updateObj);
-        this.promise.then((reportData)=> {
-            this.reportData = reportData;
-            this.employees = this.reportData[this.months[month]];
-            deferred.resolve();
+        updateObj[this.months[month]] = this.employees;
+        this.ReportResource.updateMonth(updateObj)
+            .then((reportData)=> {
+                this.reportData = reportData;
+                this.employees = this.reportData[this.months[month]];
+                deferred.resolve();
         });
         return deferred.promise;
     }

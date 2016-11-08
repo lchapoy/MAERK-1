@@ -31,10 +31,13 @@
             var needRefresh = false;
 
             reportList.$promise.then((d)=> {
+                console.log(d);
                 d.forEach(rep => {
-                    if (rep.year)
+                    if (rep.year) {
+                        console.log(rep.year)
                         if (!currentYear || (currentYear < rep.year))
                             currentYear = rep.year;
+                    }
                 })
             });
             //generate reports by client
@@ -87,13 +90,22 @@
             }
 
             function closeMonth(val) {
-                if (val === 11) {
+                console.log(val);
+                if (val === 12) {
                     // TODO: createYear(currentYear+1).then ....
                     var deferred = $q.defer();
                     updateMonth({year: currentYear, closed: val}).then(()=> {
+                        console.log(currentYear);
                         return createYear(currentYear + 1)
                     }).then((d)=> {
-                        reportList = d;
+                        reportList.$promise.then(()=>{
+                            reportList.forEach((e,i)=>{
+                                if(e._id === d._id) {
+                                    reportList[i] = d;
+                                }
+                            });
+                        });
+                        currentYear++;
                         deferred.resolve(d)
                     });
                     return deferred.promise;
@@ -103,6 +115,7 @@
 
             function findOne(val) {
                 var deferred = $q.defer();
+                console.log(reportList);
                 reportList.$promise.then(()=> {
                     for (var i = 0; i < reportList.length; i++) {
                         if ((reportList[i]._id === val) || (reportList[i].year === val)) {
