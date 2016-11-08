@@ -28,6 +28,8 @@
 
             var reportList = Report.query();
             var currentYear;  //current working year, it is the highest year in the report database (most recent)
+            var needRefresh = false;
+
             reportList.$promise.then(()=> {
                 reportList.forEach(rep => {
                     if (rep.year)
@@ -43,6 +45,7 @@
 
             function createYear(year) {
                 var deferred = $q.defer();
+                needRefresh = true;
                 if (!(reportList[year])) {
                     new Report({year: year, closed: 0}).$create().then(
                         (newReport)=> {
@@ -60,6 +63,7 @@
 
             function updateMonth(obj) {
                 var deferred = $q.defer();
+                needRefresh = true;
                 findOne(obj.year)
                     .then((toUpdate)=> {
                         if (!obj._id && toUpdate._id) {
@@ -138,14 +142,19 @@
             }
 
             function getReportData(type) {
-                if (type === "skill")
-                    return reports.skill ? reports : generateReportData();
-                if (type === "client")
-                    return reports.client ? reports : generateReportData();
-                else { //load all
-                    reports.client = reports.client || generateReportData();
-                    return reports;
+                if (needRefresh) {
+                    return generateReportData();
+                } else {
+                    if (type === "skill")
+                        return reports.skill ? reports : generateReportData();
+                    if (type === "client")
+                        return reports.client ? reports : generateReportData();
+                    else { //load all
+                        reports.client = reports.client || generateReportData();
+                        return reports;
+                    }
                 }
+
             }
 
             function generateReportData() {
