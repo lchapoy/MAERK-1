@@ -59,31 +59,58 @@
             }
 
             function updateMonth(obj) {
-                var toUpdate = findOne(obj.year);
-                if (!obj._id && toUpdate._id) {
-                    obj._id = toUpdate._id;
-                    new Report(obj).$save().then((newObj) => {
-                        for (var i = 0; i < reportList.length; i++) {
-                            if (reportList[i]._id == newObj._id) {
-                                reportList[i] = newObj;
-                                break;
-                            }
+                var deferred = $q.defer();
+                findOne(obj.year)
+                    .then((toUpdate)=> {
+                        if (!obj._id && toUpdate._id) {
+                            obj._id = toUpdate._id;
                         }
+                        if(obj._id) {
+                            return new Report(obj).$save().then((newObj) => {
+                                for (var i = 0; i < reportList.length; i++) {
+                                    if (reportList[i]._id == newObj._id) {
+                                        reportList[i] = newObj;
+                                        deferred.resolve(newObj);
+                                        break;
+                                    }
+                                }
 
+                            })
+                        }
                     })
+                    .catch((e)=> {
+                        console.log(e);
+                        deferred.reject(e);
+                    });
+                return deferred.promise;
+            }
+
+            function closeMonth(val) {
+                if (val === 11) {
+                    // TODO: createYear(currentYear+1).then ....
+                    var deferred = $q.defer();
+                    updateMonth({year: currentYear, closed: val}).then(()=> {
+                        return createYear(currentYear + 1)
+                    }).then((d)=> {
+                        console.log(d);
+                        reportList = d;
+                        deferred.resolve(d)
+                    });
+                    return deferred.promise;
                 }
+                return updateMonth({year: currentYear, closed: val})
             }
 
             function findOne(val) {
                 var deferred = $q.defer();
-                if (val && reportList.$resolved) {
+                reportList.$promise.then(()=> {
                     for (var i = 0; i < reportList.length; i++) {
                         if ((reportList[i]._id === val) || (reportList[i].year === val)) {
                             deferred.resolve(reportList[i]);
                         }
                     }
                     deferred.resolve({});
-                }
+                });
                 return deferred.promise;
             }
 
@@ -177,7 +204,8 @@
                 createYear: createYear,
                 updateMonth: updateMonth,
                 get: get,
-                getReportData: getReportData
+                getReportData: getReportData,
+                closeMonth: closeMonth
             }
         })
 })();
