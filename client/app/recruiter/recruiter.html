@@ -1,1 +1,75 @@
-{{vm.test}}
+<md-toolbar class="md-table-toolbar md-default">
+    <div class="md-toolbar-tools">
+        <md-input-container>
+            <md-select aria-label="search by" ng-model="vm.filterBy">
+                <md-option value="first_name" selected>First Name</md-option>
+                <md-option value="last_name">Last Name</md-option>
+                <md-option value="amount_per_hired">Commission</md-option>
+                <md-option value="placement_type">Placement</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container class="md-primary" layout="row" flex>
+            <input name="searchbox" placeholder="search" ng-model="vm.searchbox">
+        </md-input-container>
+    </div>
+</md-toolbar>
+<md-toolbar class="md-whiteframe-1dp md-hue-1">
+    <div class="md-toolbar-tools">
+        <h2><span>Recruiter</span></h2>
+        <div ng-if="vm.selected != 0">({{vm.selected.length}})</div>
+        <md-button class="md-fab md-mini  " ng-click="null" aria-label="Add recruiter">
+            <md-icon md-font-set="material-icons">add</md-icon>
+        </md-button>
+        <span flex></span>
+        <md-button ng-show="vm.selected.length==1" ng-click="null"
+                   class="md-icon-button"
+                   aria-label="Edit recruiter">
+            <md-icon md-font-set="material-icons">mode_edit</md-icon>
+        </md-button>
+        <md-button ng-show="vm.selected.length" ng-click="null" class="md-icon-button"
+                   aria-label="Delete recruiter">
+            <md-icon md-font-set="material-icons ">delete</md-icon>
+        </md-button>
+        <!--&lt;!&ndash;activate deactive&ndash;&gt;-->
+        <!--<md-menu ng-show="vm.selected.length" md-position-mode="target-right target" md-offset="0 42">-->
+            <!--<md-button ng-click="vm.openMenu($mdOpenMenu, $event)"-->
+                       <!--class="md-icon-button" aria-label="Activate or Desactivate">-->
+                <!--<md-icon md-font-set="material-icons">power_settings_new</md-icon>-->
+            <!--</md-button>-->
+            <!--<md-menu-content width="2">-->
+                <!--<md-menu-item>-->
+                    <!--<md-button ng-click="vm.toggleActive($event,true)">-->
+                        <!--Activate-->
+                    <!--</md-button>-->
+                <!--</md-menu-item>-->
+                <!--<md-menu-item>-->
+                    <!--<md-button ng-click="vm.toggleActive($event,false)">-->
+                        <!--Deactivate-->
+                    <!--</md-button>-->
+                <!--</md-menu-item>-->
+            <!--</md-menu-content>-->
+        <!--</md-menu>-->
+    </div>
+</md-toolbar>
+
+<md-table-container class="md-whiteframe-1dp">
+    <table md-table md-row-select multiple md-order="vm.orderVal" ng-model="vm.selected">
+        <thead md-head md-order="vm.orderVal" >
+        <tr md-row>
+            <th md-column md-order-by="first_name"><span>Recruiter Name</span></th>
+            <th md-column md-order-by="amount_per_hired"><span>Commission</span></th>
+            <th md-column md-order-by="placement_type">Placement Type</th>
+        </tr>
+        </thead>
+        <tbody md-body>
+        <tr md-row md-select="recruiter" md-select-id="_id" md-auto-select
+            ng-repeat="recruiter in vm.recruiters | filter: {[vm.filterBy]: vm.searchbox} | orderBy: vm.orderVal | limitTo: vm.limit: (vm.page - 1) * vm.limit ">
+            <td md-cell>{{recruiter.first_name + " " + recruiter.last_name}}</td>
+            <td md-cell>{{recruiter.amount_per_hired < 1 ? vm.Math.floor((recruiter.amount_per_hired)*100)+"%" : (recruiter.amount_per_hired | currency)}}</td>
+            <td md-cell>{{recruiter.placement_type}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <md-table-pagination md-limit="vm.limit" md-limit-options="[5, 10, 15]" md-page="vm.page"
+                         md-total="{{vm.recruiters.length}}" md-page-select></md-table-pagination>
+</md-table-container>
