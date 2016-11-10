@@ -1,0 +1,66 @@
+<md-dialog aria-label="Add or Edit Recruiter Dialog" flex="50">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>{{vm.context}} Recruiter</h2>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content layout-padding>
+        <form name="recruiterDialog" ng-submit="vm.submit()">
+            <h3>Personal Information</h3>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label for="first_name">First Name</label>
+                    <input type="text" name="first_name" ng-model="vm.recruiter.first_name" required>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label for="last_name">Last Name</label>
+                    <input type="text" name="last_name" ng-model="vm.recruiter.last_name" required>
+                </md-input-container>
+            </div>
+            <h3>Financial Information</h3>
+
+
+            <div class="md-block" layout-xs="column" layout="row" flex>
+
+                <div layout="row" flex>
+                    <md-input-container flex="90" >
+                        <label for="commission">Commission</label>
+                        <input type="text" name="commission" ng-model="vm.recruiter.amount_per_hired"
+                               ng-pattern="/^\d*\d$/"
+                               required>
+                        <div ng-messages="employeeDialog.commission.$error" multiple md-auto-hide="true">
+                            <div ng-message="required">
+                                This field is required
+                            </div>
+                            <div ng-message="pattern">
+                                Only numbers can represent commission value.
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block" flex="20">
+                        <md-select aria-label="Select commission type" name="commissionType" ng-model="vm.commissionType" required>
+                            <md-option value="percentage">%</md-option>
+                            <md-option value="dollar">$</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+
+
+                <md-input-container class="md-block" flex>
+                    <label for="placement">Placement Type</label>
+                    <md-select name="placement" ng-model="vm.recruiter.placement_type" required>
+                        <md-option value="Full Time">Full Time</md-option>
+                        <md-option value="Project">Project</md-option>
+                        <md-option value="Part Time">Part Time</md-option>
+                    </md-select>
+                </md-input-container>
+
+
+            </div>
+        </form>
+    </md-dialog-content>
+
+</md-dialog>
+
