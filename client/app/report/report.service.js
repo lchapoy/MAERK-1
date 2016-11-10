@@ -169,7 +169,7 @@
                 var clientReport = {};
                 var skillReport = {};
                 var recruiterReport = {};
-                reportList.$promise
+                get()
                     .then(()=> {
                         reportList.forEach(e=> {
                             clientReport[e.year] = {};
