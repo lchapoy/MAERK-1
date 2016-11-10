@@ -15,13 +15,13 @@
 </md-toolbar>
 <md-toolbar class="md-whiteframe-1dp md-hue-1">
     <div class="md-toolbar-tools">
-        <h2><span>Recruiter</span></h2>
+        <h2><span>Recruiters</span></h2>
         <div ng-if="vm.selected != 0">({{vm.selected.length}})</div>
-        <md-button class="md-fab md-mini  " ng-click="null" aria-label="Add recruiter">
+        <md-button class="md-fab md-mini  " ng-click="vm.showAddDialog($event)" aria-label="Add recruiter">
             <md-icon md-font-set="material-icons">add</md-icon>
         </md-button>
         <span flex></span>
-        <md-button ng-show="vm.selected.length==1" ng-click="null"
+        <md-button ng-show="vm.selected.length==1" ng-click="vm.showAddDialog($event,vm.selected)"
                    class="md-icon-button"
                    aria-label="Edit recruiter">
             <md-icon md-font-set="material-icons">mode_edit</md-icon>
@@ -65,7 +65,7 @@
         <tr md-row md-select="recruiter" md-select-id="_id" md-auto-select
             ng-repeat="recruiter in vm.recruiters | filter: {[vm.filterBy]: vm.searchbox} | orderBy: vm.orderVal | limitTo: vm.limit: (vm.page - 1) * vm.limit ">
             <td md-cell>{{recruiter.first_name + " " + recruiter.last_name}}</td>
-            <td md-cell>{{recruiter.amount_per_hired < 1 ? vm.Math.floor((recruiter.amount_per_hired)*100)+"%" : (recruiter.amount_per_hired | currency)}}</td>
+            <td md-cell>{{recruiter.amount_per_hired < 1 ? ((recruiter.amount_per_hired)*100).toFixed(1)+" %" : (recruiter.amount_per_hired | currency)}}</td>
             <td md-cell>{{recruiter.placement_type}}</td>
         </tr>
         </tbody>
