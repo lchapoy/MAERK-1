@@ -9,6 +9,11 @@ angular.module('maerkApp')
             url:'/recruiter',
             templateUrl: 'app/recruiter/recruiter.html',
             controller: 'RecruiterController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                recruiterList: function (RecruiterResource) {
+                    return RecruiterResource.get();
+                }
+            }
         });
     });
