@@ -1,6 +1,6 @@
 <md-toolbar layout-padding class="md-default md-table-toolbar">
     <div class="md-toolbar-tools">
-        <h2>Client Reports</h2>
+        <h2>Recruiter Reports</h2>
         <span flex></span>
         <md-input-container flex class="md-block" flex-gt-md="20">
             <label>Year</label>
@@ -22,7 +22,27 @@
     <md-card flex flex-gt-md="50">
         <div ng-show="vm.table.length !== 0">
             <br>
-            table goes here
+            <md-table-container>
+                <table md-table md-order="vm.orderVal">
+                    <thead md-head md-order="vm.orderVal">
+                    <tr md-row>
+                        <th md-column md-order-by="recruiter"><span>Recruiter</span></th>
+                        <th md-column md-order-by="count"><span>Employee count</span></th>
+                        <th md-column md-order-by="revenue">Revenue</th>
+                    </tr>
+                    </thead>
+                    <tbody md-body>
+                    <tr md-row
+                        ng-repeat="row in vm.table | orderBy: vm.orderVal | limitTo: vm.limit: (vm.page - 1) * vm.limit">
+                        <td md-cell>{{row.recruiter}}</td>
+                        <td md-cell>{{row.count}}</td>
+                        <td md-cell>{{row.revenue | currency}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <md-table-pagination md-limit="vm.limit" md-limit-options="[5, 10, 15]" md-page="vm.page"
+                                     md-total="{{vm.table.length}}" md-page-select></md-table-pagination>
+            </md-table-container>
         </div>
         <div ng-if="vm.table.length==0" layout="column" layout-align="center" flex>
             <h2 layout="row" layout-align="center">Client Table</h2>
