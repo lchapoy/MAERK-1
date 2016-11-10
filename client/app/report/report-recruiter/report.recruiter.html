@@ -50,6 +50,11 @@
         </div>
     </md-card>
     <md-card flex flex-gt-md="50">
-        chart goes here
+        <md-card-content layout="column" layout-align="center" flex>
+            <h2 layout="row" layout-align="center">Skill Chart</h2>
+            <div layout="row" layout-align="center">
+                <chart layout="column" flex pie="true" data="vm.chart.data" labels="vm.chart.labels"></chart>
+            </div>
+        </md-card-content>
     </md-card>
 </md-content>
