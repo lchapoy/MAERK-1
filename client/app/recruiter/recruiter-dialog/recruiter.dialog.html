@@ -15,10 +15,20 @@
                 <md-input-container class="md-block" flex-gt-sm>
                     <label for="first_name">First Name</label>
                     <input type="text" name="first_name" ng-model="vm.recruiter.first_name" required>
+                    <div ng-messages="recruiterDialog.first_name.$error" multiple md-auto-hide="true">
+                        <div ng-message="required">
+                            This field is required
+                        </div>
+                    </div>
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
                     <label for="last_name">Last Name</label>
                     <input type="text" name="last_name" ng-model="vm.recruiter.last_name" required>
+                    <div ng-messages="recruiterDialog.last_name.$error" multiple md-auto-hide="true">
+                        <div ng-message="required">
+                            This field is required
+                        </div>
+                    </div>
                 </md-input-container>
             </div>
             <h3>Financial Information</h3>
@@ -29,7 +39,7 @@
                         <input type="text" name="commission" ng-model="vm.recruiter.amount_per_hired"
                                ng-pattern="/^\d*\d$/"
                                required>
-                        <div ng-messages="employeeDialog.commission.$error" multiple md-auto-hide="true">
+                        <div ng-messages="recruiterDialog.commission.$error" multiple md-auto-hide="true">
                             <div ng-message="required">
                                 This field is required
                             </div>
@@ -52,6 +62,11 @@
                         <md-option value="Project">Project</md-option>
                         <md-option value="Part Time">Part Time</md-option>
                     </md-select>
+                    <div ng-messages="recruiterDialog.placement.$error" multiple md-auto-hide="true">
+                        <div ng-message="required">
+                            This field is required
+                        </div>
+                    </div>
                 </md-input-container>
             </div>
             <md-button type="submit" confirm="vm.deferred" confirm-action="vm.context.toLowerCase()" ng-disabled="recruiterDialog.$invalid" class="md-raised md-primary">
