@@ -68,6 +68,9 @@ export var EmployeeSchema = new mongoose.Schema({
     },
     start_date: {
         type: Date
+    },
+    deleted: {
+        type: Boolean
     }
 });
 
