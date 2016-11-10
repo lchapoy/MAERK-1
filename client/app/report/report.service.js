@@ -192,14 +192,14 @@
                                     //initialize client object to populate with employee count and revenue
                                     clientReport[e.year][month][emp.client[0]] = clientReport[e.year][month][emp.client[0]] || {};
                                     skillReport[e.year][month][emp.skill[0]] = skillReport[e.year][month][emp.skill[0]] || {};
-                                    recruiterReport[e.year][month][emp.recruiter[0]] = recruiterReport[e.year][month][emp.recruiter[0]] || {};
+                                    recruiterReport[e.year][month][emp.recruiter] = recruiterReport[e.year][month][emp.recruiter] || {};
 
                                     // Employee count for each recruiter
                                     // Revenue sum for each recruiter
-                                    recruiterReport[e.year][month][emp.recruiter[0]] = {
-                                        count: recruiterReport[e.year][month][emp.recruiter[0]].count + 1 || 1,
-                                        actual_revenue: recruiterReport[e.year][month][emp.recruiter[0]].actual_revenue +
-                                        emp["client_bill_pay"] * emp["actual_hour"] || emp["client_bill_pay"] * emp["actual_hours"]
+                                    recruiterReport[e.year][month][emp.recruiter] = {
+                                        count: recruiterReport[e.year][month][emp.recruiter].count + 1 || 1,
+                                        actual_revenue: recruiterReport[e.year][month][emp.recruiter].actual_revenue +
+                                        emp["client_bill_pay"] * emp["actual_hours"] || emp["client_bill_pay"] * emp["actual_hours"]
 
                                     };
 
