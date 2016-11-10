@@ -4,9 +4,8 @@
             <h2>{{vm.context}} Recruiter</h2>
         </div>
     </md-toolbar>
-
     <md-dialog-content layout-padding>
-        <form name="recruiterDialog" ng-submit="vm.submit()">
+        <form name="recruiterDialog" ng-submit="vm.submit($event)">
             <h3>Personal Information</h3>
             <div layout-gt-sm="row">
                 <md-input-container class="md-block" flex-gt-sm>
@@ -19,10 +18,7 @@
                 </md-input-container>
             </div>
             <h3>Financial Information</h3>
-
-
             <div class="md-block" layout-xs="column" layout="row" flex>
-
                 <div layout="row" flex>
                     <md-input-container flex="90" >
                         <label for="commission">Commission</label>
@@ -38,7 +34,6 @@
                             </div>
                         </div>
                     </md-input-container>
-
                     <md-input-container class="md-block" flex="20">
                         <md-select aria-label="Select commission type" name="commissionType" ng-model="vm.commissionType" required>
                             <md-option value="percentage">%</md-option>
@@ -46,8 +41,6 @@
                         </md-select>
                     </md-input-container>
                 </div>
-
-
                 <md-input-container class="md-block" flex>
                     <label for="placement">Placement Type</label>
                     <md-select name="placement" ng-model="vm.recruiter.placement_type" required>
@@ -56,11 +49,11 @@
                         <md-option value="Part Time">Part Time</md-option>
                     </md-select>
                 </md-input-container>
-
-
             </div>
+            <md-button type="submit" confirm="vm.deferred" confirm-action="vm.context.toLowerCase()" ng-disabled="recruiterDialog.$invalid" class="md-raised md-primary">
+                Save
+            </md-button>
         </form>
     </md-dialog-content>
-
 </md-dialog>
 
