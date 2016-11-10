@@ -151,8 +151,10 @@
                 } else {
                     if (type === "skill")
                         return reports.skill ? reports : generateReportData();
-                    if (type === "client")
+                    else if (type === "client")
                         return reports.client ? reports : generateReportData();
+                    else if (type === "recruiter")
+                        return reports.recruiter ? reports : generateReportData();
                     else { //load all
                         reports.client = reports.client || generateReportData();
                         return reports;
@@ -166,24 +168,41 @@
                 //make sure reportList is finished populating.
                 var clientReport = {};
                 var skillReport = {};
+                var recruiterReport = {};
                 reportList.$promise
                     .then(()=> {
                         reportList.forEach(e=> {
                             clientReport[e.year] = {};
                             skillReport[e.year] = {};
+                            recruiterReport[e.year] = {};
                             months.forEach((month, n)=> {
+
                                 //client report closed?
                                 clientReport[e.year][month] = {};
                                 clientReport[e.year][month].closed = n < e.closed;
                                 //skill report closed?
                                 skillReport[e.year][month] = {};
                                 skillReport[e.year][month].closed = n < e.closed;
+                                //recruiter report closed?
+                                recruiterReport[e.year][month] = {};
+                                recruiterReport[e.year][month].closed = n < e.closed;
 
                                 //traverse through the array of employees.
                                 e[month].forEach((emp)=> {
                                     //initialize client object to populate with employee count and revenue
                                     clientReport[e.year][month][emp.client[0]] = clientReport[e.year][month][emp.client[0]] || {};
                                     skillReport[e.year][month][emp.skill[0]] = skillReport[e.year][month][emp.skill[0]] || {};
+                                    recruiterReport[e.year][month][emp.recruiter[0]] = recruiterReport[e.year][month][emp.recruiter[0]] || {};
+
+                                    // Employee count for each recruiter
+                                    // Revenue sum for each recruiter
+                                    recruiterReport[e.year][month][emp.recruiter[0]] = {
+                                        count: recruiterReport[e.year][month][emp.recruiter[0]].count + 1 || 1,
+                                        actual_revenue: recruiterReport[e.year][month][emp.recruiter[0]].actual_revenue +
+                                        emp["client_bill_pay"] * emp["actual_hour"] || emp["client_bill_pay"] * emp["actual_hours"]
+
+                                    };
+
                                     // Employee count for each client
                                     // Revenue sum for each client
                                     clientReport[e.year][month][emp.client[0]] = {
@@ -201,8 +220,11 @@
                                 });
                             });
                         });
+
                         reports.client = clientReport;
                         reports.skill = skillReport;
+                        reports.recruiter = recruiterReport;
+
                         deferred.resolve(reports);
                     })
                     .catch(e=> {
