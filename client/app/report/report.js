@@ -32,5 +32,16 @@ angular.module('maerkApp')
                     return ReportResource.getReportData('client')
                 }
             }
+        });
+        $stateProvider.state('main.report.recruiter', {
+            url: '/recruiters',
+            templateUrl: 'app/report/report-recruiter/report.recruiter.html',
+            controller: 'ReportRecruiterController',
+            controllerAs: 'vm',
+            resolve: {
+                reportData: function (ReportResource) {
+                    return ReportResource.getReportData('client')
+                }
+            }
         })
     });
