@@ -11,513 +11,471 @@ import  {ReportModel as Report} from '../api/report/report.model';
 
 Report.find({}).remove()
     .then(function () {
-        Report.create(
-            [
-                {
-                    "year": 2016,
-                    "closed": 0,
-                    "january": [{
-                        "first_name": "Patricia",
-                        "last_name": "Bradley",
-                        "recruiter": "Ricky",
-                        "placement_type": "part-time",
-                        "salary": 80613,
-                        "insurance": 611,
-                        "relocation": 3653,
-                        "immigration": 9005,
-                        "pay_vacation_cost": 6629,
-                        "ksquare_hourly_cost": 50,
-                        "target_bill_rate": 65990,
-                        "client_bill_pay": 70,
-                        "activate": true,
-                        "skill": ["Clinical Development"],
-                        "client": ["Dabtype"],
-                        "actual_hours": 400
-                    },{
-                        "first_name": "Patricia",
-                        "last_name": "Bradley",
-                        "recruiter": "Ricky",
-                        "placement_type": "part-time",
-                        "salary": 80613,
-                        "insurance": 611,
-                        "relocation": 3653,
-                        "immigration": 9005,
-                        "pay_vacation_cost": 6629,
-                        "ksquare_hourly_cost": 50,
-                        "target_bill_rate": 90,
-                        "client_bill_pay": 150,
-                        "activate": true,
-                        "skill": ["Clinical Development"],
-                        "client": ["Google"],
-                        "actual_hours": 400
-                    },
-                        {
-                            "first_name": "Timothy",
-                            "last_name": "Ross",
-                            "client": [
-                                "Brightdog",
-                            ],
-                            "skill": [
-                                "Lawson HRIS"
-                            ],
-                            "recruiter": "Bobby",
-                            "placement_type": "part-time",
-                            "salary": 86177,
-                            "insurance": 346,
-                            "relocation": 1280,
-                            "immigration": 5571,
-                            "pay_vacation_cost": 5269,
-                            "ksquare_hourly_cost": 50,
-                            "target_bill_rate": 64198,
-                            "client_bill_pay": 80,
-                            "activate": false,
-                            "actual_hours": 360
-                        }, {
-                            "first_name": "Paul",
-                            "last_name": "Fuller",
-                            "client": [
-                                "Voolith"
-                            ],
-                            "skill": [
-                                "UCC filings"
-                            ],
-                            "recruiter": "Rocky",
-                            "placement_type": "project",
-                            "salary": 73004,
-                            "insurance": 613,
-                            "relocation": 2500,
-                            "immigration": 8485,
-                            "pay_vacation_cost": 5729,
-                            "ksquare_hourly_cost": 50,
-                            "target_bill_rate": 50,
-                            "client_bill_pay": 50,
-                            "activate": false,
-                            "actual_hours": 360
-                    }],
-                    "february": [{
-                        "first_name": "Clarence",
-                        "last_name": "Coleman",
-                        "client": [
-                            "Latz"
-                        ],
-                        "skill": [
-                            "HTML"
-                        ],
-                        "recruiter": "Ricky",
-                        "placement_type": "full-time",
-                        "salary": 63776,
-                        "insurance": 386,
-                        "relocation": 3961,
-                        "immigration": 7070,
-                        "pay_vacation_cost": 6762,
-                        "ksquare_hourly_cost": 50,
-                        "target_bill_rate": 90,
-                        "client_bill_pay": 80,
-                        "activate": true,
-                        "actual_hours": 460
-                    }]
-
-                }
-            ]
-        )
+        //
     });
 
 Employee.find({}).remove()
     .then(function () {
         Employee.create([{
-            "first_name": "Adam",
-            "last_name": "Griffin",
+            "first_name": "Larry",
+            "last_name": "Young",
+            "client": [
+                "Shuffletag"
+            ],
+            "skill": [
+                "Interior Design"
+            ],
+            "recruiter": " Jane ",
+            "placement_type": " project",
+            "salary": 97,
+            "insurance": 997,
+            "relocation": 8219,
+            "immigration": 8949,
+            "pay_vacation_cost": 5674,
+            "ksquare_hourly_cost": 88,
+            "target_bill_rate": 93,
+            "client_bill_pay": 70,
+            "activate": 84,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-10-06T17:51:45Z"
+        }, {
+            "first_name": "Tina",
+            "last_name": "Rodriguez",
+            "client": [
+                "Eabox"
+            ],
+            "skill": [
+                "Google Apps"
+            ],
+            "recruiter": " John ",
+            "placement_type": " project",
+            "salary": 93,
+            "insurance": 671,
+            "relocation": 5274,
+            "immigration": 9335,
+            "pay_vacation_cost": 8820,
+            "ksquare_hourly_cost": 59,
+            "target_bill_rate": 58,
+            "client_bill_pay": 80,
+            "activate": 91,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-11-16T07:01:43Z"
+        }, {
+            "first_name": "Donald",
+            "last_name": "Cook",
+            "client": [
+                "Cogidoo"
+            ],
+            "skill": [
+                "LTE"
+            ],
+            "recruiter": " Jess",
+            "placement_type": " partime ",
+            "salary": 81,
+            "insurance": 549,
+            "relocation": 9219,
+            "immigration": 9507,
+            "pay_vacation_cost": 9315,
+            "ksquare_hourly_cost": 80,
+            "target_bill_rate": 60,
+            "client_bill_pay": 84,
+            "activate": 69,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-11-01T07:30:40Z"
+        }, {
+            "first_name": "Albert",
+            "last_name": "Stewart",
+            "client": [
+                "Skilith"
+            ],
+            "skill": [
+                "XCOM"
+            ],
+            "recruiter": " Jess",
+            "placement_type": " project",
+            "salary": 99,
+            "insurance": 1000,
+            "relocation": 5849,
+            "immigration": 5519,
+            "pay_vacation_cost": 8504,
+            "ksquare_hourly_cost": 93,
+            "target_bill_rate": 60,
+            "client_bill_pay": 96,
+            "activate": 89,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-10-06T11:16:03Z"
+        }, {
+            "first_name": "Lawrence",
+            "last_name": "Fuller",
+            "client": [
+                "Mymm"
+            ],
+            "skill": [
+                "Amazon VPC"
+            ],
+            "recruiter": " Jess",
+            "placement_type": "fulltime ",
+            "salary": 69,
+            "insurance": 789,
+            "relocation": 6086,
+            "immigration": 9631,
+            "pay_vacation_cost": 8863,
+            "ksquare_hourly_cost": 74,
+            "target_bill_rate": 65,
+            "client_bill_pay": 80,
+            "activate": 100,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-11-11T12:03:26Z"
+        }, {
+            "first_name": "Roy",
+            "last_name": "Price",
+            "client": [
+                "Oyondu"
+            ],
+            "skill": [
+                "Fashion"
+            ],
+            "recruiter": " Jane ",
+            "placement_type": " project",
+            "salary": 93,
+            "insurance": 815,
+            "relocation": 8879,
+            "immigration": 6230,
+            "pay_vacation_cost": 6472,
+            "ksquare_hourly_cost": 93,
+            "target_bill_rate": 66,
+            "client_bill_pay": 67,
+            "activate": 97,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-10-06T12:53:43Z"
+        }, {
+            "first_name": "Earl",
+            "last_name": "Kelley",
+            "client": [
+                "Twitterworks"
+            ],
+            "skill": [
+                "Affiliate Management"
+            ],
+            "recruiter": " Jess",
+            "placement_type": " project",
+            "salary": 51,
+            "insurance": 641,
+            "relocation": 9360,
+            "immigration": 6768,
+            "pay_vacation_cost": 5661,
+            "ksquare_hourly_cost": 76,
+            "target_bill_rate": 77,
+            "client_bill_pay": 74,
+            "activate": 86,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-11-01T20:29:04Z"
+        }, {
+            "first_name": "Cynthia",
+            "last_name": "Romero",
+            "client": [
+                "Browsezoom"
+            ],
+            "skill": [
+                "Uranium"
+            ],
+            "recruiter": " Jess",
+            "placement_type": " project",
+            "salary": 92,
+            "insurance": 646,
+            "relocation": 6348,
+            "immigration": 7982,
+            "pay_vacation_cost": 5038,
+            "ksquare_hourly_cost": 78,
+            "target_bill_rate": 52,
+            "client_bill_pay": 97,
+            "activate": 97,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-10-17T11:01:32Z"
+        }, {
+            "first_name": "Patricia",
+            "last_name": "Thompson",
+            "client": [
+                "Dabtype"
+            ],
+            "skill": [
+                "Process Automation"
+            ],
+            "recruiter": "Bobby ",
+            "placement_type": " project",
+            "salary": 64,
+            "insurance": 674,
+            "relocation": 6314,
+            "immigration": 5377,
+            "pay_vacation_cost": 6432,
+            "ksquare_hourly_cost": 90,
+            "target_bill_rate": 75,
+            "client_bill_pay": 50,
+            "activate": 75,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-11-29T17:41:46Z"
+        }, {
+            "first_name": "Diane",
+            "last_name": "Allen",
+            "client": [
+                "Midel"
+            ],
+            "skill": [
+                "Billing Systems"
+            ],
+            "recruiter": " Jane ",
+            "placement_type": " project",
+            "salary": 56,
+            "insurance": 827,
+            "relocation": 9992,
+            "immigration": 9139,
+            "pay_vacation_cost": 6626,
+            "ksquare_hourly_cost": 77,
+            "target_bill_rate": 80,
+            "client_bill_pay": 74,
+            "activate": 74,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-10-25T17:58:54Z"
+        }, {
+            "first_name": "Phillip",
+            "last_name": "Reynolds",
+            "client": [
+                "Divavu"
+            ],
+            "skill": [
+                "Government Procurement"
+            ],
+            "recruiter": " John ",
+            "placement_type": " project",
+            "salary": 87,
+            "insurance": 577,
+            "relocation": 5775,
+            "immigration": 8885,
+            "pay_vacation_cost": 7306,
+            "ksquare_hourly_cost": 73,
+            "target_bill_rate": 71,
+            "client_bill_pay": 57,
+            "activate": 53,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-11-11T00:34:36Z"
+        }, {
+            "first_name": "Joshua",
+            "last_name": "Johnson",
+            "client": [
+                "Thoughtstorm"
+            ],
+            "skill": [
+                "Particle Effects"
+            ],
+            "recruiter": " Jess",
+            "placement_type": " partime ",
+            "salary": 96,
+            "insurance": 919,
+            "relocation": 8608,
+            "immigration": 6862,
+            "pay_vacation_cost": 6562,
+            "ksquare_hourly_cost": 74,
+            "target_bill_rate": 80,
+            "client_bill_pay": 56,
+            "activate": 81,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-11-09T15:47:11Z"
+        }, {
+            "first_name": "Janet",
+            "last_name": "Smith",
+            "client": [
+                "Zoonder"
+            ],
+            "skill": [
+                "Analytical Skills"
+            ],
+            "recruiter": " Jess",
+            "placement_type": "fulltime ",
+            "salary": 68,
+            "insurance": 786,
+            "relocation": 8260,
+            "immigration": 6579,
+            "pay_vacation_cost": 7688,
+            "ksquare_hourly_cost": 84,
+            "target_bill_rate": 56,
+            "client_bill_pay": 68,
+            "activate": 56,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-10-21T02:08:58Z"
+        }, {
+            "first_name": "Justin",
+            "last_name": "Peterson",
+            "client": [
+                "Jaxspan"
+            ],
+            "skill": [
+                "Requirements Gathering"
+            ],
+            "recruiter": " John ",
+            "placement_type": " project",
+            "salary": 58,
+            "insurance": 680,
+            "relocation": 5813,
+            "immigration": 9996,
+            "pay_vacation_cost": 9450,
+            "ksquare_hourly_cost": 65,
+            "target_bill_rate": 81,
+            "client_bill_pay": 82,
+            "activate": 60,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-10-12T07:08:46Z"
+        }, {
+            "first_name": "Joan",
+            "last_name": "Gibson",
             "client": [
                 "Mudo"
             ],
             "skill": [
-                "DDA"
+                "GSM"
             ],
-            "recruiter": "Arnold",
-            "placement_type": "project",
-            "salary": 99895,
-            "insurance": 1000,
-            "relocation": 1715,
-            "immigration": 8451,
-            "pay_vacation_cost": 7072,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 104574,
-            "client_bill_pay": 83784,
-            "activate": false
-
+            "recruiter": " Jess",
+            "placement_type": " partime ",
+            "salary": 89,
+            "insurance": 665,
+            "relocation": 8415,
+            "immigration": 8939,
+            "pay_vacation_cost": 7791,
+            "ksquare_hourly_cost": 84,
+            "target_bill_rate": 75,
+            "client_bill_pay": 97,
+            "activate": 85,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-10-19T02:50:26Z"
         }, {
-            "first_name": "Patricia",
-            "last_name": "Bradley",
-            "client": [
-                "Flashdog",
-                "Dabtype",
-                "Topicshots"
-            ],
-            "skill": [
-                "Clinical Development"
-            ],
-            "recruiter": "Ricky",
-            "placement_type": "part-time",
-            "salary": 80613,
-            "insurance": 611,
-            "relocation": 3653,
-            "immigration": 9005,
-            "pay_vacation_cost": 6629,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 65990,
-            "client_bill_pay": 111757,
-            "activate": false
-        }, {
-            "first_name": "Kathryn",
-            "last_name": "Ramos",
-            "client": [
-                "Kazio"
-            ],
-            "skill": [
-                "Screening"
-            ],
-            "recruiter": "Bobby",
-            "placement_type": "part-time",
-            "salary": 91679,
-            "insurance": 352,
-            "relocation": 2516,
-            "immigration": 7159,
-            "pay_vacation_cost": 6361,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 60021,
-            "client_bill_pay": 108495,
-            "activate": false
-        }, {
-            "first_name": "Walter",
-            "last_name": "Diaz",
-            "client": [
-                "Skynoodle",
-                "Shufflester",
-                "Yodo"
-            ],
-            "skill": [
-                "JavaSE",
-                "Knowledge Sharing"
-            ],
-            "recruiter": "Ricky",
-            "placement_type": "full-time",
-            "salary": 71558,
-            "insurance": 288,
-            "relocation": 4861,
-            "immigration": 7782,
-            "pay_vacation_cost": 8737,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 89969,
-            "client_bill_pay": 106938,
-            "activate": false
-        }, {
-            "first_name": "Clarence",
-            "last_name": "Coleman",
-            "client": [
-                "Latz",
-                "Wordify",
-                "Mycat"
-            ],
-            "skill": [
-                "SAP Business ByDesign",
-                "DVD Authoring"
-            ],
-            "recruiter": "Ricky",
-            "placement_type": "full-time",
-            "salary": 63776,
-            "insurance": 386,
-            "relocation": 3961,
-            "immigration": 7070,
-            "pay_vacation_cost": 6762,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 106396,
-            "client_bill_pay": 84250,
-            "activate": true
-        }, {
-            "first_name": "Carolyn",
+            "first_name": "Melissa",
             "last_name": "Cruz",
             "client": [
-                "Browsedrive",
-                "Youtags",
-                "Divape"
+                "Linkbuzz"
             ],
             "skill": [
-                "OBIEE"
+                "SRDS"
             ],
-            "recruiter": "Arnold",
-            "placement_type": "project",
-            "salary": 76511,
-            "insurance": 941,
-            "relocation": 1557,
-            "immigration": 8014,
-            "pay_vacation_cost": 6971,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 103492,
-            "client_bill_pay": 101606,
-            "activate": false
+            "recruiter": " Jess",
+            "placement_type": "fulltime ",
+            "salary": 58,
+            "insurance": 863,
+            "relocation": 9192,
+            "immigration": 6926,
+            "pay_vacation_cost": 8642,
+            "ksquare_hourly_cost": 99,
+            "target_bill_rate": 60,
+            "client_bill_pay": 92,
+            "activate": 80,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-10-16T14:29:06Z"
         }, {
-            "first_name": "Timothy",
-            "last_name": "Ross",
+            "first_name": "Jacqueline",
+            "last_name": "Hill",
             "client": [
-                "Brightdog",
-                "Thoughtstorm"
+                "Eazzy"
             ],
             "skill": [
-                "Lawson HRIS"
+                "Omron"
             ],
-            "recruiter": "Bobby",
-            "placement_type": "part-time",
-            "salary": 86177,
-            "insurance": 346,
-            "relocation": 1280,
-            "immigration": 5571,
-            "pay_vacation_cost": 5269,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 64198,
-            "client_bill_pay": 97347,
-            "activate": false
+            "recruiter": " Jess",
+            "placement_type": " project",
+            "salary": 74,
+            "insurance": 804,
+            "relocation": 6413,
+            "immigration": 8450,
+            "pay_vacation_cost": 8108,
+            "ksquare_hourly_cost": 98,
+            "target_bill_rate": 72,
+            "client_bill_pay": 78,
+            "activate": 69,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-11-06T19:58:16Z"
         }, {
-            "first_name": "Paul",
-            "last_name": "Fuller",
+            "first_name": "Amy",
+            "last_name": "Greene",
             "client": [
-                "Voolith"
+                "Zava"
             ],
             "skill": [
-                "UCC filings"
+                "MCS"
             ],
-            "recruiter": "Rocky",
-            "placement_type": "project",
-            "salary": 73004,
-            "insurance": 613,
-            "relocation": 2500,
-            "immigration": 8485,
-            "pay_vacation_cost": 5729,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 109610,
-            "client_bill_pay": 117599,
-            "activate": false
+            "recruiter": " John ",
+            "placement_type": " project",
+            "salary": 72,
+            "insurance": 771,
+            "relocation": 6168,
+            "immigration": 7926,
+            "pay_vacation_cost": 9944,
+            "ksquare_hourly_cost": 95,
+            "target_bill_rate": 90,
+            "client_bill_pay": 58,
+            "activate": 84,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-11-22T18:26:41Z"
         }, {
-            "first_name": "Joe",
-            "last_name": "Walker",
+            "first_name": "Frank",
+            "last_name": "Pierce",
             "client": [
-                "Tavu",
-                "Gigaclub",
-                "Yodo"
+                "Latz"
             ],
             "skill": [
-                "Start-ups",
-                "NPO"
+                "Ducting"
             ],
-            "recruiter": "Ricky",
-            "placement_type": "project",
-            "salary": 56728,
-            "insurance": 264,
-            "relocation": 4818,
-            "immigration": 9962,
-            "pay_vacation_cost": 7896,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 115543,
-            "client_bill_pay": 87657,
-            "activate": true
+            "recruiter": " Jess",
+            "placement_type": "fulltime ",
+            "salary": 84,
+            "insurance": 892,
+            "relocation": 5093,
+            "immigration": 9361,
+            "pay_vacation_cost": 7395,
+            "ksquare_hourly_cost": 80,
+            "target_bill_rate": 61,
+            "client_bill_pay": 80,
+            "activate": 80,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-10-17T20:06:24Z"
         }, {
-            "first_name": "Robert",
-            "last_name": "Washington",
+            "first_name": "Jimmy",
+            "last_name": "Wilson",
             "client": [
-                "Yodel",
-                "Devpoint"
+                "Fiveclub"
             ],
             "skill": [
-                "National Security",
-                "RPG III"
+                "Quantum GIS"
             ],
-            "recruiter": "Ricky",
-            "placement_type": "project",
-            "salary": 53474,
-            "insurance": 784,
-            "relocation": 3122,
-            "immigration": 5421,
-            "pay_vacation_cost": 7314,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 118865,
-            "client_bill_pay": 97842,
-            "activate": true
-        }, {
-            "first_name": "Tina",
-            "last_name": "Mccoy",
-            "client": [
-                "Cogibox",
-                "Reallinks"
-            ],
-            "skill": [
-                "Automotive",
-                "DVD"
-            ],
-            "recruiter": "Bobby",
-            "placement_type": "project",
-            "salary": 97786,
-            "insurance": 346,
-            "relocation": 3054,
-            "immigration": 7653,
-            "pay_vacation_cost": 6292,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 71390,
-            "client_bill_pay": 102582,
-            "activate": false
-        }, {
-            "first_name": "Janet",
-            "last_name": "Bishop",
-            "client": [
-                "Rhybox",
-                "Skippad",
-                "Digitube"
-            ],
-            "skill": [
-                "Lawson HRIS",
-                "Drupal"
-            ],
-            "recruiter": "Bobby",
-            "placement_type": "full-time",
-            "salary": 86142,
-            "insurance": 511,
-            "relocation": 4280,
-            "immigration": 6432,
-            "pay_vacation_cost": 9992,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 112173,
-            "client_bill_pay": 111484,
-            "activate": true
-        }, {
-            "first_name": "Bruce",
-            "last_name": "Palmer",
-            "client": [
-                "Brightbean",
-                "Mycat",
-                "Thoughtsphere"
-            ],
-            "skill": [
-                "SI",
-                "User Scenarios"
-            ],
-            "recruiter": "Bobby",
-            "placement_type": "project",
-            "salary": 97995,
-            "insurance": 166,
-            "relocation": 2262,
-            "immigration": 8097,
-            "pay_vacation_cost": 8519,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 87305,
-            "client_bill_pay": 103588,
-            "activate": true
-        }, {
-            "first_name": "Andrea",
-            "last_name": "Payne",
-            "client": [
-                "Yozio",
-                "Cogilith",
-                "Zooxo"
-            ],
-            "skill": [
-                "Type Approval"
-            ],
-            "recruiter": "Bobby",
-            "placement_type": "full-time",
-            "salary": 67533,
-            "insurance": 347,
-            "relocation": 3594,
-            "immigration": 7367,
-            "pay_vacation_cost": 7294,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 103543,
-            "client_bill_pay": 117013,
-            "activate": true
-        }, {
-            "first_name": "Bonnie",
-            "last_name": "Stevens",
-            "client": [
-                "Jabbersphere",
-                "Bubblemix",
-                "Ntag"
-            ],
-            "skill": [
-                "Occupational Therapy"
-            ],
-            "recruiter": "Ricky",
-            "placement_type": "part-time",
-            "salary": 59936,
-            "insurance": 765,
-            "relocation": 1429,
-            "immigration": 9515,
-            "pay_vacation_cost": 7467,
-            "ksquare_hourly_cost":50,
-            "target_bill_rate": 109375,
-            "client_bill_pay": 112658,
-            "activate": true
-        }, {
-            "first_name": "Mark",
-            "last_name": "Brown",
-            "client": [
-                "Wordtune",
-                "Vipe"
-            ],
-            "skill": [
-                "MCMS"
-            ],
-            "recruiter": "Ricky",
-            "placement_type": "full-time",
-            "salary": 68094,
-            "insurance": 587,
-            "relocation": 2416,
-            "immigration": 6640,
-            "pay_vacation_cost": 7488,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 91212,
-            "client_bill_pay": 97064,
-            "activate": true
-        }, {
-            "first_name": "Scott",
-            "last_name": "Collins",
-            "client": [
-                "Wordpedia"
-            ],
-            "skill": [
-                "Golf",
-                "MGCP"
-            ],
-            "recruiter": "Bobby",
-            "placement_type": "project",
-            "salary": 77796,
-            "insurance": 261,
-            "relocation": 2466,
-            "immigration": 8087,
-            "pay_vacation_cost": 8603,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 81912,
-            "client_bill_pay": 107068,
-            "activate": true
-        }, {
-            "first_name": "Cheryl",
-            "last_name": "Frazier",
-            "client": [
-                "Avavee",
-                "Jabberbean",
-                "Linkbridge"
-            ],
-            "skill": [
-                "Offshore Oil",
-                "EHR"
-            ],
-            "recruiter": "Ricky",
-            "placement_type": "project",
-            "salary": 57943,
-            "insurance": 869,
-            "relocation": 1907,
-            "immigration": 9840,
-            "pay_vacation_cost": 7441,
-            "ksquare_hourly_cost": 50,
-            "target_bill_rate": 94913,
-            "client_bill_pay": 117448,
-            "activate": true
+            "recruiter": " Jess",
+            "placement_type": " project",
+            "salary": 59,
+            "insurance": 846,
+            "relocation": 5202,
+            "immigration": 8669,
+            "pay_vacation_cost": 9589,
+            "ksquare_hourly_cost": 71,
+            "target_bill_rate": 97,
+            "client_bill_pay": 59,
+            "activate": 98,
+            "actual_hours": "",
+            "offset": "",
+            "start_date": "2016-11-01T21:33:41Z"
         }])
             .then(function () {
                 console.log('finished populating employees');

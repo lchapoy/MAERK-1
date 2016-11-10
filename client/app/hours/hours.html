@@ -1,0 +1,66 @@
+<md-toolbar layout-padding class="md-default md-table-toolbar">
+    <div class="md-toolbar-tools">
+        <h2>Monthly Registration ({{vm.year}})</h2>
+        <span flex></span>
+        <md-input-container class="md-primary" layout="row" flex-gt-md="25">
+            <md-icon md-font-set="material-icons">search</md-icon>
+
+            <input name="searchbox" placeholder="search" ng-model="vm.searchbox">
+        </md-input-container>
+
+    </div>
+</md-toolbar>
+<md-tabs class="md-accent" md-center-tabs="true" md-border-bottom="true" md-align-tabs="bottom" >
+    <md-tab ng-repeat="month in vm.months"
+            ng-disabled=" $index !== vm.closed"
+            md-active="$index==vm.closed"
+            ng-click="vm.update(undefined,$index)"
+            id="month">{{month}}
+    </md-tab>
+</md-tabs>
+
+<md-content class="md-whiteframe-1dp">
+
+    <md-table-container class="">
+        <table md-progress="vm.promise" md-table md-order="vm.orderVal">
+            <thead md-head md-order="vm.orderVal">
+            <tr md-row>
+                <th md-column md-order-by="first_name"><span>Employee Name</span></th>
+                <th md-column md-order-by="client_bill_pay">Rate/Hr</th>
+                <th md-column md-order-by="client">Clients</th>
+                <th md-column md-order-by="">Hours</th>
+                <th md-column md-order-by="">Offset</th>
+            </tr>
+            </thead>
+            <tbody md-body>
+            <tr md-row md-select="employee" md-select-id="_id" md-auto-select
+                ng-repeat="employee in vm.employees | filter: vm.searchbox | orderBy: vm.orderVal | limitTo: vm.limit: (vm.page - 1) * vm.limit ">
+                <td md-cell>{{employee.first_name + " " + employee.last_name}}</td>
+                <td md-cell>{{employee.client_bill_pay | currency}}</td>
+                <td md-cell>{{employee.client.join(' ,')}}</td>
+                <td md-cell ng-click="vm.addHours($event, employee)"
+                    ng-class="{'md-placeholder': !employee['actual_hours']}">
+                    {{employee['actual_hours'] || 'add hours'}}
+                </td>
+                <td md-cell ng-click="vm.addOffset($event, employee)" ng-class="{'md-placeholder': !employee.offset}">
+                    {{employee.offset || 'add offset'}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <md-table-pagination md-limit="vm.limit" md-limit-options="[5, 10, 15]" md-page="vm.page"
+                             md-total="{{vm.employees.length}}" md-page-select>
+        </md-table-pagination>
+    </md-table-container>
+    <md-divider></md-divider>
+    <div layout-margin layout="row" layout-align="end center" >
+        <!--<md-button class="md-raised" ng-click="vm.saveMonth()">-->
+            <!--<md-icon md-font-set="material-icons">save</md-icon>-->
+            <!--Save Month-->
+        <!--</md-button>-->
+        <md-button class="md-raised md-warn" ng-click="vm.close($event)">
+            <md-icon md-font-set="material-icons">lock</md-icon>
+            Close Month
+        </md-button>
+    </div>
+</md-content>
