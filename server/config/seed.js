@@ -8,7 +8,64 @@ import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
 import  {EmployeeModel as Employee} from '../api/employee/employee.model';
 import  {ReportModel as Report} from '../api/report/report.model';
+import  {RecruiterModel as Recruiter} from '../api/recruiter/recruiter.model';
 
+Recruiter.find({}).remove()
+    .then(function () {
+       Recruiter.create([{
+           "first_name": "Todd",
+           "last_name": "Morgan",
+           "amount_per_hired": 0.069,
+           "placement_type": "project"
+       }, {
+           "first_name": "Kathryn",
+           "last_name": "White",
+           "amount_per_hired": 1000,
+           "placement_type": "project"
+       }, {
+           "first_name": "Kimberly",
+           "last_name": "Knight",
+           "amount_per_hired": 1500,
+           "placement_type": "project"
+       }, {
+           "first_name": "Gary",
+           "last_name": "Knight",
+           "amount_per_hired": 0.229,
+           "placement_type": "fulltime"
+       }, {
+           "first_name": "Donald",
+           "last_name": "Turner",
+           "amount_per_hired": 0.033,
+           "placement_type": "partime"
+       }, {
+           "first_name": "Ralph",
+           "last_name": "Hansen",
+           "amount_per_hired": 0.196,
+           "placement_type": "project"
+       }, {
+           "first_name": "Kimberly",
+           "last_name": "Sims",
+           "amount_per_hired": 0.176,
+           "placement_type": "fulltime"
+       }, {
+           "first_name": "Benjamin",
+           "last_name": "Patterson",
+           "amount_per_hired": 0.271,
+           "placement_type": "project"
+       }, {
+           "first_name": "Stephanie",
+           "last_name": "Oliver",
+           "amount_per_hired": 0.081,
+           "placement_type": "project"
+       }, {
+           "first_name": "Nancy",
+           "last_name": "Williams",
+           "amount_per_hired": 0.164,
+           "placement_type": "partime"
+       }]).then(function () {
+           console.log('finished populating recruiters');
+       });
+    });
 Report.find({}).remove()
     .then(function () {
         //
