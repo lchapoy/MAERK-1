@@ -12,17 +12,7 @@
                     save: {method: "PUT"}
                 });
 
-            var deferred = $q.defer();
-            var employeeList = deferred.promise;
-
-            Employee.query().$promise.then((data)=> {
-                var res = [];
-                data.forEach((elem)=> {
-                    if (!elem.deleted)
-                        res.push(elem);
-                });
-                deferred.resolve(res)
-            });
+            var employeeList = Employee.query();
 
 
             function findOne(id) {
@@ -41,14 +31,14 @@
 
                 delete: function (emp) {
                     emp.deleted = true;
-                    emp.$save();
                     var deferred = $q.defer();
-                    employeeList.then((data)=> {
-                        data.forEach((e, i)=> {
-                            if (e.deleted)
-                                data.splice(i, 1);
-                        });
-                        deferred.resolve(data);
+                    emp.$save().then((data)=> {
+                        for (var i = 0; i < employeeList.length; i++) {
+                            if (employeeList[i]._id === data._id) {
+                                employeeList.splice(i,1)
+                            }
+                        }
+                        deferred.resolve(employeeList);
                     });
                     return deferred.promise;
 
