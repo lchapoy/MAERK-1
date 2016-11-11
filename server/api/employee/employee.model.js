@@ -70,7 +70,8 @@ export var EmployeeSchema = new mongoose.Schema({
         type: Date
     },
     deleted: {
-        type: Boolean
+        type: Boolean,
+        default: false
     }
 });
 
