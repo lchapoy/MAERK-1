@@ -4,7 +4,7 @@
 (function () {
     angular.module("maerkApp")
         .constant("employeeURL", "/api/employees/")
-        .factory("EmployeeResource", function ($resource, employeeURL) {
+        .factory("EmployeeResource", function ($resource, employeeURL, $q) {
             var Employee = $resource(employeeURL + ":id",
                 {id: "@_id"},
                 {
@@ -13,6 +13,7 @@
                 });
 
             var employeeList = Employee.query();
+
 
             function findOne(id) {
                 if (id && employeeList) {
@@ -27,7 +28,19 @@
 
             return {
                 employees: employeeList,
-                delete: function () {
+
+                delete: function (emp) {
+                    emp.deleted = true;
+                    var deferred = $q.defer();
+                    emp.$save().then((data)=> {
+                        for (var i = 0; i < employeeList.length; i++) {
+                            if (employeeList[i]._id === data._id) {
+                                employeeList.splice(i,1)
+                            }
+                        }
+                        deferred.resolve(employeeList);
+                    });
+                    return deferred.promise;
 
                 },
                 create: function (emp) {

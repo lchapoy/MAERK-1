@@ -55,7 +55,7 @@ function saveUpdates(updates) {
 }
 // GET all employees
 export function index(req,res){
-    return Employee.find().exec()
+    return Employee.find({deleted: false}).exec()
         .then(respondWithResult(res))
         .catch(handleError(res));
 }

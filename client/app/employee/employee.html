@@ -27,7 +27,7 @@
                    aria-label="Edit Employee">
             <md-icon md-font-set="material-icons">mode_edit</md-icon>
         </md-button>
-        <md-button ng-show="vm.selected.length" ng-click="vm.delete(vm.selected)" class="md-icon-button"
+        <md-button ng-show="vm.selected.length" ng-click="vm.delete($event, vm.selected)" class="md-icon-button"
                    aria-label="Delete Employee">
             <md-icon md-font-set="material-icons ">delete</md-icon>
         </md-button>

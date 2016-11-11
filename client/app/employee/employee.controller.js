@@ -10,6 +10,28 @@ angular.module("maerkApp")
         this.selected = [];
         this.employees = employeeList;
 
+        this.delete = function ($event, employees) {
+            //noinspection JSUnresolvedFunction
+            var prompt = $mdDialog.confirm()
+                .title("Are you sure you want to DELETE Employees")
+                .textContent(`You are deleting (${employees.length}) Employees. This action CANNOT be reversed.`)
+                .ariaLabel("Active status change confirmation")
+                .targetEvent($event)
+                .ok("DELETE")
+                .cancel("Cancel");
+            $mdDialog.show(prompt).then(()=> {
+                this.selected.forEach((employee) => {
+                    EmployeeResource.delete(employee)
+                        .then((updated)=> {
+                            this.employees = updated;
+                            this.selected = [];
+                        });
+                });
+            }, ()=> {
+                console.log("no employees deleted.")
+            })
+        };
+
         this.toggleActive = ($event,val) => {
             //noinspection JSUnresolvedFunction
             var prompt = $mdDialog.confirm()
