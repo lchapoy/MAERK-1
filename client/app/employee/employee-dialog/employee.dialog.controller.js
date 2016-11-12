@@ -4,23 +4,22 @@
 (function () {
     class DialogController {
 
-        constructor(employee, $mdDialog, $mdConstant) {
+        constructor(employee, recruiters, $mdDialog, $mdConstant,$interval) {
+            this.recruiters = recruiters;
             this.context = employee ? "Edit" : "Add";
             //chip separators.
             this.keys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA, 186];
-
-
             this.emp = {};
-            this.allClients = this.loadClients();
-            if (employee) {
+            this.allClients = DialogController.loadClients();
+            this.allRecruiters = this.loadRecruiters();
 
+            if (employee) {
                 angular.copy(employee, this.emp);
                 this.emp.client = this.emp.client.map((c)=> {
                     return {name: c}
                 });
             }
             else {
-
                 this.emp.client = [];
                 this.emp.skill = [];
             }
@@ -32,7 +31,6 @@
             this.close = function () {
                 $mdDialog.cancel();
             };
-
         }
 
         //returns an array with client names [string]
@@ -54,11 +52,25 @@
                 return (client.name.indexOf(lowercaseQuery) != -1);
             };
         }
+        loadRecruiters() {
+            return this.recruiters.map(recruiter => {
+                return {
+                    name: (recruiter.first_name + " " + recruiter.last_name).toLowerCase(),  //must be name!
+                    value: recruiter.first_name + " " + recruiter.last_name
+                };
+            });
+        }
+        selectedItemChange(rec) {
+            this.emp.recruiter = rec.value;
+        }
+        searchRecruiters(query) {
+            return query ? this.allRecruiters.filter(this.createFilterFor(query)) : this.allRecruiters;
 
-        loadClients() {
+        }
+        static loadClients() {
             //ClientResource here!
             return ["verizon", "deloitte", "intuit", "boy scouts"].map(function (c) {
-                return {name: c}
+                return {name: c} //must be name!
             });
         }
     }
