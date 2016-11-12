@@ -9,7 +9,7 @@
             </md-button>
         </div>
     </md-toolbar>
-    <form name="employeeDialog" novalidate ng-cloak ng-submit="vm.submit(employeeDialog)">
+    <form name="employeeDialog" novalidate ng-cloak ng-submit="vm.submit($event,employeeDialog)">
         <md-dialog-content layout-padding>
             <div class="md-dialog-content">
                 <h3>Personal Information</h3>
@@ -185,7 +185,7 @@
                     </md-input-container>
                 </div>
             </div>
-                <md-button type="submit" ng-disabled="employeeDialog.$invalid" class="md-raised md-primary">
+                <md-button type="submit" confirm="vm.deferred" confirm-action="vm.context.toLowerCase()" ng-disabled="employeeDialog.$invalid" class="md-raised md-primary">
                     Submit
                 </md-button>
         </md-dialog-content>
