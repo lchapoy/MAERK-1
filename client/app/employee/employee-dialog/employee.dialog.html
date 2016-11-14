@@ -48,11 +48,30 @@
                 </md-chips>
             </md-content>
             <div layout-gt-sm="row">
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label for="recruiter">Recruiter</label>
-                    <input type="text" ng-disabled="vm.context==='Edit'" name="recruiter" ng-model="vm.emp.recruiter"
-                           required>
-                </md-input-container>
+                <md-autocomplete flex required
+                                 ng-if="vm.context!=='Edit'"
+                                 md-input-name="autocompleteField"
+                                 md-selected-item="vm.selectedRecruiter"
+                                 md-selected-item-change="vm.selectedItemChange(vm.selectedRecruiter)"
+                                 md-search-text="vm.searchText"
+                                 md-select-on-match="true"
+                                 md-items="recruiter in vm.searchRecruiters(vm.searchText)"
+                                 md-item-text="recruiter.value"
+                                 md-require-match
+                                 md-floating-label="recruiter">
+                    <md-item-template>
+                        <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{recruiter.value}}</span>
+                    </md-item-template>
+                    <div ng-messages="employeeDialog.autocompleteField.$error" ng-if="employeeDialog.autocompleteField.$touched">
+                        <div ng-message="required">You <b>must</b> specify a recruiter.</div>
+                        <div ng-message="md-require-match">Please select an existing recruiter.</div>
+                    </div>
+                </md-autocomplete>
+                <!--<md-input-container class="md-block" flex-gt-sm>-->
+                <!--<label for="recruiter">Recruiter</label>-->
+                <!--<input type="text" ng-disabled="vm.context==='Edit'" name="recruiter" ng-model="vm.emp.recruiter"-->
+                <!--required>-->
+                <!--</md-input-container>-->
                 <md-input-container class="md-block" flex-gt-sm>
                     <label for="placement">Placement type</label>
                     <md-select name="placement" ng-model="vm.emp.placement_type" required>

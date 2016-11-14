@@ -2,13 +2,14 @@
  * Created by cleverjam on 10/25/16.
  */
 angular.module("maerkApp")
-    .controller("EmployeeController", function ($timeout, employeeList, $mdDialog, EmployeeResource) {
+    .controller("EmployeeController", function ($timeout, employeeList, recruiterList, $mdDialog, EmployeeResource) {
         this.page = 1;
         this.orderVal = "first_name";
         this.limit = 5;
         this.filterBy='first_name';
         this.selected = [];
         this.employees = employeeList;
+        this.recruiters = recruiterList;
 
         this.delete = function ($event, employees) {
             //noinspection JSUnresolvedFunction
@@ -63,7 +64,8 @@ angular.module("maerkApp")
                 clickOutsideToClose: true,
                 fullscreen: true,
                 locals: {
-                    employee: selected ? selected[0] : null
+                    employee: selected ? selected[0] : null,
+                    recruiters: this.recruiters
                 }
             }).then((emp)=> {
                 if (!emp._id){

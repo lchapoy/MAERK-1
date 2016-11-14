@@ -14,6 +14,9 @@ angular.module('maerkApp')
                 resolve: {
                     employeeList: function (EmployeeResource) {
                         return EmployeeResource.get();
+                    },
+                    recruiterList: function (RecruiterResource) {
+                        return RecruiterResource.get();
                     }
                 },
                 authenticate: true
