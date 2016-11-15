@@ -16,52 +16,52 @@ Recruiter.find({}).remove()
            "first_name": "Todd",
            "last_name": "Morgan",
            "amount_per_hired": 0.069,
-           "placement_type": "project"
+           "placement_type": "Project"
        }, {
            "first_name": "Kathryn",
            "last_name": "White",
            "amount_per_hired": 1000,
-           "placement_type": "project"
+           "placement_type": "Project"
        }, {
            "first_name": "Kimberly",
            "last_name": "Knight",
            "amount_per_hired": 1500,
-           "placement_type": "project"
+           "placement_type": "Project"
        }, {
            "first_name": "Gary",
            "last_name": "Knight",
            "amount_per_hired": 0.229,
-           "placement_type": "fulltime"
+           "placement_type": "Full Time"
        }, {
            "first_name": "Donald",
            "last_name": "Turner",
            "amount_per_hired": 0.033,
-           "placement_type": "partime"
+           "placement_type": "Part Time"
        }, {
            "first_name": "Ralph",
            "last_name": "Hansen",
            "amount_per_hired": 0.196,
-           "placement_type": "project"
+           "placement_type": "Project"
        }, {
            "first_name": "Kimberly",
            "last_name": "Sims",
            "amount_per_hired": 0.176,
-           "placement_type": "fulltime"
+           "placement_type": "Full Time"
        }, {
            "first_name": "Benjamin",
            "last_name": "Patterson",
            "amount_per_hired": 0.271,
-           "placement_type": "project"
+           "placement_type": "Project"
        }, {
            "first_name": "Stephanie",
            "last_name": "Oliver",
            "amount_per_hired": 0.081,
-           "placement_type": "project"
+           "placement_type": "Project"
        }, {
            "first_name": "Nancy",
            "last_name": "Williams",
            "amount_per_hired": 0.164,
-           "placement_type": "partime"
+           "placement_type": "Part Time"
        }]).then(function () {
            console.log('finished populating recruiters');
        });
@@ -83,7 +83,7 @@ Employee.find({}).remove()
                 "Interior Design"
             ],
             "recruiter": " Jane ",
-            "placement_type": " project",
+            "placement_type": "Project",
             "salary": 97,
             "insurance": 997,
             "relocation": 8219,
@@ -106,7 +106,7 @@ Employee.find({}).remove()
                 "Google Apps"
             ],
             "recruiter": " John ",
-            "placement_type": " project",
+            "placement_type": "Project",
             "salary": 93,
             "insurance": 671,
             "relocation": 5274,
@@ -129,7 +129,7 @@ Employee.find({}).remove()
                 "LTE"
             ],
             "recruiter": " Jess",
-            "placement_type": " partime ",
+            "placement_type": "Part Time",
             "salary": 81,
             "insurance": 549,
             "relocation": 9219,
@@ -152,7 +152,7 @@ Employee.find({}).remove()
                 "XCOM"
             ],
             "recruiter": " Jess",
-            "placement_type": " project",
+            "placement_type": "Project",
             "salary": 99,
             "insurance": 1000,
             "relocation": 5849,
@@ -175,7 +175,7 @@ Employee.find({}).remove()
                 "Amazon VPC"
             ],
             "recruiter": " Jess",
-            "placement_type": "fulltime ",
+            "placement_type": "Full Time",
             "salary": 69,
             "insurance": 789,
             "relocation": 6086,
@@ -198,7 +198,7 @@ Employee.find({}).remove()
                 "Fashion"
             ],
             "recruiter": " Jane ",
-            "placement_type": " project",
+            "placement_type": "Project",
             "salary": 93,
             "insurance": 815,
             "relocation": 8879,
@@ -221,7 +221,7 @@ Employee.find({}).remove()
                 "Affiliate Management"
             ],
             "recruiter": " Jess",
-            "placement_type": " project",
+            "placement_type": "Project",
             "salary": 51,
             "insurance": 641,
             "relocation": 9360,
@@ -244,7 +244,7 @@ Employee.find({}).remove()
                 "Uranium"
             ],
             "recruiter": " Jess",
-            "placement_type": " project",
+            "placement_type": "Project",
             "salary": 92,
             "insurance": 646,
             "relocation": 6348,
@@ -267,7 +267,7 @@ Employee.find({}).remove()
                 "Process Automation"
             ],
             "recruiter": "Bobby ",
-            "placement_type": " project",
+            "placement_type": "Project",
             "salary": 64,
             "insurance": 674,
             "relocation": 6314,
@@ -290,7 +290,7 @@ Employee.find({}).remove()
                 "Billing Systems"
             ],
             "recruiter": " Jane ",
-            "placement_type": " project",
+            "placement_type": "Project",
             "salary": 56,
             "insurance": 827,
             "relocation": 9992,
@@ -313,7 +313,7 @@ Employee.find({}).remove()
                 "Government Procurement"
             ],
             "recruiter": " John ",
-            "placement_type": " project",
+            "placement_type": "Project",
             "salary": 87,
             "insurance": 577,
             "relocation": 5775,
@@ -336,7 +336,7 @@ Employee.find({}).remove()
                 "Particle Effects"
             ],
             "recruiter": " Jess",
-            "placement_type": " partime ",
+            "placement_type": "Part Time",
             "salary": 96,
             "insurance": 919,
             "relocation": 8608,
@@ -359,7 +359,7 @@ Employee.find({}).remove()
                 "Analytical Skills"
             ],
             "recruiter": " Jess",
-            "placement_type": "fulltime ",
+            "placement_type": "Full Time",
             "salary": 68,
             "insurance": 786,
             "relocation": 8260,
@@ -382,7 +382,7 @@ Employee.find({}).remove()
                 "Requirements Gathering"
             ],
             "recruiter": " John ",
-            "placement_type": " project",
+            "placement_type": "Project",
             "salary": 58,
             "insurance": 680,
             "relocation": 5813,
@@ -405,7 +405,7 @@ Employee.find({}).remove()
                 "GSM"
             ],
             "recruiter": " Jess",
-            "placement_type": " partime ",
+            "placement_type": "Part Time",
             "salary": 89,
             "insurance": 665,
             "relocation": 8415,
@@ -428,7 +428,7 @@ Employee.find({}).remove()
                 "SRDS"
             ],
             "recruiter": " Jess",
-            "placement_type": "fulltime ",
+            "placement_type": "Full Time",
             "salary": 58,
             "insurance": 863,
             "relocation": 9192,
@@ -451,7 +451,7 @@ Employee.find({}).remove()
                 "Omron"
             ],
             "recruiter": " Jess",
-            "placement_type": " project",
+            "placement_type": "Project",
             "salary": 74,
             "insurance": 804,
             "relocation": 6413,
@@ -474,7 +474,7 @@ Employee.find({}).remove()
                 "MCS"
             ],
             "recruiter": " John ",
-            "placement_type": " project",
+            "placement_type": "Project",
             "salary": 72,
             "insurance": 771,
             "relocation": 6168,
@@ -497,7 +497,7 @@ Employee.find({}).remove()
                 "Ducting"
             ],
             "recruiter": " Jess",
-            "placement_type": "fulltime ",
+            "placement_type": "Full Time",
             "salary": 84,
             "insurance": 892,
             "relocation": 5093,
@@ -520,7 +520,7 @@ Employee.find({}).remove()
                 "Quantum GIS"
             ],
             "recruiter": " Jess",
-            "placement_type": " project",
+            "placement_type": "Project",
             "salary": 59,
             "insurance": 846,
             "relocation": 5202,
