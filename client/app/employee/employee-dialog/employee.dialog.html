@@ -48,6 +48,7 @@
                         placeholder="Clients"
                         secondary-placeholder="Clients">
                 </md-contact-chips>
+                <p class='red-text md-caption' ng-show="vm.emp.client.length == 0"> Required </p>
             </md-content>
             <md-content class="md-padding autocomplete" layout="column" flex>
                 <md-chips
@@ -56,6 +57,8 @@
                         placeholder="Skills"
                         secondary-placeholder="Comma separated skill">
                 </md-chips>
+                <p class='red-text md-caption' ng-show="vm.emp.skill.length == 0"> Required </p>
+
             </md-content>
             <div layout-gt-sm="row">
 
@@ -213,7 +216,7 @@
                     </md-input-container>
                 </div>
             </div>
-                <md-button type="submit" confirm="vm.deferred" confirm-action="vm.context.toLowerCase()" ng-disabled="employeeDialog.$invalid" class="md-raised md-primary">
+                <md-button type="submit" confirm="vm.deferred" confirm-action="vm.context.toLowerCase()" ng-disabled="employeeDialog.$invalid || vm.emp.client.length == 0 || vm.emp.skill.length == 0" class="md-raised md-primary">
                     Submit
                 </md-button>
         </md-dialog-content>
