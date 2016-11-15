@@ -37,6 +37,11 @@ angular.module('maerkApp')
                 templateUrl: 'app/account/settings/globals/globals.html',
                 controller: 'GlobalsController',
                 controllerAs: 'vm',
+                resolve: {
+                    globals: function(GlobalResource) {
+                        return GlobalResource.globals;
+                    }
+                },
                 authenticate: true
             })
             .state('settings.password', {
