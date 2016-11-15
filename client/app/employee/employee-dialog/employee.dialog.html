@@ -9,7 +9,7 @@
             </md-button>
         </div>
     </md-toolbar>
-    <form name="employeeDialog" novalidate ng-cloak ng-submit="vm.submit($event,employeeDialog)">
+    <form name="employeeDialog" novalidate ng-cloak ng-submit="vm.submit($event)">
         <md-dialog-content layout-padding>
             <div class="md-dialog-content">
                 <h3>Personal Information</h3>
@@ -48,6 +48,7 @@
                 </md-chips>
             </md-content>
             <div layout-gt-sm="row">
+
                 <md-autocomplete flex required
                                  ng-if="vm.context!=='Edit'"
                                  md-input-name="autocompleteField"
@@ -67,19 +68,29 @@
                         <div ng-message="md-require-match">Please select an existing recruiter.</div>
                     </div>
                 </md-autocomplete>
-                <!--<md-input-container class="md-block" flex-gt-sm>-->
-                <!--<label for="recruiter">Recruiter</label>-->
-                <!--<input type="text" ng-disabled="vm.context==='Edit'" name="recruiter" ng-model="vm.emp.recruiter"-->
-                <!--required>-->
-                <!--</md-input-container>-->
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label for="placement">Placement type</label>
-                    <md-select name="placement" ng-model="vm.emp.placement_type" required>
+
+
+                <div layout="row" flex>
+                    <md-input-container class="md-block" flex-gt-sm>
+                      <label for="placement">Placement type</label>
+                      <md-select name="placement" ng-model="vm.emp.placement_type" required>
                         <md-option value="Full Time">Full Time</md-option>
                         <md-option value="Project">Project</md-option>
                         <md-option value="Part Time">Part Time</md-option>
-                    </md-select>
-                </md-input-container>
+                      </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Start Date</label>
+                        <md-datepicker md-open-on-focus="true" name="startDate" ng-required="true"
+                                       ng-model="vm.emp.start_date"></md-datepicker>
+                        <div class="validation-messages" ng-messages="employeeDialog.startDate.$error">
+                            <div ng-message="valid">The entered value is not a date!</div>
+                            <div ng-message="required">This date is required!</div>
+                        </div>
+                    </md-input-container>
+                </div>
+
+
             </div>
             <div class="md-dialog-content">
                 <h3>Financial Information</h3>

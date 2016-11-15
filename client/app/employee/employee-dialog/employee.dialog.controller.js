@@ -7,20 +7,22 @@
         constructor(employee, recruiters, $mdDialog, $mdConstant, $q) {
             this.recruiters = recruiters;
             this.context = employee ? "Edit" : "Add";
+            this.emp = {};
             //chip separators.
             this.keys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA, 186];
-            this.emp = {};
             this.allClients = DialogController.loadClients();
             this.allRecruiters = this.loadRecruiters();
             this.deferred = $q.defer();
 
             if (employee) {
                 angular.copy(employee, this.emp);
+                this.emp.start_date = new Date(employee.start_date);
                 this.emp.client = this.emp.client.map((c)=> {
                     return {name: c}
                 });
             }
             else {
+                this.emp.start_date = new Date();
                 this.emp.client = [];
                 this.emp.skill = [];
             }
