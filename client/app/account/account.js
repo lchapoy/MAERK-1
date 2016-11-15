@@ -35,6 +35,8 @@ angular.module('maerkApp')
             .state('settings.globals', {
                 url: '/globals',
                 templateUrl: 'app/account/settings/globals/globals.html',
+                controller: 'GlobalsController',
+                controllerAs: 'vm',
                 authenticate: true
             })
             .state('settings.password', {
