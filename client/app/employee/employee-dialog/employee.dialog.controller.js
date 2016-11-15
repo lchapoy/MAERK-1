@@ -27,8 +27,8 @@
 
             this.submit = function (e) {
                 e.preventDefault();
-                this.emp.client = this.fixClient(this.emp.client);
                 this.deferred.promise.then(() => {
+                    this.emp.client = this.fixClient(this.emp.client);
                     $mdDialog.hide(this.emp);
                 }).catch(()=> {
                     console.log('nothing happens');
@@ -36,7 +36,11 @@
                 });
             };
             this.close = function () {
-                $mdDialog.cancel();
+                this.deferred.promise.then(() => {
+                    $mdDialog.cancel();
+                }).catch(()=> {
+                    this.deferred = $q.defer();
+                });
             };
         }
 
