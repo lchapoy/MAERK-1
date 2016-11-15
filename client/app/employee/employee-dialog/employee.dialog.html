@@ -4,12 +4,12 @@
         <div class="md-toolbar-tools">
             <h2>{{vm.context}} Employee</h2>
             <span flex></span>
-            <md-button class="md-icon-button" ng-click="vm.close()">
+            <md-button class="md-icon-button" confirm="vm.deferred" confirm-action="'close'" ng-click="vm.close()">
                 <md-icon md-font-set="material-icons">close</md-icon>
             </md-button>
         </div>
     </md-toolbar>
-    <form name="employeeDialog" novalidate ng-cloak ng-submit="vm.submit(employeeDialog)">
+    <form name="employeeDialog" novalidate ng-cloak ng-submit="vm.submit($event,employeeDialog)">
         <md-dialog-content layout-padding>
             <div class="md-dialog-content">
                 <h3>Personal Information</h3>
@@ -75,9 +75,9 @@
                 <md-input-container class="md-block" flex-gt-sm>
                     <label for="placement">Placement type</label>
                     <md-select name="placement" ng-model="vm.emp.placement_type" required>
-                        <md-option value="fulltime">Full Time</md-option>
-                        <md-option value="project">Project</md-option>
-                        <md-option value="parttime">Part Time</md-option>
+                        <md-option value="Full Time">Full Time</md-option>
+                        <md-option value="Project">Project</md-option>
+                        <md-option value="Part Time">Part Time</md-option>
                     </md-select>
                 </md-input-container>
             </div>
@@ -185,7 +185,7 @@
                     </md-input-container>
                 </div>
             </div>
-                <md-button type="submit" ng-disabled="employeeDialog.$invalid" class="md-raised md-primary">
+                <md-button type="submit" confirm="vm.deferred" confirm-action="vm.context.toLowerCase()" ng-disabled="employeeDialog.$invalid" class="md-raised md-primary">
                     Submit
                 </md-button>
         </md-dialog-content>

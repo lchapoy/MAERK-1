@@ -4,7 +4,7 @@
 (function () {
     class DialogController {
 
-        constructor(employee, recruiters, $mdDialog, $mdConstant,$interval) {
+        constructor(employee, recruiters, $mdDialog, $mdConstant, $q) {
             this.recruiters = recruiters;
             this.context = employee ? "Edit" : "Add";
             //chip separators.
@@ -12,6 +12,7 @@
             this.emp = {};
             this.allClients = DialogController.loadClients();
             this.allRecruiters = this.loadRecruiters();
+            this.deferred = $q.defer();
 
             if (employee) {
                 angular.copy(employee, this.emp);
@@ -24,12 +25,22 @@
                 this.emp.skill = [];
             }
 
-            this.submit = function () {
-                this.emp.client = this.fixClient(this.emp.client);
-                $mdDialog.hide(this.emp);
+            this.submit = function (e) {
+                e.preventDefault();
+                this.deferred.promise.then(() => {
+                    this.emp.client = this.fixClient(this.emp.client);
+                    $mdDialog.hide(this.emp);
+                }).catch(()=> {
+                    console.log('nothing happens');
+                    this.deferred = $q.defer();
+                });
             };
             this.close = function () {
-                $mdDialog.cancel();
+                this.deferred.promise.then(() => {
+                    $mdDialog.cancel();
+                }).catch(()=> {
+                    this.deferred = $q.defer();
+                });
             };
         }
 
