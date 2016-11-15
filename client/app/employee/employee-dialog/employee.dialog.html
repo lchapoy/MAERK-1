@@ -4,7 +4,7 @@
         <div class="md-toolbar-tools">
             <h2>{{vm.context}} Employee</h2>
             <span flex></span>
-            <md-button class="md-icon-button" ng-click="vm.close()">
+            <md-button class="md-icon-button" confirm="vm.deferred" confirm-action="'close'" ng-click="vm.close()">
                 <md-icon md-font-set="material-icons">close</md-icon>
             </md-button>
         </div>
@@ -75,9 +75,9 @@
                 <md-input-container class="md-block" flex-gt-sm>
                     <label for="placement">Placement type</label>
                     <md-select name="placement" ng-model="vm.emp.placement_type" required>
-                        <md-option value="fulltime">Full Time</md-option>
-                        <md-option value="project">Project</md-option>
-                        <md-option value="parttime">Part Time</md-option>
+                        <md-option value="Full Time">Full Time</md-option>
+                        <md-option value="Project">Project</md-option>
+                        <md-option value="Part Time">Part Time</md-option>
                     </md-select>
                 </md-input-container>
             </div>
