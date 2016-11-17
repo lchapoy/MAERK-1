@@ -4,7 +4,7 @@
 
 (function () {
     angular.module('maerkApp')
-        .constant('globalURL', '/api/settings')
+        .constant('globalURL', '/api/settings/')
         .factory('GlobalResource', function ($resource, globalURL, $q) {
             let Globals = $resource(globalURL + ":id",
                 {id: "@_id"},
@@ -17,7 +17,6 @@
 
             function query() {
                 Globals.query().$promise.then(d => {
-                    console.log(d);
                     if (d.length > 0)
                         deferred.resolve(d[0]);
                     else
