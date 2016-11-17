@@ -24,7 +24,7 @@ angular.module('maerkApp')
                 controller: 'SignupController',
                 controllerAs: 'vm'
             })
-            .state('settings', {
+            .state('main.settings', {
                 url: '/settings',
                 templateUrl: 'app/account/settings/settings.html',
                 controller: 'SettingsController',
@@ -32,19 +32,14 @@ angular.module('maerkApp')
                 abstract: true,
                 authenticate: true
             })
-            .state('settings.globals', {
+            .state('main.settings.globals', {
                 url: '/globals',
                 templateUrl: 'app/account/settings/globals/globals.html',
                 controller: 'GlobalsController',
                 controllerAs: 'vm',
-                resolve: {
-                    globals: function(GlobalResource) {
-                        return GlobalResource.globals;
-                    }
-                },
                 authenticate: true
             })
-            .state('settings.password', {
+            .state('main.settings.password', {
                 url: '/password',
                 templateUrl: 'app/account/settings/password/password.html',
                 authenticate: true
