@@ -5,7 +5,6 @@ class GlobalsController {
     constructor(globals){
         this.globals = globals;
         this.enabled = true;
-        console.log(globals)
     }
 
     update(globalVar) {
