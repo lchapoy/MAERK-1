@@ -4,6 +4,22 @@
 class GlobalsController {
     constructor(globals){
         this.globals = globals;
+        this.enabled = true;
+        console.log(globals)
+    }
+
+    update(globalVar) {
+        this.enabled = false;
+        this.globals.$save()
+            .then(d => {
+                this.globals = d;
+                this.enabled = true;
+                globalVar.$setPristine();
+            })
+            .catch(e => {
+                console.log(e);
+            })
+
     }
 }
 
