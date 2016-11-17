@@ -4,7 +4,7 @@
         <div class="md-toolbar-tools">
             <h2>{{vm.context}} Employee</h2>
             <span flex></span>
-            <md-button class="md-icon-button" ng-click="vm.close()">
+            <md-button class="md-icon-button" confirm="vm.deferred" confirm-action="'close'" ng-click="vm.close()">
                 <md-icon md-font-set="material-icons">close</md-icon>
             </md-button>
         </div>
@@ -61,7 +61,6 @@
 
             </md-content>
             <div layout-gt-sm="row">
-
                 <div layout="row" flex>
                     <md-autocomplete flex required
                                  ng-if="vm.context!=='Edit'"
@@ -82,7 +81,17 @@
                         <div ng-message="md-require-match">Please select an existing recruiter.</div>
                     </div>
                     </md-autocomplete>
+                </div>
 
+                <div layout="row" flex>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label for="placement">Placement type</label>
+                        <md-select name="placement" ng-model="vm.emp.placement_type" required>
+                            <md-option value="Full Time">Full Time</md-option>
+                            <md-option value="Project">Project</md-option>
+                            <md-option value="Part Time">Part Time</md-option>
+                        </md-select>
+                    </md-input-container>
                     <md-input-container>
                         <label>Start Date</label>
                         <md-datepicker md-open-on-focus="true" name="startDate" ng-required="true"
@@ -93,24 +102,8 @@
                         </div>
                     </md-input-container>
                 </div>
-                <!--<md-input-container class="md-block" flex-gt-sm>-->
-                <!--<label for="recruiter">Recruiter</label>-->
-                <!--<input type="text" ng-disabled="vm.context==='Edit'" name="recruiter" ng-model="vm.emp.recruiter"-->
-                <!--required>-->
-                <!--</md-input-container>-->
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label for="placement">Placement type</label>
-                    <md-select name="placement" ng-model="vm.emp.placement_type" required>
-                        <md-option value="fulltime">Full Time</md-option>
-                        <md-option value="project">Project</md-option>
-                        <md-option value="parttime">Part Time</md-option>
-                    </md-select>
-                    <div ng-messages="employeeDialog.placement.$error" multiple md-auto-hide="true">
-                        <div ng-message="required">
-                        This field is required
-                        </div>
-                    </div>
-                </md-input-container>
+
+
             </div>
             <div class="md-dialog-content">
                 <h3>Financial Information</h3>
