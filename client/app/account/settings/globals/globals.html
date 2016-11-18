@@ -1,0 +1,121 @@
+<div layout="row" layout-padding layout-wrap layout-fill layout-align="center center" ng-cloak>
+    <md-whiteframe class="md-whiteframe-1dp" flex="100" flex-gt-sm="75" layout="column">
+        <md-content layout="column" layout-padding>
+            <h2>
+                <md-icon md-font-set="material-icons">settings</md-icon>
+                Global Variables
+            </h2>
+            <md-divider></md-divider>
+            <form name="globalVar" ng-cloak ng-submit="vm.update(globalVar)" novalidate>
+                <div layout="column" layout-gt-sm="row" flex>
+                    <md-input-container class="md-block" flex="100" flex-gt-md="25">
+                        <label>Return Rate</label>
+                        <input required type="number" step=".05" name="return_rate" min="1"
+                               max="2" ng-model="vm.globals.return_rate"/>
+                        <div ng-messages="globalVar.return_rate.$error" multiple md-auto-hide="false">
+                            <div ng-message="required">
+                                You must specify a return rate.
+                            </div>
+                            <div ng-message="min">
+                                Return rate must be greater than 1.
+                            </div>
+                            <div ng-message="max">
+                                Return rate must be less than 2.
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <div flex="5" hide-xs hide-sm>
+                        <!-- Spacer //-->
+                    </div>
+                    <md-input-container class="md-block" flex="100" flex-gt-md="25">
+                        <label>Payroll Taxes</label>
+                        <input required type="number" step=".05" name="payroll_taxes" min="1"
+                               max="2" ng-model="vm.globals.payroll_taxes"/>
+                        <div ng-messages="globalVar.payroll_taxes.$error" multiple md-auto-hide="false">
+                            <div ng-message="required">
+                                You must specify the payroll taxes rate.
+                            </div>
+                            <div ng-message="min">
+                                Return rate must be greater than 1.
+                            </div>
+                            <div ng-message="max">
+                                Return rate must be less than 2.
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                    <div flex="5" hide-xs hide-sm>
+                        <!-- Spacer //-->
+                    </div>
+                    <md-input-container class="md-block" flex="100" flex-gt-md="25">
+                        <label>Est. Yearly Hours</label>
+                        <input required type="number" min="0" name="estimated_yearly_hours"
+                               ng-model="vm.globals.estimated_yearly_hours"/>
+                        <div ng-messages="globalVar.estimated_yearly_hours.$error" multiple md-auto-hide="false">
+                            <div ng-message="required">
+                                You must specify the estimated yearly hours.
+                            </div>
+                            <div ng-message="min">
+                                Value must be greater than zero.
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                    <div flex="5" hide-xs hide-sm>
+                        <!-- Spacer //-->
+                    </div>
+                    <md-input-container class="md-block" flex="100" flex-gt-md="25">
+                        <label>Vacation days</label>
+                        <input required type="number" min="0" name="vacation_days" ng-model="vm.globals.vacation_days"/>
+                        <div ng-messages="globalVar.vacation_days.$error" multiple md-auto-hide="false">
+                            <div ng-message="required">
+                                You must specify the total vacation days.
+                            </div>
+                            <div ng-message="min">
+                                Value must be greater than zero.
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                </div>
+
+                <div layout="column" layout-gt-sm="row" flex>
+
+                    <md-input-container class="md-block" flex="100" flex-gt-md="45">
+                        <label>Daily Hours</label>
+                        <input required type="number" min="0" name="daily_hours" ng-model="vm.globals.daily_hours"/>
+                        <div ng-messages="globalVar.daily_hours.$error" multiple md-auto-hide="false">
+                            <div ng-message="required">
+                                You must specify daily working hours.
+                            </div>
+                            <div ng-message="min">
+                                Value must be greater than zero.
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <div flex="5" hide-xs hide-sm>
+                        <!-- Spacer //-->
+                    </div>
+                    <md-input-container class="md-block" flex="100" flex-gt-md="45">
+                        <label>Actual Yearly Hours</label>
+                        <input required type="number" name="actual_yearly_hours"
+                               ng-model="vm.globals.actual_yearly_hours"/>
+                        <div ng-messages="globalVar.actual_yearly_hours.$error" multiple md-auto-hide="false">
+                            <div ng-message="required">
+                                You must specify the actual yearly hours.
+                            </div>
+                            <div ng-message="min">
+                                Value must be greater than zero.
+                            </div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <md-button type="submit" ng-disabled="globalVar.$invalid || !globalVar.$dirty || !vm.enabled" layout-padding
+                           class="md-raised md-primary">
+                    Save changes
+                </md-button>
+            </form>
+        </md-content>
+
+    </md-whiteframe>
+</div>
