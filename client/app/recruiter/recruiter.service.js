@@ -15,11 +15,11 @@
                 });
             var recruiterList = Recruiter.query();
 
-            function findOne(id) {
-                if (id && employeeList) {
-                    for (var i = 0; i < employeeList.length; i++) {
-                        if (employeeList[i]._id === id) {
-                            return employeeList[i];
+            function findOne(idOrName) {
+                if (idOrName && recruiterList) {
+                    for (var i = 0; i < recruiterList.length; i++) {
+                        if ((recruiterList[i]._id === idOrName) || ((recruiterList[i].first_name + ' ' +recruiterList[i].last_name) === idOrName)) {
+                            return recruiterList[i];
                         }
                     }
                     return {};
@@ -31,6 +31,7 @@
                 delete: function () {
 
                 },
+                find: findOne,
                 create: function (rec) {
                     new Recruiter(rec).$create().then((newRec)=> {
                         recruiterList.push(newRec);
@@ -50,12 +51,12 @@
                         });
                     }
                 },
-                get: function (id) {
-                    if(!id) {
+                get: function (name) {
+                    if(!name) {
                         return recruiterList;
                     }
                     else {
-                        return findOne(id);
+                        return findOne(name);
                     }
                 }
             }
