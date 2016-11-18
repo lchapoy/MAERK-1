@@ -95,7 +95,7 @@ Employee.find({}).remove()
             "activate": 84,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-10-06T17:51:45Z"
+            "start_date": "2016-01-06T17:51:45Z"
         }, {
             "first_name": "Tina",
             "last_name": "Rodriguez",
@@ -118,7 +118,7 @@ Employee.find({}).remove()
             "activate": 91,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-11-16T07:01:43Z"
+            "start_date": "2016-02-16T07:01:43Z"
         }, {
             "first_name": "Donald",
             "last_name": "Cook",
@@ -141,7 +141,7 @@ Employee.find({}).remove()
             "activate": 69,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-11-01T07:30:40Z"
+            "start_date": "2016-02-01T07:30:40Z"
         }, {
             "first_name": "Albert",
             "last_name": "Stewart",
@@ -164,7 +164,7 @@ Employee.find({}).remove()
             "activate": 89,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-10-06T11:16:03Z"
+            "start_date": "2016-01-06T11:16:03Z"
         }, {
             "first_name": "Lawrence",
             "last_name": "Fuller",
@@ -187,7 +187,7 @@ Employee.find({}).remove()
             "activate": 100,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-11-11T12:03:26Z"
+            "start_date": "2016-02-11T12:03:26Z"
         }, {
             "first_name": "Roy",
             "last_name": "Price",
@@ -210,7 +210,7 @@ Employee.find({}).remove()
             "activate": 97,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-10-06T12:53:43Z"
+            "start_date": "2016-01-06T12:53:43Z"
         }, {
             "first_name": "Earl",
             "last_name": "Kelley",
@@ -233,7 +233,7 @@ Employee.find({}).remove()
             "activate": 86,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-11-01T20:29:04Z"
+            "start_date": "2016-02-01T20:29:04Z"
         }, {
             "first_name": "Cynthia",
             "last_name": "Romero",
@@ -256,7 +256,7 @@ Employee.find({}).remove()
             "activate": 97,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-10-17T11:01:32Z"
+            "start_date": "2016-01-17T11:01:32Z"
         }, {
             "first_name": "Patricia",
             "last_name": "Thompson",
@@ -279,7 +279,7 @@ Employee.find({}).remove()
             "activate": 75,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-11-29T17:41:46Z"
+            "start_date": "2016-02-29T17:41:46Z"
         }, {
             "first_name": "Diane",
             "last_name": "Allen",
@@ -302,7 +302,7 @@ Employee.find({}).remove()
             "activate": 74,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-10-25T17:58:54Z"
+            "start_date": "2016-01-25T17:58:54Z"
         }, {
             "first_name": "Phillip",
             "last_name": "Reynolds",
@@ -325,7 +325,7 @@ Employee.find({}).remove()
             "activate": 53,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-11-11T00:34:36Z"
+            "start_date": "2016-02-11T00:34:36Z"
         }, {
             "first_name": "Joshua",
             "last_name": "Kimberly Knightson",
@@ -348,7 +348,7 @@ Employee.find({}).remove()
             "activate": 81,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-11-09T15:47:11Z"
+            "start_date": "2016-02-09T15:47:11Z"
         }, {
             "first_name": "Kathryn Whitet",
             "last_name": "Smith",
@@ -371,7 +371,7 @@ Employee.find({}).remove()
             "activate": 56,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-10-21T02:08:58Z"
+            "start_date": "2016-01-21T02:08:58Z"
         }, {
             "first_name": "Justin",
             "last_name": "Peterson",
@@ -394,7 +394,7 @@ Employee.find({}).remove()
             "activate": 60,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-10-12T07:08:46Z"
+            "start_date": "2016-01-12T07:08:46Z"
         }, {
             "first_name": "Joan",
             "last_name": "Gibson",
@@ -417,7 +417,7 @@ Employee.find({}).remove()
             "activate": 85,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-10-19T02:50:26Z"
+            "start_date": "2016-01-19T02:50:26Z"
         }, {
             "first_name": "Melissa",
             "last_name": "Cruz",
@@ -440,7 +440,7 @@ Employee.find({}).remove()
             "activate": 80,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-10-16T14:29:06Z"
+            "start_date": "2016-01-16T14:29:06Z"
         }, {
             "first_name": "Jacqueline",
             "last_name": "Hill",
@@ -463,7 +463,7 @@ Employee.find({}).remove()
             "activate": 69,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-11-06T19:58:16Z"
+            "start_date": "2016-02-06T19:58:16Z"
         }, {
             "first_name": "Amy",
             "last_name": "Greene",
@@ -486,7 +486,7 @@ Employee.find({}).remove()
             "activate": 84,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-11-22T18:26:41Z"
+            "start_date": "2016-02-22T18:26:41Z"
         }, {
             "first_name": "Frank",
             "last_name": "Pierce",
@@ -509,7 +509,7 @@ Employee.find({}).remove()
             "activate": 80,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-10-17T20:06:24Z"
+            "start_date": "2016-01-17T20:06:24Z"
         }, {
             "first_name": "Jimmy",
             "last_name": "Wilson",
@@ -532,7 +532,7 @@ Employee.find({}).remove()
             "activate": 98,
             "actual_hours": "",
             "offset": "",
-            "start_date": "2016-11-01T21:33:41Z"
+            "start_date": "2016-02-01T21:33:41Z"
         }])
             .then(function () {
                 console.log('finished populating employees');
