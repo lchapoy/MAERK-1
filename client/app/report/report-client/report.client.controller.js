@@ -36,7 +36,8 @@ class ReportClientController {
                 table.push({
                     client: e,
                     count: this.reports.client[year][month][e].count,
-                    revenue: this.reports.client[year][month][e]['actual_revenue']
+                    revenue: this.reports.client[year][month][e].actual_revenue,
+                    pl: this.reports.client[year][month][e].pl
                 })
         });
         return table;

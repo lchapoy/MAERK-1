@@ -27,8 +27,9 @@
                     <thead md-head md-order="vm.orderVal">
                     <tr md-row>
                         <th md-column md-order-by="client"><span>Client</span></th>
-                        <th md-column md-order-by="count"><span>Employee count</span></th>
+                        <th md-column md-order-by="count"><span>#</span></th>
                         <th md-column md-order-by="revenue">Revenue</th>
+                        <th md-column md-order-by="pl">P/L</th>
                     </tr>
                     </thead>
                     <tbody md-body>
@@ -37,6 +38,7 @@
                         <td md-cell>{{row.client}}</td>
                         <td md-cell>{{row.count}}</td>
                         <td md-cell>{{row.revenue | currency}}</td>
+                        <td md-cell>{{row.pl | currency}}</td>
                     </tr>
                     </tbody>
                 </table>
