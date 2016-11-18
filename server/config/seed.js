@@ -82,7 +82,7 @@ Employee.find({}).remove()
             "skill": [
                 "Interior Design"
             ],
-            "recruiter": " Jane ",
+            "recruiter": "Kathryn White",
             "placement_type": "Project",
             "salary": 97,
             "insurance": 997,
@@ -105,7 +105,7 @@ Employee.find({}).remove()
             "skill": [
                 "Google Apps"
             ],
-            "recruiter": " John ",
+            "recruiter": "Kimberly Knight",
             "placement_type": "Project",
             "salary": 93,
             "insurance": 671,
@@ -128,7 +128,7 @@ Employee.find({}).remove()
             "skill": [
                 "LTE"
             ],
-            "recruiter": " Jess",
+            "recruiter": "Todd Morgan",
             "placement_type": "Part Time",
             "salary": 81,
             "insurance": 549,
@@ -151,7 +151,7 @@ Employee.find({}).remove()
             "skill": [
                 "XCOM"
             ],
-            "recruiter": " Jess",
+            "recruiter": "Todd Morgan",
             "placement_type": "Project",
             "salary": 99,
             "insurance": 1000,
@@ -174,7 +174,7 @@ Employee.find({}).remove()
             "skill": [
                 "Amazon VPC"
             ],
-            "recruiter": " Jess",
+            "recruiter": "Todd Morgan",
             "placement_type": "Full Time",
             "salary": 69,
             "insurance": 789,
@@ -197,7 +197,7 @@ Employee.find({}).remove()
             "skill": [
                 "Fashion"
             ],
-            "recruiter": " Jane ",
+            "recruiter": "Kathryn White",
             "placement_type": "Project",
             "salary": 93,
             "insurance": 815,
@@ -220,7 +220,7 @@ Employee.find({}).remove()
             "skill": [
                 "Affiliate Management"
             ],
-            "recruiter": " Jess",
+            "recruiter": "Todd Morgan",
             "placement_type": "Project",
             "salary": 51,
             "insurance": 641,
@@ -243,7 +243,7 @@ Employee.find({}).remove()
             "skill": [
                 "Uranium"
             ],
-            "recruiter": " Jess",
+            "recruiter": "Todd Morgan",
             "placement_type": "Project",
             "salary": 92,
             "insurance": 646,
@@ -289,7 +289,7 @@ Employee.find({}).remove()
             "skill": [
                 "Billing Systems"
             ],
-            "recruiter": " Jane ",
+            "recruiter": "Kathryn White",
             "placement_type": "Project",
             "salary": 56,
             "insurance": 827,
@@ -312,7 +312,7 @@ Employee.find({}).remove()
             "skill": [
                 "Government Procurement"
             ],
-            "recruiter": " John ",
+            "recruiter": "Kimberly Knight",
             "placement_type": "Project",
             "salary": 87,
             "insurance": 577,
@@ -328,14 +328,14 @@ Employee.find({}).remove()
             "start_date": "2016-11-11T00:34:36Z"
         }, {
             "first_name": "Joshua",
-            "last_name": "Johnson",
+            "last_name": "Kimberly Knightson",
             "client": [
                 "Thoughtstorm"
             ],
             "skill": [
                 "Particle Effects"
             ],
-            "recruiter": " Jess",
+            "recruiter": "Todd Morgan",
             "placement_type": "Part Time",
             "salary": 96,
             "insurance": 919,
@@ -350,7 +350,7 @@ Employee.find({}).remove()
             "offset": "",
             "start_date": "2016-11-09T15:47:11Z"
         }, {
-            "first_name": "Janet",
+            "first_name": "Kathryn Whitet",
             "last_name": "Smith",
             "client": [
                 "Zoonder"
@@ -358,7 +358,7 @@ Employee.find({}).remove()
             "skill": [
                 "Analytical Skills"
             ],
-            "recruiter": " Jess",
+            "recruiter": "Todd Morgan",
             "placement_type": "Full Time",
             "salary": 68,
             "insurance": 786,
@@ -381,7 +381,7 @@ Employee.find({}).remove()
             "skill": [
                 "Requirements Gathering"
             ],
-            "recruiter": " John ",
+            "recruiter": "Kimberly Knight",
             "placement_type": "Project",
             "salary": 58,
             "insurance": 680,
@@ -404,7 +404,7 @@ Employee.find({}).remove()
             "skill": [
                 "GSM"
             ],
-            "recruiter": " Jess",
+            "recruiter": "Todd Morgan",
             "placement_type": "Part Time",
             "salary": 89,
             "insurance": 665,
@@ -427,7 +427,7 @@ Employee.find({}).remove()
             "skill": [
                 "SRDS"
             ],
-            "recruiter": " Jess",
+            "recruiter": "Todd Morgan",
             "placement_type": "Full Time",
             "salary": 58,
             "insurance": 863,
@@ -450,7 +450,7 @@ Employee.find({}).remove()
             "skill": [
                 "Omron"
             ],
-            "recruiter": " Jess",
+            "recruiter": "Todd Morgan",
             "placement_type": "Project",
             "salary": 74,
             "insurance": 804,
@@ -473,7 +473,7 @@ Employee.find({}).remove()
             "skill": [
                 "MCS"
             ],
-            "recruiter": " John ",
+            "recruiter": "Kimberly Knight",
             "placement_type": "Project",
             "salary": 72,
             "insurance": 771,
@@ -496,7 +496,7 @@ Employee.find({}).remove()
             "skill": [
                 "Ducting"
             ],
-            "recruiter": " Jess",
+            "recruiter": "Todd Morgan",
             "placement_type": "Full Time",
             "salary": 84,
             "insurance": 892,
@@ -519,7 +519,7 @@ Employee.find({}).remove()
             "skill": [
                 "Quantum GIS"
             ],
-            "recruiter": " Jess",
+            "recruiter": "Todd Morgan",
             "placement_type": "Project",
             "salary": 59,
             "insurance": 846,

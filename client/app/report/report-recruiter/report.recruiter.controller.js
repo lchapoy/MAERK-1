@@ -7,7 +7,6 @@ class ReportRecruiterController {
         this.page = 1;
         this.limit = 5;
         this.reports = reportData;
-        console.log(this.reports)
         this.years = Object.keys(reportData.recruiter);
         this.months = months;
         this.selection = {
@@ -37,10 +36,8 @@ class ReportRecruiterController {
                     count: this.reports.recruiter[year][month][e].count,
                     revenue: this.reports.recruiter[year][month][e]['actual_revenue']
                 })
-                console.log(e)
             }
         });
-        console.log(table);
         return table;
     }
 
