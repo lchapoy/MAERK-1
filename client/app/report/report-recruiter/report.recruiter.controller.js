@@ -34,7 +34,8 @@ class ReportRecruiterController {
                 table.push({
                     recruiter: e,
                     count: this.reports.recruiter[year][month][e].count,
-                    revenue: this.reports.recruiter[year][month][e]['actual_revenue']
+                    revenue: this.reports.recruiter[year][month][e]['actual_revenue'],
+                    commission: this.reports.recruiter[year][month][e].commission ? this.reports.recruiter[year][month][e].commission : '0'
                 })
             }
         });

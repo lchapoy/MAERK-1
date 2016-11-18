@@ -29,6 +29,7 @@
                         <th md-column md-order-by="recruiter"><span>Recruiter</span></th>
                         <th md-column md-order-by="count"><span>Employee count</span></th>
                         <th md-column md-order-by="revenue">Revenue</th>
+                        <th md-column md-order-by="commission">Total Commission</th>
                     </tr>
                     </thead>
                     <tbody md-body>
@@ -37,6 +38,7 @@
                         <td md-cell>{{row.recruiter}}</td>
                         <td md-cell>{{row.count}}</td>
                         <td md-cell>{{row.revenue | currency}}</td>
+                        <td md-cell>{{row.commission | currency}}</td>
                     </tr>
                     </tbody>
                 </table>
