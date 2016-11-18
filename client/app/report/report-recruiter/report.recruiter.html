@@ -27,9 +27,11 @@
                     <thead md-head md-order="vm.orderVal">
                     <tr md-row>
                         <th md-column md-order-by="recruiter"><span>Recruiter</span></th>
-                        <th md-column md-order-by="count"><span>Employee count</span></th>
-                        <th md-column md-order-by="revenue">Revenue</th>
-                        <th md-column md-order-by="commission">Total Commission</th>
+                        <th md-column md-order-by="count"><span>#</span></th>
+                        <th md-column md-order-by="revenue">Gross Revenue</th>
+                        <th md-column md-order-by="commission">Commission(&#931;)</th>
+                        <th md-column md-order-by="pl">P/L</th>
+
                     </tr>
                     </thead>
                     <tbody md-body>
@@ -39,6 +41,7 @@
                         <td md-cell>{{row.count}}</td>
                         <td md-cell>{{row.revenue | currency}}</td>
                         <td md-cell>{{row.commission | currency}}</td>
+                        <td md-cell>{{row.pl | currency}}</td>
                     </tr>
                     </tbody>
                 </table>

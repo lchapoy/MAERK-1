@@ -35,7 +35,8 @@ class ReportRecruiterController {
                     recruiter: e,
                     count: this.reports.recruiter[year][month][e].count,
                     revenue: this.reports.recruiter[year][month][e]['actual_revenue'],
-                    commission: this.reports.recruiter[year][month][e].commission ? this.reports.recruiter[year][month][e].commission : '0'
+                    commission: this.reports.recruiter[year][month][e].commission ? this.reports.recruiter[year][month][e].commission : '0',
+                    pl : this.reports.recruiter[year][month][e].pl
                 })
             }
         });

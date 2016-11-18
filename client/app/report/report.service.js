@@ -163,6 +163,22 @@
 
             }
 
+            function getCommissionTerm(cRate, kHourly, comm, tHours) {
+                if (comm < 1) {
+                    let comTerm = ((+cRate - +kHourly) * +comm) * +tHours;
+                    return comTerm < 0 ? 0 : comTerm;
+                }
+                else {
+                    return comm;
+                }
+            }
+
+            function getPLTerm(rev, kHourly, tHours, comm) {
+                let pl;
+                pl = +rev - (+kHourly * +tHours) - +comm;
+                return pl;
+            }
+
             function generateReportData() {
                 var deferred = $q.defer();
                 //make sure reportList is finished populating.
@@ -191,6 +207,17 @@
 
                                         //traverse through the array of employees.
                                         e[month].forEach((emp) => {
+
+                                            // current emp values:
+                                            // emp.client_bill_pay, emp.ksquare_hourly_cost, recCommission, emp.actual_hours
+                                            let rev = emp["client_bill_pay"] * emp["actual_hours"];
+                                            let cRate = emp.client_bill_pay;
+                                            let kHourly = emp.ksquare_hourly_cost;
+                                            let tHours = emp.actual_hours;
+                                            let recCommission = RecruiterResource.find(emp.recruiter).amount_per_hired;
+                                            let tCommission = getCommissionTerm(cRate, kHourly, recCommission, tHours);
+                                            let pl = getPLTerm(rev, kHourly,tHours,tCommission);
+
                                             //initialize client object to populate with employee count and revenue
                                             clientReport[e.year][month][emp.client[0]] = clientReport[e.year][month][emp.client[0]] || {};
                                             skillReport[e.year][month][emp.skill[0]] = skillReport[e.year][month][emp.skill[0]] || {};
@@ -198,34 +225,27 @@
 
                                             // Employee count for each recruiter
                                             // Revenue sum for each recruiter
-                                            let recCommission = RecruiterResource.find(emp.recruiter).amount_per_hired;
-                                            let mult = false;
-                                            if (recCommission > 1) {
-                                                mult = true;
-                                            }
                                             recruiterReport[e.year][month][emp.recruiter] = {
                                                 count: recruiterReport[e.year][month][emp.recruiter].count + 1 || 1,
-                                                actual_revenue: recruiterReport[e.year][month][emp.recruiter].actual_revenue +
-                                                emp["client_bill_pay"] * emp["actual_hours"] || emp["client_bill_pay"] * emp["actual_hours"],
-                                                commission: mult ?
-                                                        recruiterReport[e.year][month][emp.recruiter].commission ?
-                                                            recruiterReport[e.year][month][emp.recruiter].commission + recCommission :
-                                                            recCommission
-                                                        : undefined //replace undefined with formula
+                                                actual_revenue: recruiterReport[e.year][month][emp.recruiter].actual_revenue + rev || rev,
+                                                commission: recruiterReport[e.year][month][emp.recruiter].commission + tCommission || tCommission,
+                                                pl : recruiterReport[e.year][month][emp.recruiter].pl + pl || pl
                                             };
                                             // Employee count for each client
                                             // Revenue sum for each client
                                             clientReport[e.year][month][emp.client[0]] = {
                                                 count: clientReport[e.year][month][emp.client[0]].count + 1 || 1,
-                                                actual_revenue: clientReport[e.year][month][emp.client[0]]["actual_revenue"] +
-                                                emp["client_bill_pay"] * emp["actual_hours"] || emp["client_bill_pay"] * emp["actual_hours"]
+                                                actual_revenue: clientReport[e.year][month][emp.client[0]].actual_revenue + rev || rev,
+                                                commission: clientReport[e.year][month][emp.client].commission + tCommission || tCommission,
+                                                pl : clientReport[e.year][month][emp.client].pl + pl || pl
                                             };
                                             // Employee count for each client
                                             // Revenue sum for each client
                                             skillReport[e.year][month][emp.skill[0]] = {
                                                 count: skillReport[e.year][month][emp.skill[0]].count + 1 || 1,
-                                                actual_revenue: skillReport[e.year][month][emp.skill[0]]["actual_revenue"] +
-                                                emp["client_bill_pay"] * emp["actual_hours"] || emp["client_bill_pay"] * emp["actual_hours"]
+                                                actual_revenue: skillReport[e.year][month][emp.skill[0]].actual_revenue + rev || rev,
+                                                commission: skillReport[e.year][month][emp.skill].commission + tCommission || tCommission,
+                                                pl : skillReport[e.year][month][emp.skill].pl + pl || pl
                                             };
                                         });
 
@@ -235,7 +255,6 @@
                                 reports.client = clientReport;
                                 reports.skill = skillReport;
                                 reports.recruiter = recruiterReport;
-
                                 deferred.resolve(reports);
                             })
                             .catch(e => {
