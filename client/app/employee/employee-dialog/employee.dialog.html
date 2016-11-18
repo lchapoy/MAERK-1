@@ -137,7 +137,7 @@
 
                     <md-input-container class="md-block" flex>
                         <label for="pay_vacation_cost">Vacation cost</label>
-                        <input required type="text" name="pay_vacation_cost" ng-model="vm.emp.pay_vacation_cost" ng-pattern="/^\d*\d$/"/>
+                        <input disabled required type="text" name="pay_vacation_cost" value="{{vm.getPayVacationCost()}}" ng-pattern="/^\d*\d$/"/>
                         <div ng-messages="employeeDialog.pay_vacation_cost.$error" md-auto-hide="true">
                             <div ng-message="required">
                                 This field is required
@@ -150,7 +150,7 @@
 
                       <md-input-container class="md-block" flex>
                         <label for="target_bill_rate">Target Bill Rate</label>
-                        <input required type="text" name="target_bill_rate" ng-model="vm.emp.target_bill_rate" ng-pattern="/^\d*\d$/"/>
+                        <input disabled required type="text" name="target_bill_rate" value="{{vm.getTargetRate()}}" ng-pattern="/^\d*\d$/"/>
                         <div ng-messages="employeeDialog.target_bill_rate.$error" md-auto-hide="true">
                             <div ng-message="required">
                                 This field is required
@@ -197,7 +197,7 @@
                     </md-input-container>
                     <md-input-container class="md-block" flex>
                         <label for="ksquare_hourly_cost">KSquare Hourly Cost</label>
-                        <input required type="text" name="ksquare_hourly_cost" ng-model="vm.emp.ksquare_hourly_cost" ng-pattern="/^\d*\d$/"/>
+                        <input disabled required type="text" name="ksquare_hourly_cost" value="{{vm.getKSHourlyCost()}}" ng-pattern="/^\d*\d$/"/>
                         <div ng-messages="employeeDialog.ksquare_hourly_cost.$error" multiple md-auto-hide="true">
                             <div ng-message="required">
                                 This field is required

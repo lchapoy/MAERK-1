@@ -2,12 +2,13 @@
  * Created by cleverjam on 10/25/16.
  */
 class EmployeeController {
-    constructor($timeout, employeeList, recruiterList, $mdDialog, EmployeeResource) {
+    constructor($timeout, employeeList, recruiterList, $mdDialog, EmployeeResource, globals) {
         this.page = 1;
         this.orderVal = "first_name";
         this.limit = 5;
         this.filterBy='first_name';
         this.selected = [];
+        this.globals = globals;
         this.employees = employeeList;
         this.recruiters = recruiterList;
         this.mdDialog = $mdDialog;
@@ -69,7 +70,8 @@ class EmployeeController {
             fullscreen: true,
             locals: {
                 employee: selected ? selected[0] : null,
-                recruiters: this.recruiters
+                recruiters: this.recruiters,
+                globals: this.globals
             }
         }).then((emp)=> {
             if (!emp._id) {
