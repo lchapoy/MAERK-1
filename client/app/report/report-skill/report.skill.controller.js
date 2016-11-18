@@ -35,7 +35,8 @@ class SkillClientController {
                 table.push({
                     skill: e,
                     count: this.reports.skill[year][month][e].count,
-                    revenue: this.reports.skill[year][month][e]['actual_revenue']
+                    revenue: this.reports.skill[year][month][e].actual_revenue,
+                    pl: this.reports.skill[year][month][e].pl
                 })
         });
         return table;
