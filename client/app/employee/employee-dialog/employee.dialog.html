@@ -18,10 +18,20 @@
                 <md-input-container class="md-block" flex-gt-sm>
                     <label for="first_name">First Name</label>
                     <input type="text" ng-model="vm.emp.first_name" required name="first_name">
+                    <div ng-messages="employeeDialog.first_name.$error" multiple md-auto-hide="true">
+                        <div ng-message="required">
+                            This field is required
+                        </div>
+                    </div>
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm>
                     <label for="last_name">Last Name</label>
                     <input type="text" ng-model="vm.emp.last_name" required name="last_name">
+                    <div ng-messages="employeeDialog.last_name.$error" multiple md-auto-hide="true">
+                        <div ng-message="required">
+                            This field is required
+                        </div>
+                    </div>
                 </md-input-container>
             </div>
 
@@ -38,6 +48,7 @@
                         placeholder="Clients"
                         secondary-placeholder="Clients">
                 </md-contact-chips>
+                <p class='red-text md-caption' ng-show="vm.emp.client.length == 0"> Required </p>
             </md-content>
             <md-content class="md-padding autocomplete" layout="column" flex>
                 <md-chips
@@ -46,10 +57,12 @@
                         placeholder="Skills"
                         secondary-placeholder="Comma separated skill">
                 </md-chips>
+                <p class='red-text md-caption' ng-show="vm.emp.skill.length == 0"> Required </p>
+
             </md-content>
             <div layout-gt-sm="row">
-
-                <md-autocomplete flex required
+                <div layout="row" flex>
+                    <md-autocomplete flex required
                                  ng-if="vm.context!=='Edit'"
                                  md-input-name="autocompleteField"
                                  md-selected-item="vm.selectedRecruiter"
@@ -67,23 +80,23 @@
                         <div ng-message="required">You <b>must</b> specify a recruiter.</div>
                         <div ng-message="md-require-match">Please select an existing recruiter.</div>
                     </div>
-                </md-autocomplete>
-
+                    </md-autocomplete>
+                </div>
 
                 <div layout="row" flex>
                     <md-input-container class="md-block" flex-gt-sm>
-                      <label for="placement">Placement type</label>
-                      <md-select name="placement" ng-model="vm.emp.placement_type" required>
-                        <md-option value="Full Time">Full Time</md-option>
-                        <md-option value="Project">Project</md-option>
-                        <md-option value="Part Time">Part Time</md-option>
-                      </md-select>
+                        <label for="placement">Placement type</label>
+                        <md-select name="placement" ng-model="vm.emp.placement_type" required>
+                            <md-option value="Full Time">Full Time</md-option>
+                            <md-option value="Project">Project</md-option>
+                            <md-option value="Part Time">Part Time</md-option>
+                        </md-select>
                     </md-input-container>
                     <md-input-container>
                         <label>Start Date</label>
                         <md-datepicker md-open-on-focus="true" name="startDate" ng-required="true"
                                        ng-model="vm.emp.start_date"></md-datepicker>
-                        <div class="validation-messages" ng-messages="employeeDialog.startDate.$error">
+                        <div ng-messages="employeeDialog.startDate.$error">
                             <div ng-message="valid">The entered value is not a date!</div>
                             <div ng-message="required">This date is required!</div>
                         </div>
@@ -196,7 +209,7 @@
                     </md-input-container>
                 </div>
             </div>
-                <md-button type="submit" confirm="vm.deferred" confirm-action="vm.context.toLowerCase()" ng-disabled="employeeDialog.$invalid" class="md-raised md-primary">
+                <md-button type="submit" confirm="vm.deferred" confirm-action="vm.context.toLowerCase()" ng-disabled="employeeDialog.$invalid || vm.emp.client.length == 0 || vm.emp.skill.length == 0" class="md-raised md-primary">
                     Submit
                 </md-button>
         </md-dialog-content>
