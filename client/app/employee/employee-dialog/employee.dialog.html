@@ -61,9 +61,8 @@
 
             </md-content>
             <div layout-gt-sm="row">
-                <div layout="row" flex>
+                <div layout="row"  ng-if="vm.context!=='Edit'" flex>
                     <md-autocomplete flex required
-                                 ng-if="vm.context!=='Edit'"
                                  md-input-name="autocompleteField"
                                  md-selected-item="vm.selectedRecruiter"
                                  md-selected-item-change="vm.selectedItemChange(vm.selectedRecruiter)"
