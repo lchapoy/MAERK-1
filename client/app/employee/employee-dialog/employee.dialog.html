@@ -1,5 +1,5 @@
 <!--suppress HtmlFormInputWithoutLabel -->
-<md-dialog aria-label="Add employee dialog" flex="50">
+<md-dialog aria-label="Add employee dialog" flex="75">
     <md-toolbar>
         <div class="md-toolbar-tools">
             <h2>{{vm.context}} Employee</h2>
@@ -83,7 +83,7 @@
                 </div>
 
                 <div layout="row" flex>
-                    <md-input-container class="md-block" flex-gt-sm>
+                    <md-input-container class="md-block" flex>
                         <label for="placement">Placement type</label>
                         <md-select name="placement" ng-model="vm.emp.placement_type" required>
                             <md-option value="Full Time">Full Time</md-option>
@@ -94,7 +94,7 @@
                     <md-input-container>
                         <label>Start Date</label>
                         <md-datepicker md-open-on-focus="true" name="startDate" ng-required="true"
-                                       ng-model="vm.emp.start_date"></md-datepicker>
+                                       ng-model="vm.emp.start_date" flex></md-datepicker>
                         <div ng-messages="employeeDialog.startDate.$error">
                             <div ng-message="valid">The entered value is not a date!</div>
                             <div ng-message="required">This date is required!</div>
